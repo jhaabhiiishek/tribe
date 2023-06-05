@@ -6,6 +6,8 @@ import LeftContainer from './LeftContainer';
 import RightContainer from './RightContainer'
 import axios from 'axios';
 import getCookie from './getCookie';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const api = axios.create({
   baseURL: 'http://localhost:8080/',
@@ -32,7 +34,7 @@ function App() {
     const [loginusername, setLoginUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginpassword, setLoginPassword] = useState("");
-    const [emailOtpVerify, setEmailOtpVerify] = useState("");
+    const [emailOtpVerify, setOtpVerify] = useState(false);
 
 
   function setCookie(name, value, days) {
@@ -42,15 +44,31 @@ function App() {
     setNullCookie(false)
   }
 
+  const diffToast = (msg)=>{
+    console.log(msg)
+    if(msg.data.success===0){
+        toast.error(msg.data.msg,{
+            position:"bottom-center"
+        });
+    }else{
+      toast.success(msg.data.msg,{
+          position:"bottom-center"
+      });
+    }
+  }
+
   
-  const email_sub = async function(){
+  const email_sub = async function(e){
+    e.preventDefault()
     api.post('/email_otp',{
       email_id:email
     }).then(response => {
-      console.log(response);
-      if(response.data.msg!=="Sent Successfully"){
+      console.log(response)
+      if(response.data.success===1){
+        setOtpVerify(true)
         setEmailVerified(false)
       }
+      diffToast(response)
     });
   }
 
@@ -61,9 +79,10 @@ function App() {
       user_id:username,
       password:password 
     }).then(response => {
-      if(response.data.msg=="Success"){
+      if(response.data.success==1){
         setSignup(false)
       }
+      diffToast(response)
     });
   }
 
@@ -81,9 +100,8 @@ function App() {
           console.log(cookie)
           setNullCookie(false)
         }
-      }else{
-        console.log(response.data.msg)
       }
+      diffToast(response)
     });
   }
   
@@ -93,26 +111,44 @@ function App() {
     }
   }
 
+  const loginfromemail = ()=>{
+    window.location.reload()
+  }
+
+  const notifToast = (msg)=>{
+    toast.success(msg,{
+        position:"bottom-center"
+    });
+  }
+
   var emailSubmit = (e)=>{
+    notifToast("requested, please wait")
     if(email!==""){
-      email_sub()
-      setEmailOtpVerify(true);
+      email_sub(e)
     }
   }
-  const otp_sub = async function(){
+  const otp_sub = (e)=>{
+    console.log("3")
+    e.preventDefault()
     api.post('/verify_otp',{
       email_id:email,
       otp:otp
     }).then(response => {
+      console.log("3")
       console.log(response);
       console.log(response.data.msg);
+      if(response.data.success==1){
+        setEmailVerified(true);
+        setSignup(true);
+      }
+      diffToast(response)
     });
   }
-  const otpSubmit = ()=>{
+  const otpSubmit =(e)=>{
+    console.log("1")
     if(email!==""){
-      otp_sub()
-      setEmailVerified(true);
-      setSignup(true);
+      console.log("2")
+      otp_sub(e)
     }
   }
 
@@ -160,11 +196,12 @@ function App() {
                     <input type='email' required value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Enter Email' name='email'></input>
                     <label htmlFor="Username"><b>Username</b></label>
                     <input type='text' required value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Enter username' name='username'></input>
-                    <label for="password"><b>Password</b></label>
+                    <label htmlFor="password"><b>Password</b></label>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" name="password" required></input>
     
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
                     <a onClick={()=>setSignup(false)}>Login</a>
+                    <ToastContainer/>
                   </div>
                 ):(
                   <form>
@@ -178,6 +215,7 @@ function App() {
                       <button onClick={loginSubmit} type='submit'>Login</button>
                       <a onClick={()=>setEmailVerified(false)}>Sign up</a>
                     </div>
+                    <ToastContainer/>
                   </form>
                 )
               ):(
@@ -187,8 +225,9 @@ function App() {
                       <label htmlFor="email"><b>E-mail</b></label>
                       <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                       <input type='text' placeholder='Enter OTP' name='otp' required value={otp} onChange={(e) => setOtp(e.target.value)}></input>
-                      <button onClick={otpSubmit} type='submit'>Verify Otp</button>
+                      <button onClick={(e)=>otpSubmit(e)} type='submit'>Verify Otp</button>
                     </div>
+                    <ToastContainer/>
                   </form>
                 ):(
                   <form>
@@ -196,7 +235,9 @@ function App() {
                       <label htmlFor="email"><b>E-mail</b></label>
                       <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                       <button onClick={emailSubmit} type='submit'>Verify Email</button>
+                      <a onClick={loginfromemail}>Login</a>
                     </div>
+                    <ToastContainer/>
                   </form>
                 )
               )
