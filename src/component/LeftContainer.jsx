@@ -11,7 +11,10 @@ const api = axios.create({
 });
 
 function LeftContainer(e) {
-    const [posts, setPosts] =useState([])
+    useEffect(()=>{
+        fetchPosts()
+    }, []);
+        const [posts, setPosts] =useState([])
         var heading = e.heading;
         heading = "Posts"
         const student = getCookie()
@@ -24,11 +27,13 @@ function LeftContainer(e) {
             });
         }
 
+    const fetchPosts=()=>{
         api.post('/fetch_user_post',{
             user_id:student.user_id
         },{
             withCredentials: true
         }).then(response => {
+            console.log(response)
             if(response.data.success===1){
                 const newPosts = response.data.data[0].map((post,index)=>(
                     <div key={index} id='post'>
@@ -40,6 +45,7 @@ function LeftContainer(e) {
                 couldntFetch(response)
             }
         })
+    } 
 
     return (
         <div id='leftContainer'>
