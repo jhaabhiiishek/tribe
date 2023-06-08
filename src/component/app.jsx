@@ -179,7 +179,7 @@ function App() {
                 <div id='main-body'>
                   <div className="emptyDiv">
                   </div>
-                  <LeftContainer/>,
+                  <LeftContainer/>
                   <div className="emptyDiv">
                   </div>
                   <RightContainer/>

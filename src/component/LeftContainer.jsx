@@ -4,6 +4,7 @@ import axios from 'axios';
 import getCookie from './getCookie';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PostBody from './PostBody'
 
 
 const api = axios.create({
@@ -11,9 +12,10 @@ const api = axios.create({
 });
 
 function LeftContainer(e) {
-    useEffect(()=>{
-        fetchPosts()
-    }, []);
+        useEffect(()=>{
+            fetchPosts()
+        }, []);
+
         const [posts, setPosts] =useState([])
         var heading = e.heading;
         heading = "Posts"
@@ -21,31 +23,33 @@ function LeftContainer(e) {
         console.log(student)
         heading=student.user_id+" posts"
 
+        const fetchPosts=()=>{
+            api.post('/fetch_user_post',{
+                user_id:student.user_id
+            },{
+                withCredentials: true
+            }).then(response => {
+                console.log(response)
+                if(response.data.success===1){
+                    const newPosts = response.data.data[0].map((post,index)=>(
+                        <PostBody keyValue={index} data={response.data.data[0][index]}/>
+                    ))
+                    setPosts(newPosts)
+                }else{
+                    couldntFetch(response)
+                }
+            })
+        } 
+        
         const couldntFetch = (msg)=>{
             toast.success(msg.data.msg,{
                 position:"bottom-center"
             });
         }
+        
 
-    const fetchPosts=()=>{
-        api.post('/fetch_user_post',{
-            user_id:student.user_id
-        },{
-            withCredentials: true
-        }).then(response => {
-            console.log(response)
-            if(response.data.success===1){
-                const newPosts = response.data.data[0].map((post,index)=>(
-                    <div key={index} id='post'>
-                        <h3>{response.data.data[0][index].text}</h3>
-                    </div>
-                ))
-                setPosts(newPosts)
-            }else{
-                couldntFetch(response)
-            }
-        })
-    } 
+    // The poster profile will be shown when the user clicks on user_id
+    // The get_upvotedBy route will be hit when user clicks on number of likes 
 
     return (
         <div id='leftContainer'>
