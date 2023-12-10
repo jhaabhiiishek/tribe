@@ -1,15 +1,16 @@
 import jwt_decode from 'jwt-decode';
+import Cookies from 'js-cookie';
 
 const getCookie = () => {
-    const value = document.cookie;
-	
-    try {
-      const decodedToken = jwt_decode(value, process.env.TOKEN_KEY);
+  
+  try {
+      const value = Cookies.get('student')
+      const decodedToken = jwt_decode(value, process.env.REACT_APP_FIREBASE_TOKEN_KEY);
       console.log(decodedToken)
       return decodedToken
     } catch (error) {
-		console.log(error)
-		return 
+		  console.log(error)
+		return undefined 
     }
 };
 

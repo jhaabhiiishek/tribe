@@ -3,26 +3,20 @@ import React, { useState, useEffect } from 'react';
 import Island from './Island';
 import Navbar from './Navbar';
 import LeftContainer from './LeftContainer';
+import MainBody from './MainBody';
 import RightContainer from './RightContainer'
 import axios from 'axios';
 import getCookie from './getCookie';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AWS from 'aws-sdk';
+import {v4} from "uuid"
 
 const api = axios.create({
   baseURL: 'http://localhost:8080/',
 });
 function App() {
 
-  useEffect(()=>{
-    const studentCookie= getCookie();
-    console.log(getCookie())
-    if(studentCookie!==undefined){
-      console.log("Previous exists")
-      setNullCookie(false)
-    }
-  }, []) 
-  
     const [loading, setLoading] = useState(true);
     const [emailVerified, setEmailVerified] = useState(true);
     const [nullCookie, setNullCookie] = useState(true);
@@ -35,7 +29,23 @@ function App() {
     const [password, setPassword] = useState("");
     const [loginpassword, setLoginPassword] = useState("");
     const [emailOtpVerify, setOtpVerify] = useState(false);
+    const [compose,setCompose] = useState(false)
+    const [text,setText] = useState('')
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [uploadProgress, setUploadProgress] = useState(0);
+    const [fileBaseName,setFileBaseName] =useState("")
+    const [imgUrl, setImgUrl] = useState(null);
+    const [progresspercent, setProgresspercent] = useState(0);
 
+
+  useEffect(()=>{
+    const studentCookie= getCookie();
+    console.log(studentCookie)
+    if(studentCookie!==undefined){
+      console.log("Previous exists")
+      setNullCookie(false)
+    }
+  }, []) 
 
   function setCookie(name, value, days) {
     const expires = new Date();
@@ -84,6 +94,108 @@ function App() {
       }
       diffToast(response)
     });
+  }
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+    console.log(event.target.files[0])
+    const user_id = getCookie().user_id
+  };
+
+  const createPost = (e)=>{
+    e.preventDefault()
+    // if(selectedFile==null) return
+    // console.log(selectedFile)
+
+    const user_id = getCookie().user_id
+
+    // const ext = selectedFile.name.substring(selectedFile.name.lastIndexOf('.'))
+    // const namePart = selectedFile.name.substring(0,selectedFile.name.lastIndexOf('.'))
+    // var rand = v4()
+    // const final_name = ""+namePart+rand+ext;
+    // setFileBaseName(final_name);
+    // console.log(fileBaseName);
+    // console.log(selectedFile)
+
+    // const data = new FormData()
+    // data.append("file",selectedFile)
+    // data.append("user_id",user_id)
+
+    // console.log(data)
+
+    api.post('/createpost',
+        {
+          user_id:user_id,
+          text:text
+          // media_link:response.data.fileUrl
+        },{
+          withCredentials: true,
+        }).then(response => {
+          console.log(response)
+          if(response.data.success===1){
+            console.log('Successfully created post!');
+            setTimeout(() => {
+              setCompose(false)
+            }, 2000);
+          }
+          diffToast(response)
+    });
+
+
+    // Below code for file uploading to AWS S3 bucket
+
+    // api.post('/uploadSingleFile',data,{
+    //   withCredentials: true,
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data',
+    //   },
+    // }).then(response => {
+    //   console.log(response)
+    //   if(response.data.success===1){
+    //     console.log('Success!!!!')
+    //     console.log("fileURL = "+response.data.fileUrl)
+    //     setImgUrl(response.data.fileUrl)
+    //     console.log("imgURL = "+imgUrl)
+    //     api.post('/createpost',
+    //     {
+    //       user_id:user_id,
+    //       text:text,
+    //       media_link:response.data.fileUrl
+    //     },{
+    //       withCredentials: true,
+    //     }).then(response => {
+    //       console.log(response)
+    //       if(response.data.success===1){
+    //         console.log('Successfully created post!')
+    //       }
+    //       diffToast(response)
+    //     });
+    //   }
+    // });
+
+
+    // const uploadTask = uploadBytesResumable(imageRef, selectedFile);
+
+    // console.log(uploadTask)
+    // try{
+    //   uploadTask.on("state_changed",
+    //     (snapshot) => {
+    //       const progress =
+    //         Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+    //       setProgresspercent(progress);
+    //     },
+    //     (error) => {
+    //       alert(error);
+    //     },
+    //     () => {
+    //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    //         setImgUrl(downloadURL)
+    //       });
+    //     }
+    //   );
+    // }catch(e){
+    //   console.log(e)
+    // }
   }
 
   const login_sub = async function(e){
@@ -173,18 +285,33 @@ function App() {
                 </div>
             ):(
             nullCookie==false?(
-              <div>
-                <Navbar/>,
-                <Island/>,
-                <div id='main-body'>
-                  <div className="emptyDiv">
-                  </div>
-                  <LeftContainer/>
-                  <div className="emptyDiv">
-                  </div>
-                  <RightContainer/>
+              compose?(
+                <div className='blur' id='compose'>
+                    <form id='create-post'>
+                        <h3 id='create-post-header'>Create Your Post</h3>
+                        <input type='text' id='post-input' required onChange={(e)=>setText(e.target.value)} value={text} placeholder='Add text...'></input>
+                        {/* <input id='media-input' type='file' name/</form>='userImage' onChange={(e)=>handleFileChange(e)}></input> */}
+                        {/* {uploadProgress > 0 &&(<p>Upload progress: {uploadProgress}%</p>)} */}
+                        <button type='submit' onClick={(e)=>createPost(e)} id='submit-post'>Post</button>
+                        {
+                          !imgUrl &&
+                          <div className='outerbar'>
+                            <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
+                          </div>
+                        }
+                        {
+                          imgUrl &&
+                          <img src={imgUrl} alt='uploaded file' height={200} />
+                        }
+                    </form>
+                    <ToastContainer/>
                 </div>
-              </div>
+              ):(
+                <div id='body-div'>
+                  <Navbar/>
+                  <MainBody/>
+                </div>
+              )
             ):
             (
               emailVerified?(
@@ -192,13 +319,6 @@ function App() {
                   <div className='forms'>
                     <label htmlFor="Phone"><b>Phone no.</b></label>
                     <input type='tel' value={phone} onChange={(e) => setPhone(e.target.value)} pattern="[+]{1}[0-9]{11,14}" placeholder='Enter phone' name='phone'></input>
-                    <label htmlFor="Email"><b>Email</b></label>
-                    <input type='email' required value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Enter Email' name='email'></input>
-                    <label htmlFor="Username"><b>Username</b></label>
-                    <input type='text' required value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Enter username' name='username'></input>
-                    <label htmlFor="password"><b>Password</b></label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" name="password" required></input>
-    
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
                     <a onClick={()=>setSignup(false)}>Login</a>
                     <ToastContainer/>
@@ -248,3 +368,28 @@ function App() {
 }
 
 export default App
+
+// How to send a file to the server using axios
+
+
+// const handleFileChange = (e) => {
+//   const file = e.target.files[0];
+//   const formData = new FormData();
+//   formData.append('userImage', file);
+//   axios.post('/upload', formData, {
+//     headers: {
+//       'Content-Type': 'multipart/form-data'
+//     },
+//     onUploadProgress: (progressEvent) => {
+//       const { loaded, total } = progressEvent;
+//       const percent = Math.floor((loaded * 100) / total);
+//       setUploadProgress(percent);
+//     }
+//   })
+//     .then((res) => {
+//       console.log(res);
+//       setImgUrl(res.data.fileUrl);
+//     })
+//     .catch((err) => console.log(err));
+// };
+
