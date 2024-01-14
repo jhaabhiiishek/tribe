@@ -5,7 +5,7 @@ import {ToastContainer, toast} from 'react-toastify';
 import getCookie from './getCookie';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'https://tribe.azurewebsites.net',
 });
 
 

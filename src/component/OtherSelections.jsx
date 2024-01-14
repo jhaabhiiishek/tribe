@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'https://tribe.azurewebsites.net',
 });
 
 function OtherSelections() {

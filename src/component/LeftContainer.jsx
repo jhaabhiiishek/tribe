@@ -8,7 +8,7 @@ import PostBody from './PostBody'
 
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'https://tribe.azurewebsites.net',
 });
 
 function LeftContainer(e) {

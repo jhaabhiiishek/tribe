@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import Comment from './comment';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'https://tribe.azurewebsites.net',
 });
 function SelectionPost(e) {
     const dispatch = useDispatch()

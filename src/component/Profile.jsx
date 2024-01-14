@@ -12,7 +12,7 @@ import axios from 'axios';
 import Form from './Form';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'https://tribe.azurewebsites.net',
 });
 function Profile(e) {
     const actionState = useSelector(state => state.actionArea)
