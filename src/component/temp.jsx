@@ -27,7 +27,6 @@ function App() {
     const expires = new Date();
     expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
     document.cookie = `${name}=${value}; expires=${expires.toUTCString()}; path=/`;
-    console.log(document.cookie)
   }
 
   const getCookie = (name) => {
@@ -36,7 +35,6 @@ function App() {
       const decodedToken = jwt_decode(value, process.env.TOKEN_KEY);
       return decodedToken
     } catch (error) {
-      console.log(error,'Invalid token');
     }
   };
   const api = axios.create({
@@ -57,7 +55,6 @@ function App() {
     api.post('/email_otp',{
       email_id:email
     }).then(response => {
-      console.log(response);
       if(response.data.msg!=="Sent Successfully"){
         setEmailVerified(false)
       }
@@ -71,8 +68,6 @@ function App() {
       user_id:username,
       password:password 
     }).then(response => {
-      console.log(response);
-      console.log(response.data.msg)
       if(response.data.msg=="Success"){
         setSignup(false)
       }
@@ -87,13 +82,10 @@ function App() {
     }, {
       withCredentials: true,
     }).then(response => {
-      console.log(response);
       if(response.data.success===1){
-        // console.log(response.data.msg)
         studentCookie = getCookie('student');
         setCookie('student', studentCookie, 7);
         nullCookie = false
-        console.log(studentCookie)
       }else{
         console.log(response.data.msg)
       }
@@ -113,7 +105,6 @@ function App() {
       otp:otp
     }).then(response => {
       console.log(response);
-      console.log(response.data.msg);
     });
   }
   const otpSubmit = ()=>{
@@ -121,7 +112,6 @@ function App() {
       otp_sub()
       setEmailVerified(true);
       setSignup(true);
-      console.log(res_otp)
     }
   }
 

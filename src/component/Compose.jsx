@@ -29,7 +29,6 @@ function Compose() {
         }, {
             withCredentials: true,
         }).then(response => {
-            console.log(response)
             notifySuccess(response)
         });
     }
@@ -41,8 +40,6 @@ function Compose() {
             setCompose(true)
             document.body.classList.toggle('blur');
             var elem = $.get("#compose")
-            console.log(elem)
-        
             // unBlurDiv.classList.toggle('.your-div-class ')
             // console.log(document.querySelector('#compose'))
         }
@@ -50,7 +47,6 @@ function Compose() {
 
 
     const notifySuccess = (msg)=>{
-        console.log(msg)
         if(msg.data.success===0){
             toast.error(msg.data.msg,{
                 position:"bottom-center"

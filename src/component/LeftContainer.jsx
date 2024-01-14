@@ -20,7 +20,6 @@ function LeftContainer(e) {
         var heading = e.heading;
         heading = "Posts"
         const student = getCookie()
-        console.log(student)
         heading=student.user_id+" posts"
 
         const fetchPosts=()=>{
@@ -29,7 +28,6 @@ function LeftContainer(e) {
             },{
                 withCredentials: true
             }).then(response => {
-                console.log(response)
                 if(response.data.success===1){
                     const newPosts = response.data.data[0].map((post,index)=>(
                         <PostBody keyValue={index} data={response.data.data[0][index]}/>

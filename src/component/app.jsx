@@ -7,10 +7,16 @@ import MainBody from './MainBody';
 import RightContainer from './RightContainer'
 import axios from 'axios';
 import getCookie from './getCookie';
+import Form from './Form';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AWS from 'aws-sdk';
 import {v4} from "uuid"
+
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../state';
+import { useSelector } from 'react-redux';
 
 const api = axios.create({
   baseURL: 'http://localhost:8080/',
@@ -19,11 +25,11 @@ function App() {
 
     const [loading, setLoading] = useState(true);
     const [emailVerified, setEmailVerified] = useState(true);
-    const [nullCookie, setNullCookie] = useState(true);
     const [signup, setSignup] = useState(false);
     const [otp, setOtp] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+	  const [formType, setFormType] = useState('')
     const [username, setUsername] = useState("");
     const [loginusername, setLoginUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -38,12 +44,18 @@ function App() {
     const [progresspercent, setProgresspercent] = useState(0);
 
 
+    const dispatch = useDispatch()
+	  const nullCookieState = useSelector(state => state.nullCookie)
+    const likedPosts = useSelector(state=> state.likedPosts)
+    const {setNullCookie,setLikedPosts,setSentRequests} = bindActionCreators(actionCreators, dispatch)
+
+
   useEffect(()=>{
     const studentCookie= getCookie();
-    console.log(studentCookie)
+
     if(studentCookie!==undefined){
-      console.log("Previous exists")
-      setNullCookie(false)
+
+      setNullCookie(0)
     }
   }, []) 
 
@@ -51,11 +63,10 @@ function App() {
     const expires = new Date();
     expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
     document.cookie = `${name}=${value}; expires=${expires.toUTCString()}; path=/`;
-    setNullCookie(false)
+    setNullCookie(0)
   }
 
   const diffToast = (msg)=>{
-    console.log(msg)
     if(msg.data.success===0){
         toast.error(msg.data.msg,{
             position:"bottom-center"
@@ -73,7 +84,6 @@ function App() {
     api.post('/email_otp',{
       email_id:email
     }).then(response => {
-      console.log(response)
       if(response.data.success===1){
         setOtpVerify(true)
         setEmailVerified(false)
@@ -98,7 +108,6 @@ function App() {
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
-    console.log(event.target.files[0])
     const user_id = getCookie().user_id
   };
 
@@ -131,9 +140,7 @@ function App() {
         },{
           withCredentials: true,
         }).then(response => {
-          console.log(response)
           if(response.data.success===1){
-            console.log('Successfully created post!');
             setTimeout(() => {
               setCompose(false)
             }, 2000);
@@ -209,8 +216,7 @@ function App() {
       if(response.data.success===1){
         const cookie = getCookie()
         if(cookie!==undefined){
-          console.log(cookie)
-          setNullCookie(false)
+          setNullCookie(0)
         }
       }
       diffToast(response)
@@ -240,15 +246,11 @@ function App() {
     }
   }
   const otp_sub = (e)=>{
-    console.log("3")
     e.preventDefault()
     api.post('/verify_otp',{
       email_id:email,
       otp:otp
     }).then(response => {
-      console.log("3")
-      console.log(response);
-      console.log(response.data.msg);
       if(response.data.success==1){
         setEmailVerified(true);
         setSignup(true);
@@ -257,25 +259,74 @@ function App() {
     });
   }
   const otpSubmit =(e)=>{
-    console.log("1")
     if(email!==""){
-      console.log("2")
       otp_sub(e)
     }
   }
+
+  const handleChangeClick = (e)=>{
+		document.body.classList.add('scrollable-container');
+		if(document.getElementById('abruptForms')){
+			document.getElementById('abruptForms').style.display='block'
+		}
+		if(e.target.innerHTML==='Change Password'){
+      console.log("daba tojh hi")
+			setFormType('passChange')
+		}else if(e.target.innerHTML==='Edit Profile'){
+			setFormType('editProfile')
+		}else if(e.target.id==='notif-img'||e.target.id==='notifications'){
+			setFormType('notifications')
+		}
+	}
 
   // const posts = async()=>{
   //   axios.post('/fetch_user_post',{
 
   //   })
   // }
+  const student = getCookie()
+  const setLikedPostsfn =async()=>{
+    await api.post('/fetch_upvotes_of_user',{
+      user_id:student.user_id
+    }, {
+        withCredentials: true,
+    }).then(response => {
+      console.log(response.data.data)
+      setLikedPosts(response.data.data)
+    });
+  }
 
+  const setConnectedUsersfn =async()=>{
+    await api.post('/fetch_upvotes_of_user',{
+      user_id:student.user_id
+    }, {
+        withCredentials: true,
+    }).then(response => {
+      console.log(response.data.data)
+      setLikedPosts(response.data.data)
+    });
+  }
+  const setSentRequestsfn =async()=>{
+    await api.post('/fetchsentrequests',{
+      user_id:student.user_id
+    }, {
+        withCredentials: true,
+    }).then(response => {
+      console.log(response.data.data)
+      setSentRequests(response.data.data)
+    });
+  }
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 800); // set the time for the animation to display
+    setLikedPostsfn()
+    setSentRequestsfn()
+    setConnectedUsersfn()
     return () => clearTimeout(timer);
-  }, []);
+  },[]);
+
+  
     return (
         <div id='app'>
             {loading?(
@@ -284,7 +335,7 @@ function App() {
                     {/* A loading animation is required */}
                 </div>
             ):(
-            nullCookie==false?(
+              nullCookieState==0?(
               compose?(
                 <div className='blur' id='compose'>
                     <form id='create-post'>
@@ -324,19 +375,12 @@ function App() {
                     <ToastContainer/>
                   </div>
                 ):(
-                  <form>
-                    <div className='forms'>
-                      <label htmlFor="loginusername"><b>Username</b></label>
-                      <input type='text' value={loginusername} onChange={(e) => setLoginUsername(e.target.value)} placeholder='username/email or phone' name='loginusername' required></input>
-    
-                      <label htmlFor="loginpassword"><b>Password</b></label>
-                      <input type="password" value={loginpassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder="Enter Password" name="loginpassword" required></input>
-    
-                      <button onClick={loginSubmit} type='submit'>Login</button>
-                      <a onClick={()=>setEmailVerified(false)}>Sign up</a>
-                    </div>
-                    <ToastContainer/>
-                  </form>
+                  <div style={{display:'flex',flexDirection:'column'}}>
+                    {formType===''?(''):(<Form type={formType}/>)}
+                    <Form type="login"/>
+                    <a onClick={()=>setEmailVerified(false)} style={{textAlign:"center",marginTop:"2.5%"}}>Sign up</a>
+                    <a onClick={(e)=>handleChangeClick(e)} style={{textAlign:"center",marginTop:"2.5%"}}>Change Password</a>
+                  </div>
                 )
               ):(
                 emailOtpVerify?(
