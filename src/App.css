@@ -786,7 +786,7 @@
 
 #abruptForms{
 	/* display: none; */
-	position: absolute;
+	position: fixed;
     background-color: rgb(108 81 7 / 64%);
     width: 100%;
     top: 0;
@@ -796,7 +796,7 @@
 }
 #abruptPostForms{
 	/* display: none; */
-	position: absolute;
+	position: fixed;
     background-color: rgb(108 81 7 / 64%);
     width: 100%;
     top: 0;
