@@ -11,7 +11,7 @@ import { actionCreators } from '../state';
 import { useSelector } from 'react-redux';
 
 const api = axios.create({
-    baseURL: 'https://tribe.azurewebsites.net',
+    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
 });
 function Comment(e) {
     const value = e.value

@@ -9,7 +9,7 @@ import { actionCreators } from '../state';
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://tribe.azurewebsites.net',
+    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
 });
 function MultiProfile(e) {
 

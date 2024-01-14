@@ -8,7 +8,7 @@ import { actionCreators } from '../state';
 import Form from './Form';
 
 const api = axios.create({
-    baseURL: 'https://tribe.azurewebsites.net',
+    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
 });
 
 function Navbar() {

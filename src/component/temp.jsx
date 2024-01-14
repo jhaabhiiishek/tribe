@@ -38,7 +38,7 @@ function App() {
     }
   };
   const api = axios.create({
-    baseURL: 'https://tribe.azurewebsites.net',
+    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
   });
   var nullCookie = true;
   var res_otp ;

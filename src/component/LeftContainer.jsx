@@ -8,7 +8,7 @@ import PostBody from './PostBody'
 
 
 const api = axios.create({
-    baseURL: 'https://tribe.azurewebsites.net',
+    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
 });
 
 function LeftContainer(e) {

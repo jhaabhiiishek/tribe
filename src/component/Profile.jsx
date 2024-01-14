@@ -12,7 +12,7 @@ import axios from 'axios';
 import Form from './Form';
 
 const api = axios.create({
-    baseURL: 'https://tribe.azurewebsites.net',
+    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
 });
 function Profile(e) {
     const actionState = useSelector(state => state.actionArea)
