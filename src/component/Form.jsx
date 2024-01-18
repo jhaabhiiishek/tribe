@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../App.css';
 import getCookie from './getCookie';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -268,6 +269,7 @@ function Form(e) {
 			withCredentials: true,
 			}).then(response => {
 			if(response.data.success===1){
+				Cookies.set(name,`user_id=${response.data.data.user_id}`,{ expires:new Date(new Date().getTime()+172800000).toUTCString() });
 				const cookie = getCookie()
 				console.log(cookie)
 				console.log(nullCookieState)
