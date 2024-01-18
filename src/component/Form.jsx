@@ -622,8 +622,8 @@ function Form(e) {
 									{invite.sender} invited you to join {invite.tribe_name} at {new Date(invite.sent_at).toLocaleString()}
 								</div>
 								<div className="notification-actions">
-									<button className='notification-btn' onClick={(e)=>accepttriberequest(e,invite)}>Accept</button>
-									<button className='notification-btn' onClick={(e)=>rejecttriberequest(e,invite)}>Reject</button>
+									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,invite,true)}>Accept</button>
+									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,invite,false)}>Reject</button>
 								</div>
 							</div>
 						)
@@ -635,8 +635,8 @@ function Form(e) {
 									{linkRequest.sender_user_id} sent you a link request at {new Date(linkRequest.sent_at).toLocaleString()}
 								</div>
 								<div className="notification-actions">
-									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,linkRequest,true)}>Accept</button>
-									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,linkRequest,false)}>Reject</button>
+									<button className='notification-btn' onClick={(e)=>acceptlinkrequest(e,linkRequest)}>Accept</button>
+									<button className='notification-btn' onClick={(e)=>rejectlinkrequest(e,linkRequest)}>Reject</button>
 								</div>
 
 							</div>
