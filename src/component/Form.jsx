@@ -687,9 +687,10 @@ function Form(e) {
 		return (
 			<form id='abruptPostForms'>
 				<div className='forms' style={{marginTop:'2.5%'}}>
+					<button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button>
 					<label htmlFor=""><b>Invite members</b></label>
 					<input type='text' value={newMember} onChange={(e) => setNewMember(e.target.value)} placeholder='invite username' name='invite username'></input>
-					<button onClick={(e)=>addMember(e)} >invite</button>
+					<button onClick={(e)=>addMember(e)} >add</button>
 					<div id='profile-main-div' className='search-result box-shadow'>
 						{(inviteMembers.size>0)&&([...inviteMembers].map((member)=>{
 							return(
@@ -700,7 +701,7 @@ function Form(e) {
 							)
 						}))}
 					</div>
-					<button onClick={(e)=>inviteSubmit(e)} type='submit'>create</button>
+					<button onClick={(e)=>inviteSubmit(e)} type='submit'>invite</button>
 				</div>
 			</form>
 		)
