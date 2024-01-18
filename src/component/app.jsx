@@ -49,13 +49,18 @@ function App() {
     const likedPosts = useSelector(state=> state.likedPosts)
     const {setNullCookie,setLikedPosts,setSentRequests} = bindActionCreators(actionCreators, dispatch)
 
-
   useEffect(()=>{
     const studentCookie= getCookie();
 
     if(studentCookie!==undefined){
-
       setNullCookie(0)
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 800); // set the time for the animation to display
+      setLikedPostsfn()
+      setSentRequestsfn()
+      setConnectedUsersfn()
+      return () => clearTimeout(timer);
     }
   }, []) 
 
@@ -284,8 +289,9 @@ function App() {
 
   //   })
   // }
-  const student = getCookie()
+  
   const setLikedPostsfn =async()=>{
+    const student = getCookie()
     await api.post('/fetch_upvotes_of_user',{
       user_id:student.user_id
     }, {
@@ -297,6 +303,7 @@ function App() {
   }
 
   const setConnectedUsersfn =async()=>{
+    const student = getCookie()
     await api.post('/fetch_upvotes_of_user',{
       user_id:student.user_id
     }, {
@@ -307,6 +314,7 @@ function App() {
     });
   }
   const setSentRequestsfn =async()=>{
+    const student = getCookie()
     await api.post('/fetchsentrequests',{
       user_id:student.user_id
     }, {
@@ -316,17 +324,7 @@ function App() {
       setSentRequests(response.data.data)
     });
   }
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 800); // set the time for the animation to display
-    setLikedPostsfn()
-    setSentRequestsfn()
-    setConnectedUsersfn()
-    return () => clearTimeout(timer);
-  },[]);
-
-  
+    
     return (
         <div id='app'>
             {loading?(
@@ -378,8 +376,8 @@ function App() {
                   <div style={{display:'flex',flexDirection:'column'}}>
                     {formType===''?(''):(<Form type={formType}/>)}
                     <Form type="login"/>
-                    <a onClick={()=>setEmailVerified(false)} style={{textAlign:"center",marginTop:"2.5%"}}>Sign up</a>
-                    <a onClick={(e)=>handleChangeClick(e)} style={{textAlign:"center",marginTop:"2.5%"}}>Change Password</a>
+                    <a onClick={()=>setEmailVerified(false)} style={{textAlign:"center",marginTop:"2.5%",width: "5%",marginLeft: "auto",marginRight: "auto",padding: "1.5% 2%"}}>Sign up</a>
+                    <a onClick={(e)=>handleChangeClick(e)} style={{textAlign:"center",marginTop:"2.5%",width: "5%",marginLeft: "auto",marginRight: "auto",padding: "1.5% 2%"}}>Change Password</a>
                   </div>
                 )
               ):(

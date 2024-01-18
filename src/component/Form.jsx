@@ -398,7 +398,7 @@ function Form(e) {
 				  <input type='text' value={loginusername} onChange={(e) => setLoginUsername(e.target.value)} placeholder='username/email or phone' name='loginusername' required></input>
 				  <label htmlFor="loginpassword"><b>Password</b></label>
 				  <input type="password" value={loginpassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder="Enter Password" name="loginpassword" required></input>
-				  <button onClick={loginSubmit} type='submit'>Login</button>
+				  <button onClick={()=>loginSubmit()} type='submit'>Login</button>
 				</div>
 				<ToastContainer/>
 			</form>

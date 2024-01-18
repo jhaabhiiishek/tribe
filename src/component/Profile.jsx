@@ -147,7 +147,7 @@ function Profile(e) {
     return (
         <div id='profile'>
 			{formType===''?(''):(<Form type={formType}/>)}
-            {(actionState.length>0 && (actionState[0].tribe_id==undefined || actionState[0].tribe_id==undefined))?((actionState.map((item)=>(
+            {(actionState.length>0 &&(actionState[0]!==undefined) (actionState[0].tribe_id==undefined || actionState[0].tribe_id==undefined))?((actionState.map((item)=>(
 				
 				// Person's profile design layout
 				<div id='profile-main-div' className='search-result box-shadow'>

@@ -45,8 +45,10 @@ function Navbar() {
             },{
                 withCredentials: true
             }).then(response => {
-                setFriends(response.data.data.links)
-                setConnectedUsers(response.data.data.links)
+                if(response.data.data!==undefined){
+                    setFriends(response.data.data.links)
+                    setConnectedUsers(response.data.data.links)
+                }
             })
         }
     }
@@ -157,7 +159,7 @@ function Navbar() {
                 <a className='view-all box-shadow' onClick={(e)=>{handleFriendsViewAll(e)}}>view all</a>
                 <h1 className='subgroup-heading'> tribes</h1>
                 <div className='vals-container'>
-                    {(tribesList.length>0)?(tribesList.slice(0,3).map((item)=>( 
+                    {(tribesList&&tribesList.length>0)?(tribesList.slice(0,3).map((item)=>( 
 						<div className='vals box-shadow' onClick={()=>{handleTribeClick(item)}}>{item.name}</div>
 					))):(
                         <div className='vals '>Join Tribes Now!</div>
