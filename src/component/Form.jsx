@@ -124,6 +124,7 @@ function Form(e) {
 	
 
 	const diffToast = (msg)=>{
+		console.log(msg)
 		if(msg.data.success===0){
 			toast.error(msg.data.msg,{
 				position:"bottom-center"
@@ -590,7 +591,8 @@ function Form(e) {
 				withCredentials: true,
 			}).then(response => {
 				console.log(response)
-				diffToast(response.data.msg)
+				linkRequests.filter(n=>n!= invite)
+				diffToast(response)
 			});
 		}
 		return (
