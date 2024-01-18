@@ -269,6 +269,9 @@ function Form(e) {
 			}).then(response => {
 			if(response.data.success===1){
 				const cookie = getCookie()
+				console.log(cookie)
+				console.log(nullCookieState)
+				
 				if(cookie!==undefined){
 					setNullCookie(0)
 				}

@@ -53,7 +53,7 @@ function App() {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 800); // set the time for the animation to display
-
+    console.log(nullCookieState)
     if(studentCookie!==undefined){
       setNullCookie(0)
       setLikedPostsfn()
