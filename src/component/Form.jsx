@@ -623,8 +623,8 @@ function Form(e) {
 									{invite.sender} invited you to join {invite.tribe_name} at {new Date(invite.sent_at).toLocaleString()}
 								</div>
 								<div className="notification-actions">
-									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,invite,true)}>Accept</button>
-									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,invite,false)}>Reject</button>
+									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,invite,"true")}>Accept</button>
+									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,invite,"false")}>Reject</button>
 								</div>
 							</div>
 						)
