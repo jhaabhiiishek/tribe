@@ -583,6 +583,7 @@ function Form(e) {
 		}
 		const responsetriberequest = async(e,invite,responseToinvite)=>{
 			e.preventDefault()
+			console.log(studentCookie.user_id,responseToinvite,invite._id)
 			await api.post('/response_tribe_invites',{
 				user_id:studentCookie.user_id,
 				response_to_invite:responseToinvite,
