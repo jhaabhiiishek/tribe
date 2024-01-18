@@ -598,7 +598,8 @@ function Form(e) {
 			}, {
 				withCredentials: true,
 			}).then(response => {
-				diffToast(response)
+				console.log(response)
+				diffToast(response.data.msg)
 			});
 		}
 		return (
