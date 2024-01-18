@@ -243,24 +243,6 @@ function Form(e) {
 			setNewTribeTag('')
 		}
 	}
-	
-	const login_sub = async function(e){
-		e.preventDefault();
-		api.post('/login',{
-		  user_id:loginusername,
-		  password:loginpassword 
-		}, {
-		  withCredentials: true,
-		}).then(response => {
-		  if(response.data.success===1){
-			const cookie = getCookie()
-			if(cookie!==undefined){
-			  setNullCookie(0)
-			}
-		  }
-		  diffToast(response)
-		});
-	}
 	const handleRemoveInterest = (interest)=>{
 		const updatedInterest = new Set(addInterests)
 		updatedInterest.delete(interest)
@@ -279,7 +261,21 @@ function Form(e) {
 	  
 	const loginSubmit = (e)=>{
 		if(loginusername!=="" && loginpassword!==""){
-		  login_sub(e)
+			e.preventDefault();
+			api.post('/login',{
+			user_id:loginusername,
+			password:loginpassword 
+			}, {
+			withCredentials: true,
+			}).then(response => {
+			if(response.data.success===1){
+				const cookie = getCookie()
+				if(cookie!==undefined){
+				setNullCookie(0)
+				}
+			}
+			diffToast(response)
+			});
 		}
 	}
 
@@ -398,7 +394,7 @@ function Form(e) {
 				  <input type='text' value={loginusername} onChange={(e) => setLoginUsername(e.target.value)} placeholder='username/email or phone' name='loginusername' required></input>
 				  <label htmlFor="loginpassword"><b>Password</b></label>
 				  <input type="password" value={loginpassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder="Enter Password" name="loginpassword" required></input>
-				  <button onClick={()=>loginSubmit()} type='submit'>Login</button>
+				  <button onClick={(e)=>loginSubmit(e)} type='submit'>Login</button>
 				</div>
 				<ToastContainer/>
 			</form>
