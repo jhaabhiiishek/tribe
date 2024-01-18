@@ -598,7 +598,7 @@ function Form(e) {
 				<div className='forms' style={{marginTop:'2.5%'}}>
 					<button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button>
 					<label htmlFor=""><b>Your Notifications</b></label>
-					{notifications.map((notification) => {
+					{notifications!==null&&notifications.map((notification) => {
 						return(
 							<div className='notification'>
 								<div className='notification-text'>
