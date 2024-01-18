@@ -269,8 +269,11 @@ function Form(e) {
 			withCredentials: true,
 			}).then(response => {
 			if(response.data.success===1){
-
-				Cookies.set("student",`user_id=${response.data.user_id}`,{ expires: 7 });
+				const valueObj = {
+					"user_id":response.data.user_id
+				}
+				const value = JSON.stringify(valueObj)
+				Cookies.set("student",value,{ expires: 7 });
 				const cookie = getCookie()
 				console.log(cookie)
 				console.log(nullCookieState)
