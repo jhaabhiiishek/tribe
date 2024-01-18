@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { link } from 'fs/promises';
 
 
 
@@ -607,7 +608,7 @@ function Form(e) {
 							</div>
 						)
 					})}
-					{tribeInvites.map((invite) => {
+					{tribeInvites!==null&&tribeInvites.map((invite) => {
 						return(
 							<div className='notification'>
 								<div className='notification-text'>
@@ -620,7 +621,7 @@ function Form(e) {
 							</div>
 						)
 					})}
-					{linkRequests.map((linkRequest) => {
+					{linkRequests!==null&&linkRequests.map((linkRequest) => {
 						return(
 							<div className='notification'>
 								<div className='notification-text'>
@@ -634,6 +635,7 @@ function Form(e) {
 							</div>
 						)
 					})}
+					{linkRequests===null && tribeInvites===null &&(<div className='search-result box-shadow'>No notifications</div>)}
 				</div>
 				<ToastContainer/>
 			</form>
