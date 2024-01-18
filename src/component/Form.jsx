@@ -270,7 +270,7 @@ function Form(e) {
 			}).then(response => {
 			if(response.data.success===1){
 
-				Cookies.set(name,`user_id=${response.data.user_id}`,{ expires: 7 });
+				Cookies.set("student",`user_id=${response.data.user_id}`,{ expires: 7 });
 				const cookie = getCookie()
 				console.log(cookie)
 				console.log(nullCookieState)
