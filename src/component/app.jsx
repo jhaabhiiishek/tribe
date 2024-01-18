@@ -51,12 +51,12 @@ function App() {
 
   useEffect(()=>{
     const studentCookie= getCookie();
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 800); // set the time for the animation to display
 
     if(studentCookie!==undefined){
       setNullCookie(0)
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 800); // set the time for the animation to display
       setLikedPostsfn()
       setSentRequestsfn()
       setConnectedUsersfn()
