@@ -238,7 +238,7 @@ function Form(e) {
 	}
 	const inviteSubmit = async (e)=>{
 		e.preventDefault()
-		if(inviteMembers.length>0){
+		if(inviteMembers.size>0){
 			let memarray=Array.from(inviteMembers)
 			let tribe_id=actionState[0].tribe_id
 			let check_val = 0;
