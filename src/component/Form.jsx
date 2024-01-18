@@ -236,6 +236,37 @@ function Form(e) {
 			setNewTribeTag('')
 		}
 	}
+	const inviteSubmit = async (e)=>{
+		e.preventDefault()
+		if(inviteMembers.length>0){
+			let memarray=Array.from(inviteMembers)
+			let tribe_id=actionState[0].tribe_id
+			let check_val = 0;
+			for(var i=0;i<inviteMembers.size;i++){
+				console.log(memarray[i])
+				await api.post('/tribe_invite',{
+					user_id:studentCookie.user_id,
+					tribe_id:tribe_id,
+					receiver_id:memarray[i]
+				}, {
+					withCredentials: true,
+				}).then(response => {
+					if(response.data.success===1){
+						check_val+=1
+					}else{
+						console.log(response)
+					}
+				});
+			}
+		}else{
+			toast.error('Please fill all the fields',{
+				position:"bottom-center"
+			});
+			return
+		}
+		setInviteMembers(new Set([]))
+		setNewMember('')
+	}
 	const handleRemoveInterest = (interest)=>{
 		const updatedInterest = new Set(addInterests)
 		updatedInterest.delete(interest)
@@ -640,6 +671,27 @@ function Form(e) {
 					{/* {linkRequests===null && tribeInvites===null &&<div className='search-result box-shadow'>No notifications</div>} */}
 				</div>
 				<ToastContainer/>
+			</form>
+		)
+	}else if(e.type==="inviteMembers"){
+		return (
+			<form id='abruptPostForms'>
+				<div className='forms' style={{marginTop:'2.5%'}}>
+					<label htmlFor=""><b>Invite members</b></label>
+					<input type='text' value={newMember} onChange={(e) => setNewMember(e.target.value)} placeholder='invite username' name='invite username'></input>
+					<button onClick={(e)=>addMember(e)} >invite</button>
+					<div id='profile-main-div' className='search-result box-shadow'>
+						{(inviteMembers.size>0)&&([...inviteMembers].map((member)=>{
+							return(
+								<div className='profile-tags box-shadow' style={{display:'inline',backgroundColor:'rgb(0, 0, 0)',color: 'white',position:'relative'}}>
+									<button className='removeInterest'  onClick={(e)=>{e.preventDefault();handleRemoveMember(member)}}>X</button>
+									<img className='icon-imgs' alt={member} src={process.env.PUBLIC_URL+"/circle.png"}/>{member}
+								</div>
+							)
+						}))}
+					</div>
+					<button onClick={(e)=>inviteSubmit(e)} type='submit'>create</button>
+				</div>
 			</form>
 		)
 	}

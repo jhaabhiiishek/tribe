@@ -80,6 +80,8 @@ function Profile(e) {
 			setFormType('createTribe')
 		}else if(e.target.innerHTML==='Tribe Post'){
 			setFormType('tribePost')
+		}else if(e.target.innerHTML==='Invite Members'){
+			setFormType('inviteMembers')
 		}
 	}
 	const studentCookie = getCookie();
@@ -252,6 +254,7 @@ function Profile(e) {
 					</div>
 					<div id="profile-main-right">
 						<div onClick={(e)=>handleChangeClick(e)} className='compose box-shadow'  style={{textAlign:'center',width:'75%'}}>Post Tribe</div>
+						<div onClick={(e)=>handleChangeClick(e)} className='compose box-shadow'  style={{textAlign:'center',width:'75%',backgroundColor:'rgb(120,169,233)'}}>Invite Members</div>
 						<div onClick={(e)=>leaveTribe(e)} className='compose box-shadow'  style={{textAlign:'center',width:'75%',backgroundColor:'rgb(247, 80, 69)'}}>Leave Tribe</div>
 					</div>
 				</div>
