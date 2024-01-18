@@ -588,7 +588,18 @@ function Form(e) {
 			}).then(response => {
 				diffToast(response)
 			});
-			setTimeout(()=>{window.location.reload()},2500)
+		}
+		const responsetriberequest = async(e,invite,responseToinvite)=>{
+			e.preventDefault()
+			await api.post('/response_tribe_invites',{
+				user_id:studentCookie.user_id,
+				response_to_invite:responseToinvite,
+				tribe_invite_id:invite._id
+			}, {
+				withCredentials: true,
+			}).then(response => {
+				diffToast(response)
+			});
 		}
 		return (
 			<form id='abruptForms'>
@@ -610,6 +621,10 @@ function Form(e) {
 								<div className='notification-text'>
 									{invite.sender} invited you to join {invite.tribe_name} at {new Date(invite.sent_at).toLocaleString()}
 								</div>
+								<div className="notification-actions">
+									<button className='notification-btn' onClick={(e)=>accepttriberequest(e,invite)}>Accept</button>
+									<button className='notification-btn' onClick={(e)=>rejecttriberequest(e,invite)}>Reject</button>
+								</div>
 							</div>
 						)
 					})}
@@ -620,8 +635,8 @@ function Form(e) {
 									{linkRequest.sender_user_id} sent you a link request at {new Date(linkRequest.sent_at).toLocaleString()}
 								</div>
 								<div className="notification-actions">
-									<button className='notification-btn' onClick={(e)=>acceptlinkrequest(e,linkRequest)}>Accept</button>
-									<button className='notification-btn' onClick={(e)=>rejectlinkrequest(e,linkRequest)}>Reject</button>
+									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,linkRequest,true)}>Accept</button>
+									<button className='notification-btn' onClick={(e)=>responsetriberequest(e,linkRequest,false)}>Reject</button>
 								</div>
 
 							</div>
