@@ -83,12 +83,9 @@ function Form(e) {
 				withCredentials: true,
 			}).then(response => {
 				if(response.data.success===1){
-					if(response.data.data!==null){
-						setNotifications(response.data.data)
-					}
-					console.log(response)
+					setNotifications(response.data.data)
 				}else{
-					console.log(response)
+					diffToast(response)
 				}
 			})
 			api.post('/fetchlinkrequests',{
@@ -97,12 +94,9 @@ function Form(e) {
 				withCredentials: true,
 			}).then(response => {
 				if(response.data.success===1){
-					if(response.data.data!==null){
-						setLinkRequests(response.data.data)
-					}
-					console.log(linkRequests)
+					setLinkRequests(response.data.data)
 				}else{
-					console.log(response)
+					diffToast(response)
 				}
 			})
 			api.post('/fetch_tribe_invites',{
@@ -111,12 +105,9 @@ function Form(e) {
 				withCredentials: true,
 			}).then(response => {
 				if(response.data.success===1){
-					if(response.data.data!==null){
-						setTribeInvites(response.data.data)
-					}
-					console.log(tribeInvites)
+					setTribeInvites(response.data.data)
 				}else{
-					console.log(response)
+					diffToast(response)
 				}
 			})			
 		}
