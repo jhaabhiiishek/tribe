@@ -635,7 +635,7 @@ function Form(e) {
 							</div>
 						)
 					})}
-					{linkRequests===null && tribeInvites===null &&(<div className='search-result box-shadow'>No notifications</div>)}
+					{linkRequests===null && tribeInvites===null &&<div className='search-result box-shadow'>No notifications</div>}
 				</div>
 				<ToastContainer/>
 			</form>
