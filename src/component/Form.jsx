@@ -258,14 +258,24 @@ function Form(e) {
 					}
 				});
 			}
+			if(check_val===inviteMembers.size){
+				toast.success('Invited everyone!',{
+					position:"bottom-center"
+				});
+				setInviteMembers(new Set([]))
+				setNewMember('')
+			}else{
+				toast.error("Can't invite everyone!",{
+					position:"bottom-center"
+				});
+				setNewMember('')
+			}
 		}else{
-			toast.error('Please fill all the fields',{
+			toast.error('Please enter atleast 1 member',{
 				position:"bottom-center"
 			});
 			return
 		}
-		setInviteMembers(new Set([]))
-		setNewMember('')
 	}
 	const handleRemoveInterest = (interest)=>{
 		const updatedInterest = new Set(addInterests)
