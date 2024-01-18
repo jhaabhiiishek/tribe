@@ -565,6 +565,31 @@ function Form(e) {
 			</form>
 		)
 	}else if(e.type==='notifications'){
+		const acceptlinkrequest =async(e,linkRequest)=>{
+			e.preventDefault()
+			await api.post('/acceptlinkrequest',{
+				user_id:studentCookie.user_id,
+				sender_user_id:linkRequest.sender_user_id
+			}, {
+				withCredentials: true,
+			}).then(response => {
+				diffToast(response.data.msg)
+				console.log(response)
+			});
+			// setTimeout(()=>{window.location.reload()},2500)
+		}
+		const rejectlinkrequest = async(e,linkRequest)=>{
+			e.preventDefault()
+			await api.post('/rejectlinkrequest',{
+				user_id:studentCookie.user_id,
+				sender_user_id:linkRequest.sender_user_id
+			}, {
+				withCredentials: true,
+			}).then(response => {
+				diffToast(response)
+			});
+			setTimeout(()=>{window.location.reload()},2500)
+		}
 		return (
 			<form id='abruptForms'>
 				<div className='forms' style={{marginTop:'2.5%'}}>
@@ -595,30 +620,8 @@ function Form(e) {
 									{linkRequest.sender_user_id} sent you a link request at {new Date(linkRequest.sent_at).toLocaleString()}
 								</div>
 								<div className="notification-actions">
-									<button className='notification-btn' onClick={async(e)=>{
-										e.preventDefault()
-										await api.post('/acceptlinkrequest',{
-											user_id:studentCookie.user_id,
-											sender_user_id:linkRequest.sender_user_id
-										}, {
-											withCredentials: true,
-										}).then(response => {
-											diffToast(response.data.msg)
-											console.log(response)
-										});
-										// setTimeout(()=>{window.location.reload()},2500)
-									}}>Accept</button>
-									<button className='notification-btn' onClick={async()=>{
-										await api.post('/rejectlinkrequest',{
-											user_id:studentCookie.user_id,
-											sender_user_id:linkRequest.sender_user_id
-										}, {
-											withCredentials: true,
-										}).then(response => {
-											diffToast(response)
-										});
-										setTimeout(()=>{window.location.reload()},2500)
-									}}>Reject</button>
+									<button className='notification-btn' onClick={(e)=>acceptlinkrequest(e,linkRequest)}>Accept</button>
+									<button className='notification-btn' onClick={(e)=>rejectlinkrequest(e,linkRequest)}>Reject</button>
 								</div>
 
 							</div>
