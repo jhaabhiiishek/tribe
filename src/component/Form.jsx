@@ -258,7 +258,6 @@ function Form(e) {
 		updatedInterest.delete(member)
 		setInviteMembers(updatedInterest)
 	}
-	  
 	const loginSubmit = (e)=>{
 		if(loginusername!=="" && loginpassword!==""){
 			e.preventDefault();
@@ -271,7 +270,7 @@ function Form(e) {
 			if(response.data.success===1){
 				const cookie = getCookie()
 				if(cookie!==undefined){
-				setNullCookie(0)
+					setNullCookie(0)
 				}
 			}
 			diffToast(response)

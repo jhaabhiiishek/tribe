@@ -35,7 +35,6 @@ function App() {
     const [password, setPassword] = useState("");
     const [loginpassword, setLoginPassword] = useState("");
     const [emailOtpVerify, setOtpVerify] = useState(false);
-    const [compose,setCompose] = useState(false)
     const [text,setText] = useState('')
     const [selectedFile, setSelectedFile] = useState(null);
     const [uploadProgress, setUploadProgress] = useState(0);
@@ -136,22 +135,6 @@ function App() {
     // data.append("user_id",user_id)
 
     // console.log(data)
-
-    api.post('/createpost',
-        {
-          user_id:user_id,
-          text:text
-          // media_link:response.data.fileUrl
-        },{
-          withCredentials: true,
-        }).then(response => {
-          if(response.data.success===1){
-            setTimeout(() => {
-              setCompose(false)
-            }, 2000);
-          }
-          diffToast(response)
-    });
 
 
     // Below code for file uploading to AWS S3 bucket
@@ -334,33 +317,30 @@ function App() {
                 </div>
             ):(
               nullCookieState==0?(
-              compose?(
-                <div className='blur' id='compose'>
-                    <form id='create-post'>
-                        <h3 id='create-post-header'>Create Your Post</h3>
-                        <input type='text' id='post-input' required onChange={(e)=>setText(e.target.value)} value={text} placeholder='Add text...'></input>
-                        {/* <input id='media-input' type='file' name/</form>='userImage' onChange={(e)=>handleFileChange(e)}></input> */}
-                        {/* {uploadProgress > 0 &&(<p>Upload progress: {uploadProgress}%</p>)} */}
-                        <button type='submit' onClick={(e)=>createPost(e)} id='submit-post'>Post</button>
-                        {
-                          !imgUrl &&
-                          <div className='outerbar'>
-                            <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
-                          </div>
-                        }
-                        {
-                          imgUrl &&
-                          <img src={imgUrl} alt='uploaded file' height={200} />
-                        }
-                    </form>
-                    <ToastContainer/>
-                </div>
-              ):(
+                // <div className='blur' id='compose'>
+                //     <form id='create-post'>
+                //         <h3 id='create-post-header'>Create Your Post</h3>
+                //         <input type='text' id='post-input' required onChange={(e)=>setText(e.target.value)} value={text} placeholder='Add text...'></input>
+                //         {/* <input id='media-input' type='file' name/</form>='userImage' onChange={(e)=>handleFileChange(e)}></input> */}
+                //         {/* {uploadProgress > 0 &&(<p>Upload progress: {uploadProgress}%</p>)} */}
+                //         <button type='submit' onClick={(e)=>createPost(e)} id='submit-post'>Post</button>
+                //         {
+                //           !imgUrl &&
+                //           <div className='outerbar'>
+                //             <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
+                //           </div>
+                //         }
+                //         {
+                //           imgUrl &&
+                //           <img src={imgUrl} alt='uploaded file' height={200} />
+                //         }
+                //     </form>
+                //     <ToastContainer/>
+                // </div>
                 <div id='body-div'>
                   <Navbar/>
                   <MainBody/>
                 </div>
-              )
             ):
             (
               emailVerified?(
