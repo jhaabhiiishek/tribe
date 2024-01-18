@@ -5,12 +5,11 @@ const getCookie = () => {
   
   try {
       const value = Cookies.get('student')
-      console.log(value)
-      const decodedToken = jwt_decode(value, process.env.REACT_APP_FIREBASE_TOKEN_KEY);
-      return decodedToken
+      // console.log(value)
+      // const decodedToken = jwt_decode(value, process.env.REACT_APP_FIREBASE_TOKEN_KEY);
+      return value
     } catch (error) {
-		  console.log(error)
-		return undefined 
+		  return undefined 
     }
 };
 
