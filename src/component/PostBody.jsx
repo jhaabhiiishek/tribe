@@ -135,7 +135,7 @@ function PostBody(e) {
     const likePost = async (e)=>{
         console.log(e.target.parentNode.style.backgroundColor)
         if(e.target.parentNode.style.backgroundColor=='rgb(229, 99, 99)'){
-            setLikes(data.upvotes-1)
+            data.upvotes!==0&&setLikes(data.upvotes-1)
             e.target.parentNode.style.backgroundColor='rgb(255, 179, 179)'
         }
         else if(e.target.parentNode.style.backgroundColor=='rgb(255, 179, 179)'){
