@@ -100,6 +100,8 @@ function MainBody(e) {
 			window.addEventListener("resize", handleResize);
 			if(screenWidth<800){
 				setClass("hide")
+			}else{
+				setClass("")
 			}
 			return () => {
 				window.removeEventListener("resize", handleResize);
@@ -284,10 +286,10 @@ function MainBody(e) {
 				</div>
 				<div id='profile-settings' className={classToDisplay}>
 					<div onClick={(e)=>handleChangeClick(e)} className='profile-changes-btn box-shadow'>Change password</div>
-					{formType===''?(''):(<Form type={formType}/>)}
 					<div onClick={(e)=>handleChangeClick(e)} className='profile-changes-btn box-shadow'>Edit Profile</div>
 					<div onClick={logOut} id='logout-btn' className='box-shadow'>Logout</div>
 				</div>
+				{formType===''?(''):(<Form type={formType}/>)}
 			</div>
 		</div>
     )

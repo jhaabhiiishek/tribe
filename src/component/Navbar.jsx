@@ -30,6 +30,8 @@ function Navbar() {
         window.addEventListener("resize", handleResize);
         if(screenWidth<800){
             setClass("hide")
+        }else{
+            setClass("")
         }
         return () => {
             window.removeEventListener("resize", handleResize);
