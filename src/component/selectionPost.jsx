@@ -246,48 +246,51 @@ function SelectionPost(e) {
 				</form>
 				<ToastContainer/>
 			</div>
-			{selectedPost && (selectedPost[1]===undefined||selectedPost[1]===null)?(
-				<div className='search-result box-shadow'>No comments yet</div>
-			):(selectedPost&&(selectedPost.map((value, index) => {
-				if(index>0){
-					return(
-						// <div id='comment'>
-						// 	<div id='post' style={{wordWrap: 'break-word',paddingBottom:'1%'}}>
-						// 	<div id='post-user_id'>
-						// 		<h3 onClick={()=>{handleFriendClick(value.made_by_user_id)}} style={{fontWeight: "500",width:'max-content',padding: "1%"}}>{value.made_by_user_id}</h3>
-						// 		{(value.made_by_user_id!==student.user_id)?(
-						// 			<div id='link-div' onClick={{}} style={{backgroundColor:'rgb(120, 169, 233)',border:"0.5px solid black"}}>
-						// 				<img src={process.env.PUBLIC_URL+"/link-minimalistic-svgrepo-com.svg"} style={{display:'inline'}}></img>
-						// 				<h4 id='post-upvotes' style={{display:"inline",fontWeight:"300",paddingLeft:'3.5%',paddingRight:'3.5%'}}> connect </h4>
-						// 			</div>
-						// 		):(<></>)}
-						// 	</div>
-						// 	<h3 id='post-text'>{value.text}</h3>
-						// 	<div id='like-div'  onClick={(e)=>likePost(e)} style={{backgroundColor:bgCol}}>
-						// 		{/*<a id="like-anchor" > */}
-						// 			<img id="like-image" src={process.env.PUBLIC_URL+"/notifications.png"}>
-						// 			</img>
-						// 		{/* </a> */}
-						// 		<h4 id='post-upvotes'> {value.upvotes} likes</h4>
-						// 	</div>
-						// 	<div id='like-div'>
-						// 		<h4 id='post-upvotes'><span style={{color:'green'}}>● </span>{Math.round(((new Date())-(new Date(value.upload_date)))/(60000*60*24))} days ago</h4>
-						// 	</div>
-						// 	{/* <h3 id='post-comment_id'>{data.comment_id}</h3> */}
-						// 	<form id='comment'>
-						// 		<input id='comment-prompt' type='text' required onChange={(e)=>setComment(e.target.value)} value={comment_value} placeholder='comment...'></input>
-						// 		<button type='submit' onClick={(e)=>postComment(e,selectedPost[0].user_id,selectedPost[0].user_post_id,value._id)}id='comment-post' style={{marginBottom:'0px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around'}}>
-						// 			<div style={{marginLeft:"15%"}}>Post</div>
-						// 			<img src={process.env.PUBLIC_URL+"/send-svgrepo-com.svg"}></img>
-						// 		</button>
-						// 	</form>
-						// 	<ToastContainer/>
-						// </div>
-						// </div>
-						<Comment value={value}/>
-					);
-				}
-			})))}
+            <div id='comment-container'>
+                <div className='empty-line-div'></div>
+                {selectedPost && (selectedPost[1]===undefined||selectedPost[1]===null)?(
+                    <div className='search-result box-shadow'>No comments yet</div>
+                ):(selectedPost&&(selectedPost.map((value, index) => {
+                    if(index>0){
+                        return(
+                            // <div id='comment'>
+                            // 	<div id='post' style={{wordWrap: 'break-word',paddingBottom:'1%'}}>
+                            // 	<div id='post-user_id'>
+                            // 		<h3 onClick={()=>{handleFriendClick(value.made_by_user_id)}} style={{fontWeight: "500",width:'max-content',padding: "1%"}}>{value.made_by_user_id}</h3>
+                            // 		{(value.made_by_user_id!==student.user_id)?(
+                            // 			<div id='link-div' onClick={{}} style={{backgroundColor:'rgb(120, 169, 233)',border:"0.5px solid black"}}>
+                            // 				<img src={process.env.PUBLIC_URL+"/link-minimalistic-svgrepo-com.svg"} style={{display:'inline'}}></img>
+                            // 				<h4 id='post-upvotes' style={{display:"inline",fontWeight:"300",paddingLeft:'3.5%',paddingRight:'3.5%'}}> connect </h4>
+                            // 			</div>
+                            // 		):(<></>)}
+                            // 	</div>
+                            // 	<h3 id='post-text'>{value.text}</h3>
+                            // 	<div id='like-div'  onClick={(e)=>likePost(e)} style={{backgroundColor:bgCol}}>
+                            // 		{/*<a id="like-anchor" > */}
+                            // 			<img id="like-image" src={process.env.PUBLIC_URL+"/notifications.png"}>
+                            // 			</img>
+                            // 		{/* </a> */}
+                            // 		<h4 id='post-upvotes'> {value.upvotes} likes</h4>
+                            // 	</div>
+                            // 	<div id='like-div'>
+                            // 		<h4 id='post-upvotes'><span style={{color:'green'}}>● </span>{Math.round(((new Date())-(new Date(value.upload_date)))/(60000*60*24))} days ago</h4>
+                            // 	</div>
+                            // 	{/* <h3 id='post-comment_id'>{data.comment_id}</h3> */}
+                            // 	<form id='comment'>
+                            // 		<input id='comment-prompt' type='text' required onChange={(e)=>setComment(e.target.value)} value={comment_value} placeholder='comment...'></input>
+                            // 		<button type='submit' onClick={(e)=>postComment(e,selectedPost[0].user_id,selectedPost[0].user_post_id,value._id)}id='comment-post' style={{marginBottom:'0px',display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'space-around'}}>
+                            // 			<div style={{marginLeft:"15%"}}>Post</div>
+                            // 			<img src={process.env.PUBLIC_URL+"/send-svgrepo-com.svg"}></img>
+                            // 		</button>
+                            // 	</form>
+                            // 	<ToastContainer/>
+                            // </div>
+                            // </div>
+                            <Comment value={value}/>
+                        );
+                    }
+                })))}
+            </div>
         </div>
     )
 }

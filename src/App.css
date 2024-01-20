@@ -916,9 +916,17 @@
 
 #comment-body{
 	width: 90%;
-	margin: 10%;
+	/* margin-left: 10%; */
 }
-
+#comment-container{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.empty-line-div{
+	width: 1%;
+	height: auto;
+}
 @media screen and (min-width:800px) and (max-width: 1400px) {
 	#branding{
 		font-size: 30px;
