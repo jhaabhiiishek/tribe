@@ -35,6 +35,7 @@ function App() {
     const [username, setUsername] = useState("");
     const [loginusername, setLoginUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [loginpassword, setLoginPassword] = useState("");
     const [emailOtpVerify, setOtpVerify] = useState(false);
     const [text,setText] = useState('')
@@ -99,17 +100,21 @@ function App() {
   }
 
   const signup_sub= async function(){
-    api.post('/signup',{
-      phone:phone,
-      email:email,
-      user_id:username,
-      password:password 
-    }).then(response => {
-      if(response.data.success==1){
-        setSignup(false)
-      }
-      diffToast(response)
-    });
+    if(confirmPassword===password){
+      await api.post('/signup',{
+        // phone:phone,
+        email:email,
+        user_id:username,
+        password:password 
+      }).then(response => {
+        if(response.data.success==1){
+          setSignup(false)
+        }
+        diffToast(response)
+      });
+    }else{
+      toast.error("passwords do not match")
+    }
   }
 
   const handleFileChange = (event) => {
@@ -347,8 +352,11 @@ function App() {
               emailVerified?(
                 signup?(
                   <div className='forms'>
-                    <label htmlFor="Phone"><b>Phone no.</b></label>
-                    <input type='tel' value={phone} onChange={(e) => setPhone(e.target.value)} pattern="[+]{1}[0-9]{11,14}" placeholder='Enter phone' name='phone'></input>
+                    <label htmlFor="email"><b>Email-id</b></label>
+                    <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Enter a username' name='username'></input>
+                    <input type='email' value={email} onChange={(e) => setEmailLogin(e.target.value)} placeholder='Enter email' name='email'></input>
+                    <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' name='password'></input>
+                    <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' name='confirmpassword'></input>
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
                     <a onClick={()=>setSignup(false)}>Login</a>
                     <ToastContainer/>
