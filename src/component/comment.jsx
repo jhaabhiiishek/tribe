@@ -129,7 +129,7 @@ function Comment(e) {
 
     
     return (
-			<div id='comment'>
+			<div id='comment-body'>
 				<div id='post' style={{wordWrap: 'break-word',paddingBottom:'1%'}}>
 					<div id='post-user_id'>
 						<h3 onClick={()=>{handleFriendClick(value.made_by_user_id)}} style={{fontWeight: "500",width:'max-content',padding: "1%"}}>{value.made_by_user_id}</h3>
