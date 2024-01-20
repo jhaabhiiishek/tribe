@@ -358,8 +358,8 @@ function App() {
                     {formType===''?(''):(<Form type={formType}/>)}
                     <Form type="login"/>
                     <div style={{display:'flex',flexDirection:'row',justifyContent:"center"}}>
-                      <a onClick={()=>setEmailVerified(false)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",marginTop: "2.5%",borderRadius:"14px",marginRight: "4%",padding: "1.5% 3%"}}>Sign up</a>
-                      <a onClick={(e)=>handleChangeClick(e)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",marginTop: "2.5%",borderRadius:"14px",marginRight: "4%",padding: "1.5% 3%"}}>Change Password</a>
+                      <a onClick={()=>setEmailVerified(false)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",marginTop: "2.5%",borderRadius:"14px",marginRight: "4%",padding: "3% 3%"}}>Sign up</a>
+                      <a onClick={(e)=>handleChangeClick(e)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",marginTop: "2.5%",borderRadius:"14px",marginRight: "4%",padding: "3% 3%"}}>Change Password</a>
                     </div>
                   </div>
                 )
