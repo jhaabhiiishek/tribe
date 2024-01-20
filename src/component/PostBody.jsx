@@ -140,7 +140,7 @@ function PostBody(e) {
         }
         else if(e.target.parentNode.style.backgroundColor=='rgb(255, 179, 179)'){
             setLikes(data.upvotes+1)
-            e.target.parentNode.style.backgroundColor=='rgb(229, 99, 99)'
+            e.target.parentNode.style.backgroundColor='rgb(229, 99, 99)'
         }
         await api.post('/upvote',{
             user_id:student.user_id,
