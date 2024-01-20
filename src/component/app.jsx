@@ -53,10 +53,6 @@ function App() {
 
   useEffect(()=>{
     const studentCookie= getCookie();
-    const timer = setTimeout(() => {
-      setLoading(false);
-      console.log("took 10s")
-    }, 10000); // set the time for the animation to display
     console.log(nullCookieState)
     if(studentCookie!==undefined){
       setNullCookie(0)
@@ -69,6 +65,10 @@ function App() {
       setLoading(false);
       console.log("did it before 10s")
     }
+    const timer = setTimeout(() => {
+      setLoading(false);
+      console.log("took 10s")
+    }, 10000); // set the time for the animation to display
   }, []) 
 
   function setCookie(name, value, days) {
