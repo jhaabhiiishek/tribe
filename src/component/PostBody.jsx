@@ -79,7 +79,8 @@ function PostBody(e) {
             var colString = 'rgb(229, 99, 99)'
             setBgCol(colString)
         }else{
-            setBgCol(e.target.parentNode.style.backgroundColor=='rgb(255, 179, 179)')
+            var colString='rgb(255, 179, 179)'
+            setBgCol(colString)
         }
     }
     const setConnectedUsersfn = ()=>{
