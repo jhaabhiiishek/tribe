@@ -44,7 +44,6 @@ function App() {
     const [imgUrl, setImgUrl] = useState(null);
     const [progresspercent, setProgresspercent] = useState(0);
 
-    const [requestsCompleted, setComp]=useState(0)
 
     const dispatch = useDispatch()
 	  const nullCookieState = useSelector(state => state.nullCookie)
@@ -53,6 +52,9 @@ function App() {
 
   useEffect(()=>{
     const studentCookie= getCookie();
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // set the time for the animation to display
     console.log(nullCookieState)
     if(studentCookie!==undefined){
       setNullCookie(0)
@@ -61,14 +63,6 @@ function App() {
       setConnectedUsersfn()
       return () => clearTimeout(timer);
     }
-    if(requestsCompleted>=3){
-      setLoading(false);
-      console.log("did it before 10s")
-    }
-    const timer = setTimeout(() => {
-      setLoading(false);
-      console.log("took 10s")
-    }, 10000); // set the time for the animation to display
   }, []) 
 
   function setCookie(name, value, days) {
@@ -289,8 +283,6 @@ function App() {
         withCredentials: true,
     }).then(response => {
       console.log(response.data.data)
-      const reqs=requestsCompleted+1
-      setComp(reqs)
       setLikedPosts(response.data.data)
     });
   }
@@ -303,8 +295,6 @@ function App() {
         withCredentials: true,
     }).then(response => {
       console.log(response.data.data)
-      const reqs = requestsCompleted
-      setComp(reqs)
       setLikedPosts(response.data.data)
     });
   }
@@ -316,8 +306,6 @@ function App() {
         withCredentials: true,
     }).then(response => {
       console.log(response.data.data)
-      const comp= requestsCompleted+1
-      setComp(comp)
       setSentRequests(response.data.data)
     });
   }
