@@ -95,23 +95,19 @@ function MainBody(e) {
 			}
 			fetchPosts(student.user_id)
 			const handleResize=()=>{
-				console.log("screen changed",screenWidth)
-				console.log("screen",window.innerWidth)
-
-				setScreenWidth(window.innerWidth)
+				if(window.innerWidth<800){
+					console.log("screen changed",screenWidth)
+					document.getElementById("nav").classList.add("hide")
+					document.getElementById("profile-settings").classList.add("hide")
+					setClass("hide")
+				}else{
+					console.log("screen changed",screenWidth)
+					document.getElementById("nav").classList.remove("hide")
+					document.getElementById("profile-settings").classList.remove("hide")
+				}
 			}
 			console.log("screen changed",screenWidth)
 			window.addEventListener("resize", handleResize);
-			if(screenWidth<800){
-				console.log("screen changed",screenWidth)
-				document.getElementById("nav").classList.add("hide")
-				document.getElementById("profile-settings").classList.add("hide")
-				setClass("hide")
-			}else{
-				console.log("screen changed",screenWidth)
-				document.getElementById("nav").classList.remove("hide")
-				document.getElementById("profile-settings").classList.remove("hide")
-			}
 			return () => {
 				window.removeEventListener("resize", handleResize);
 			};
