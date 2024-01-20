@@ -584,7 +584,6 @@
 @media screen and (max-width: 750px) {
 	#profile-btn{
 		margin-bottom: 2.5%;
-		
 	}
 }
 
@@ -912,7 +911,7 @@
 	align-items: center;
 }
 #close-img{
-	display: none !important;
+	display: none;
 }
 
 
@@ -959,7 +958,7 @@
 		display: none;
 	}
 	#close-img{
-		
+		display: block;
 		width: 40px;
 		margin-top: 5%;
 		border-radius: 10px;

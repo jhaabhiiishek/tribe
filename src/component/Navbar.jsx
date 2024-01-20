@@ -23,6 +23,7 @@ function Navbar() {
         fetchFriends()
         fetchTribes()
         if(window.screen.size<800){
+            console.log("lesser")
             document.getElementById("nav").classList.add("hide")
         }
     },[])
@@ -169,7 +170,7 @@ function Navbar() {
 	}
     
     return (
-        <div id='nav'>
+        <div id='nav' className={(window.screen.size<800)?("hide"):("")}>
             <div id='nav-group'>
                 <img onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
                 <h1 id='branding'className='box-shadow' onClick={()=>{
