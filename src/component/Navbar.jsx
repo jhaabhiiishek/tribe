@@ -143,7 +143,7 @@ function Navbar() {
     return (
         <div id='nav'>
             <div id='nav-group'>
-                <img  className='box-shadow' onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/close(1).png'} id='close-img'/>
+                <img  className='box-shadow' onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
                 <h1 id='branding'className='box-shadow' onClick={()=>{
                     userProfileClick([])
                     setSelectedPost([])

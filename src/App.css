@@ -995,8 +995,17 @@
 		flex-direction: row;
 		width: 100%;
 		justify-content: space-between;
-	}	
-	#menu-img{
-		margin-left: 5%;
+	}
+	#menu-img,#notif-img,#settings-img{
+		width: 40px;
+    	height: 40px;
+	}
+	#notifications{
+		margin-top: 5%;
+	}
+	#profile-btn{
+		position: absolute;
+		right: 6%;
+		margin-top: 4.5%;
 	}
 }
