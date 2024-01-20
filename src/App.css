@@ -917,6 +917,7 @@
 	width: 90%;
 	display: flex;
 	flex-direction: column;
+	margin-top: 5%;
 }
 #comment-body{
 	width: 100%;
@@ -928,7 +929,8 @@
 	justify-content: space-between;
 }
 .empty-line-div{
-	width: 1%;
+	width: 2px;
+	background-color: black;
 	height: auto;
 }
 @media screen and (min-width:800px) and (max-width: 1400px) {
