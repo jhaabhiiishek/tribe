@@ -26,7 +26,7 @@ function Navbar() {
             document.getElementById("nav").classList.add("hide")
         }
     },[])
-    
+
 
     const handleChangeClick = (e)=>{
 		document.body.classList.add('scrollable-container');
@@ -143,11 +143,35 @@ function Navbar() {
             })
         }
     }
+    const mobileActionButtons=(e)=>{
+		if(e.target.id==="close-img"){
+			const navbar = document.getElementById("nav")
+			console.log(navbar.style.display)
+			if(navbar.classList.contains("hide")){
+				console.log("here check 2")
+				document.body.classList.add('scrollable-container');
+				navbar.classList.remove("hide")
+			}else{
+				console.log("here check 3")
+				document.body.classList.remove('scrollable-container');
+				navbar.classList.add("hide")
+			}
+		}else if(e.target.id==="settings-img"){
+			const profileEditDiv = document.getElementById("profile-settings")
+			if(profileEditDiv.classList.contains("hide")){
+				document.body.classList.add('scrollable-container');
+				profileEditDiv.classList.remove("hide")
+			}else{
+				document.body.classList.remove('scrollable-container');
+				profileEditDiv.classList.add("hide")
+			}
+		}
+	}
     
     return (
         <div id='nav'>
             <div id='nav-group'>
-                <img  className='box-shadow' onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
+                <img onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
                 <h1 id='branding'className='box-shadow' onClick={()=>{
                     userProfileClick([])
                     setSelectedPost([])

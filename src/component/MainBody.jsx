@@ -142,10 +142,7 @@ function MainBody(e) {
 	}
 
 	const mobileActionButtons=(e)=>{
-		console.log(e.target)
-		console.log(e.target.id)
 		if(e.target.id==="menu-img"){
-			console.log("here check 1")
 			const navbar = document.getElementById("nav")
 			console.log(navbar.style.display)
 			if(navbar.classList.contains("hide")){
@@ -158,7 +155,14 @@ function MainBody(e) {
 				navbar.classList.add("hide")
 			}
 		}else if(e.target.id==="settings-img"){
-			console.log("here check 4")
+			const profileEditDiv = document.getElementById("profile-settings")
+			if(profileEditDiv.classList.contains("hide")){
+				document.body.classList.add('scrollable-container');
+				profileEditDiv.classList.remove("hide")
+			}else{
+				document.body.classList.remove('scrollable-container');
+				profileEditDiv.classList.add("hide")
+			}
 		}
 	}
 
