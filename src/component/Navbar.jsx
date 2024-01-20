@@ -15,6 +15,8 @@ function Navbar() {
     const [friendsList, setFriends] = useState([])
     const [formType, setFormType] = useState('')
     const [tribesList, setTribeList] = useState([])
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [classToDisplay,setClass] = useState('')
 
     const dispatch = useDispatch()
     const {userProfileClick,setConnectedUsers,setSelectedPost,setUserPostsVisibility} = bindActionCreators(actionCreators, dispatch)
@@ -22,12 +24,18 @@ function Navbar() {
     useEffect(()=>{
         fetchFriends()
         fetchTribes()
-        if(window.screen.size<800){
-            console.log("lesser")
-            document.getElementById("nav").classList.add("hide")
+        const handleResize=()=>{
+            setScreenWidth(window.innerWidth)
         }
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
     },[])
 
+    if(screenWidth<800){
+        setClass("hide")
+    }
 
     const handleChangeClick = (e)=>{
 		document.body.classList.add('scrollable-container');
@@ -170,7 +178,7 @@ function Navbar() {
 	}
     
     return (
-        <div id='nav' className={()=>{console.log(window.screen.size); return(window.screen.size<800)?("hide"):("")}}>
+        <div id='nav' className={classToDisplay}>
             <div id='nav-group'>
                 <img onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
                 <h1 id='branding'className='box-shadow' onClick={()=>{
