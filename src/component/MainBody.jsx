@@ -145,16 +145,20 @@ function MainBody(e) {
 		console.log(e.target)
 		console.log(e.target.id)
 		if(e.target.id==="menu-img"){
+			console.log("here check 1")
 			const navbar = document.getElementById("nav")
+			console.log(navbar.style.display)
 			if(navbar.style.display==="none"){
+				console.log("here check 2")
 				document.body.classList.add('scrollable-container');
 				navbar.style.display="flex !important";
 			}else{
+				console.log("here check 3")
 				document.body.classList.remove('scrollable-container');
 				navbar.style.display="none !important"
 			}
 		}else if(e.target.id==="settings-img"){
-
+			console.log("here check 4")
 		}
 	}
 
