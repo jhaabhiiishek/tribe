@@ -141,8 +141,19 @@ function MainBody(e) {
 		}
 	}
 
-	const displayNotifications=()=>{
-		
+	const mobileActionButtons=(e)=>{
+		if(e.target.id==="menu-img"){
+			const navbar = document.getElementById("nav")
+			if(navbar.style.display==="none"){
+				document.body.classList.add('scrollable-container');
+				navbar.style.display="flex !important";
+			}else{
+				document.body.classList.remove('scrollable-container');
+				navbar.style.display="none !important"
+			}
+		}else if(e.target.id==="settings-img"){
+
+		}
 	}
 
 	const backKey = ()=>{
@@ -173,6 +184,15 @@ function MainBody(e) {
 
     return (
         <div id='main-body'>
+			<div id="mobile-main-nav">
+				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/menu.png'} id='menu-img'/>
+				<h1 id='branding-mobile'className='box-shadow' onClick={()=>{
+					userProfileClick([])
+					setSelectedPost([])
+					setUserPostsVisibility(0)
+				}}>Tribe.com</h1>
+				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/settings.png'} id='settings-img'/>
+			</div>
 			<div id='main-body-nav'>
 				<form id='search-bar'>
 					<input id='search-input' className='box-shadow' placeholder="Search for..." value={value} onChange={onChange} type="text"/>
