@@ -962,6 +962,9 @@
 		width: 100%;
 		z-index:1;
 	}
+	#search-input{
+		width: 60%;
+	}
 	#main-body{
 		width: 100%;
 	}
