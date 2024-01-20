@@ -546,6 +546,10 @@
 	width: 55%;
 	margin-top: 5%;
 }
+.profile-changes-btn:hover{
+	animation: 0.8s ease-in;
+	background-color: rgb(120 169 233);
+}
 #logout-btn:hover{
 	cursor: pointer;
 }
@@ -586,6 +590,10 @@
 	box-shadow: 0px 0px 3px 3px white inset;
 	border-radius: 8px 8px 0px 0px;
 	background-color: rgba(112, 190, 161,0.4);
+}
+#post-user_id:hover{
+	animation: 0.8s ease-in;
+	background-color: rgb(112, 190, 161);
 }
 #post-text{
 	padding: 2%;
@@ -666,6 +674,10 @@
     margin-left: auto;
     margin-right: 1%;
 	font-size: large;
+}
+#comment-post:hover{
+	animation: 0.8s ease-in;
+	background-color: rgb(50, 236, 128);
 }
 
 .no-decoration{
