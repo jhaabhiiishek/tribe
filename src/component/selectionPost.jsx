@@ -16,10 +16,11 @@ const api = axios.create({
 });
 function SelectionPost(e) {
     const dispatch = useDispatch()
-	const {userProfileClick,setUserPostsVisibility,setSelectedPost} = bindActionCreators(actionCreators, dispatch)
+	const {userProfileClick,setUserPostsVisibility,setSentRequests,setSelectedPost} = bindActionCreators(actionCreators, dispatch)
 	const selectedPost = useSelector(state=>state.selectedPost)
     const connects = useSelector(state=> state.connectedUser)
 	const likedPosts = useSelector(state=> state.likedPosts)
+    const sentRequests = useSelector(state=>state.sentRequests)
 
     const data = e.data
     const student = getCookie()
@@ -27,6 +28,7 @@ function SelectionPost(e) {
     const [comment_value,setComment]= useState('')
     const [bgCol,setBgCol]= useState('')
     const [post_date,setPostDate]= useState('')
+    const [conBgCol,setConBgCol]= useState('')
 
 	useEffect(()=>{
         setLikes(selectedPost[0].upvotes)
@@ -138,6 +140,57 @@ function SelectionPost(e) {
             setLikes(response.data.likes)
         });
     }
+    const connectClick = async()=>{
+        if(connects.includes(selectedPost[0].user_id,0)){
+            console.log('true tha')
+            await api.post('/removelink',{
+                user_id:student.user_id,
+                other_uid:selectedPost[0].user_id
+            }, {
+                withCredentials: true,
+            }).then(response => {
+                if(response.data.success===1){
+                    var arr = sentRequests
+                    var value=selectedPost[0].user_id
+                    arr = arr.filter(item => item!==value)
+                    setSentRequests(arr)
+                    var arr2 = connects
+                    arr2 = arr2.filter(item => item!==value)
+                    setConnectedUsers(arr2)
+                    toast.success(response.data.msg,{position:"bottom-center"})
+                    setConBgCol('rgb(225,225,225)')
+                }else{
+                    toast.error(response.data.msg,{position:"bottom-center"})
+                    setConBgCol('rgb(120, 169, 233)')
+                }
+            });
+        }else{
+            console.log('true nahi tha')
+            await api.post('/sendlinkrequest',{
+                user_id:student.user_id,
+                receiver_user_id:data.user_id
+            }, {
+                withCredentials: true,
+            }).then(response => {
+                if(response.data.success===1){
+                    var arr = sentRequests
+                    arr.push(data.user_id)
+                    setSentRequests(arr)
+                    toast.success(response.data.msg,{position:"bottom-center"})
+                    setConBgCol('rgb(225,225,225)')
+                }else{
+                    toast.error(response.data.msg,{position:"bottom-center"})
+                    setConBgCol('rgb(120, 169, 233)')
+                }
+            });
+
+        }
+        // if(conBgCol==='rgb(120, 169, 233)'){
+        //     setConBgCol('rgb(225,225,225)')
+        // }else if(conBgCol==='rgb(225,225,225)'){
+        //     setConBgCol('rgb(120, 169, 233)')
+        // }
+    }
     const displaySelectedPost = async (data)=>{
         var postArray = []
         postArray.push(data)
@@ -165,9 +218,10 @@ function SelectionPost(e) {
 				<div id='post-user_id'>
 					<h3 onClick={()=>{setSelectedPost([]);handleFriendClick(selectedPost[0].user_id)}} style={{fontWeight: "500",width:'max-content',padding: "1%"}}>{selectedPost[0].user_id}</h3>
 					{(selectedPost[0].user_id!==student.user_id)?(
-						<div id='link-div' onClick={{}} style={{backgroundColor:'rgb(120, 169, 233)',border:"0.5px solid black"}}>
+						<div id='link-div' onClick={()=>connectClick()} style={{backgroundColor:conBgCol,border:"0.5px solid black"}}>
 							<img src={process.env.PUBLIC_URL+"/link-minimalistic-svgrepo-com.svg"} style={{display:'inline'}}></img>
-							<h4 id='post-upvotes' style={{display:"inline",fontWeight:"300",paddingLeft:'3.5%',paddingRight:'3.5%'}}> connect </h4>
+							<h4 id='post-upvotes' style={{display:"inline",fontWeight:"300",paddingLeft:'3.5%',paddingRight:'3.5%'}}> {!sentRequests.includes(selectedPost[0].user_id,0)?(connects.includes(selectedPost[0].user_id,0)?('connected'):('connect')):('sent')}
+                         </h4>
 						</div>
 					):(<></>)}
 				</div>
