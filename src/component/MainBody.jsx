@@ -15,6 +15,7 @@ import TribePosts from './TribePosts';
 import MultiProfile from './MultiProfile';
 import MultiTribe from './MultiTribe';
 import Form from './Form';
+import Cookies from 'js-cookie';
 import SelectionPost from './selectionPost';
 
 const api = axios.create({
