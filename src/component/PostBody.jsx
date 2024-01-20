@@ -76,10 +76,10 @@ function PostBody(e) {
             if(check)break
         }
         if(check){
-            var colString = 'rgb(247 86 86)'
+            var colString = 'rgb(229, 99, 99)'
             setBgCol(colString)
         }else{
-            setBgCol('#bdb9b9')
+            setBgCol(e.target.parentNode.style.backgroundColor=='rgb(255, 179, 179)')
         }
     }
     const setConnectedUsersfn = ()=>{
@@ -133,13 +133,13 @@ function PostBody(e) {
 
     const likePost = async (e)=>{
         console.log(e.target.parentNode.style.backgroundColor)
-        if(e.target.parentNode.style.backgroundColor=='#e56363'||e.target.parentNode.style.backgroundColor=='rgb(247, 86, 86)'){
+        if(e.target.parentNode.style.backgroundColor=='rgb(229, 99, 99)'){
             setLikes(data.upvotes-1)
-            e.target.parentNode.style.backgroundColor='#bdb9b9'
-        }else{
+            e.target.parentNode.style.backgroundColor='rgb(255, 179, 179)'
+        }
+        else if(e.target.parentNode.style.backgroundColor=='rgb(255, 179, 179)'){
             setLikes(data.upvotes+1)
-            console.log("bdb9b9")
-            e.target.parentNode.style.backgroundColor='#e56363'
+            e.target.parentNode.style.backgroundColor=='rgb(229, 99, 99)'
         }
         await api.post('/upvote',{
             user_id:student.user_id,
@@ -227,7 +227,7 @@ function PostBody(e) {
     return (
         <div key={index} id='post' style={{wordWrap: 'break-word',paddingBottom:'1%'}}>
             <div id='post-user_id'>
-                <h3 onClick={()=>{handleFriendClick(data.user_id)}} style={{fontWeight: "500",width:'max-content',padding: "1%"}}>{data.user_id}</h3>
+                <h3 onClick={()=>{handleFriendClick(data.user_id)}} style={{fontWeight: "500",width:'max-content',padding: "1%",maxWidth:"45%"}}>{data.user_id}</h3>
                 {(data.user_id!==student.user_id)?(
                     <div id='link-div' onClick={()=>connectClick()} style={{backgroundColor:conBgCol,border:"0.5px solid black"}}>
                         <img src={process.env.PUBLIC_URL+"/link-minimalistic-svgrepo-com.svg"} style={{display:'inline'}}></img>
