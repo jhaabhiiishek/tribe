@@ -96,6 +96,8 @@ function MainBody(e) {
 			fetchPosts(student.user_id)
 			const handleResize=()=>{
 				console.log("screen changed",screenWidth)
+				console.log("screen",window.innerWidth)
+
 				setScreenWidth(window.innerWidth)
 			}
 			console.log("screen changed",screenWidth)
