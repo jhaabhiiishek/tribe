@@ -185,13 +185,13 @@ function MainBody(e) {
     return (
         <div id='main-body'>
 			<div id="mobile-main-nav">
-				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/menu.png'} id='menu-img'/>
+				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/menu.png'} id='menu-img' alt='menu-icon'/>
 				<h1 id='branding-mobile'className='box-shadow' onClick={()=>{
 					userProfileClick([])
 					setSelectedPost([])
 					setUserPostsVisibility(0)
 				}}>Tribe.com</h1>
-				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/settings.png'} id='settings-img'/>
+				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/settings.png'} id='settings-img' alt='settings-icon'/>
 			</div>
 			<div id='main-body-nav'>
 				<form id='search-bar'>
