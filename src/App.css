@@ -378,6 +378,8 @@
 	/* color: #00c2ff; */
 	-webkit-background-clip: unset;
 	-webkit-text-fill-color: unset;
+	border: 2px solid rgb(0, 162, 255);
+	animation: 0.5s ease-in;
 }
 #branding{
 	background: url('../public/animation_darkweb.jpeg') repeat-y;
@@ -580,7 +582,6 @@
 	display: flex;
 	flex-direction: row;
 	border-bottom-style: solid;
-    border: 1px solid black;
     border-bottom: 1px solid black;
 	justify-content: space-between;
 	box-shadow: 0px 0px 3px 3px white inset;

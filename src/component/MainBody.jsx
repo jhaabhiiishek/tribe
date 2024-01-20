@@ -183,8 +183,8 @@ function MainBody(e) {
 						))}
 					</div>
 				</form>
-				<div id='notifications' className='box-shadow'>
-					<img onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/icons8-notifications-78.png'} id='notif-img'/>
+				<div id='notifications'>
+					<img  className='box-shadow' onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/icons8-notifications-78.png'} id='notif-img'/>
 				</div>
 				<div id='profile-btn' onClick={()=>{
 					handleSelfClick()
