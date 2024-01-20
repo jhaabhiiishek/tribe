@@ -889,7 +889,9 @@
 	overflow-y: hidden; /* Disables vertical scroll */
 	overflow-x: hidden; /* Enables horizontal scroll */
 }
-
+.hide{
+	display: none;
+}
 .notification{
 	display: flex;
 	flex-direction: row;

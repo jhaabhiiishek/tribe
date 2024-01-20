@@ -22,7 +22,11 @@ function Navbar() {
     useEffect(()=>{
         fetchFriends()
         fetchTribes()
+        if(window.screen.size<800){
+            document.getElementById("nav").classList.add("hide")
+        }
     },[])
+    
 
     const handleChangeClick = (e)=>{
 		document.body.classList.add('scrollable-container');
