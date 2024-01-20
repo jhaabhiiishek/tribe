@@ -1005,6 +1005,18 @@
 		width: max-content;
 		display: inline-block;
 	}
+	#settings-img{
+		padding: 1%;
+	}
+	#profile-main-div{
+		flex-direction: column;
+	}
+	#profile-main-right{
+		width: 95%;
+	}
+	#profile-main-left{
+		width: 95%;
+	}
 	#profile-btn{
 		display: inline-block;
 		position: absolute;
