@@ -142,6 +142,8 @@ function MainBody(e) {
 	}
 
 	const mobileActionButtons=(e)=>{
+		console.log(e.target)
+		console.log(e.target.id)
 		if(e.target.id==="menu-img"){
 			const navbar = document.getElementById("nav")
 			if(navbar.style.display==="none"){
