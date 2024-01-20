@@ -1002,8 +1002,11 @@
 	}
 	#notifications{
 		margin-top: 5%;
+		width: max-content;
+		display: inline-block;
 	}
 	#profile-btn{
+		display: inline-block;
 		position: absolute;
 		right: 6%;
 		margin-top: 4.5%;
