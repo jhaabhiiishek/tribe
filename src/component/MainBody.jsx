@@ -99,8 +99,12 @@ function MainBody(e) {
 			}
 			window.addEventListener("resize", handleResize);
 			if(screenWidth<800){
+				document.getElementById("nav").classList.add("hide")
+				document.getElementById("profile-settings").classList.add("hide")
 				setClass("hide")
 			}else{
+				document.getElementById("nav").classList.remove("hide")
+				document.getElementById("profile-settings").classList.remove("hide")
 				setClass("")
 			}
 			return () => {
