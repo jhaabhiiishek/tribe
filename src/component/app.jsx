@@ -18,6 +18,8 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import { useSelector } from 'react-redux';
 
+import LoadingAnimation from './LoadingAnimation';
+
 const api = axios.create({
   baseURL: 'https://tribe-backend-sl5g.onrender.com/',
 });
@@ -52,7 +54,7 @@ function App() {
     const studentCookie= getCookie();
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 800); // set the time for the animation to display
+    }, 1200); // set the time for the animation to display
     console.log(nullCookieState)
     if(studentCookie!==undefined){
       setNullCookie(0)
@@ -312,8 +314,7 @@ function App() {
         <div id='app'>
             {loading?(
                 <div className="loading-animation">
-                    Loading!
-                    {/* A loading animation is required */}
+                  <LoadingAnimation/>
                 </div>
             ):(
               nullCookieState==0?(
