@@ -30,6 +30,8 @@ function MainBody(e) {
 	const [searchData, setSearchData] = useState([])
 	const [otherPosts, setOtherPosts] = useState([])
 	const [formType, setFormType] = useState('')
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [classToDisplay,setClass] = useState('')
 
     const dispatch = useDispatch()
 	const actionState = useSelector(state => state.actionArea)
@@ -92,7 +94,17 @@ function MainBody(e) {
 			  setNullCookie(false)
 			}
 			fetchPosts(student.user_id)
-		  }, [])
+			const handleResize=()=>{
+				setScreenWidth(window.innerWidth)
+			}
+			window.addEventListener("resize", handleResize);
+			if(screenWidth<800){
+				setClass("hide")
+			}
+			return () => {
+				window.removeEventListener("resize", handleResize);
+			};
+	},[])
 	
 	const onSearch = (searchTerm) => {
 		setSelectedPost([])
@@ -270,7 +282,7 @@ function MainBody(e) {
 					)}
 					
 				</div>
-				<div id='profile-settings'>
+				<div id='profile-settings' className={classToDisplay}>
 					<div onClick={(e)=>handleChangeClick(e)} className='profile-changes-btn box-shadow'>Change password</div>
 					{formType===''?(''):(<Form type={formType}/>)}
 					<div onClick={(e)=>handleChangeClick(e)} className='profile-changes-btn box-shadow'>Edit Profile</div>
