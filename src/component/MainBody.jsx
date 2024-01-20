@@ -69,8 +69,9 @@ function MainBody(e) {
 	}
 	
 
-	const logOut=()=>{
-		api.get('/logout',{
+	const logOut=async()=>{
+		Cookies.remove("student")
+		await api.get('/logout',{
 			withCredentials: true
 		}).then(response => {
 			if(response.data.success===1){
