@@ -95,19 +95,15 @@ function MainBody(e) {
 			}
 			fetchPosts(student.user_id)
 			const handleResize=()=>{
-				if(window.innerWidth<800){
-					console.log("screen changed",screenWidth)
-					document.getElementById("nav").classList.add("hide")
-					document.getElementById("profile-settings").classList.add("hide")
-					setClass("hide")
-				}else{
-					console.log("screen changed",screenWidth)
-					document.getElementById("nav").classList.remove("hide")
-					document.getElementById("profile-settings").classList.remove("hide")
+				if(window.innerWidth>800){
+					console.log("here")
+					if(document.getElementById("nav").classList.contains("hide")){
+						document.getElementById("nav").classList.remove("hide")
+					}if(document.getElementById("profile-settings").classList.contains("hide")){
+						document.getElementById("profile-settings").classList.remove("hide")
+					}
 				}
 			}
-			console.log("screen changed",screenWidth)
-			window.addEventListener("resize", handleResize);
 			return () => {
 				window.removeEventListener("resize", handleResize);
 			};
