@@ -170,7 +170,7 @@ function Navbar() {
 	}
     
     return (
-        <div id='nav' className={(window.screen.size<800)?("hide"):("")}>
+        <div id='nav' className={()=>{console.log(window.screen.size); return(window.screen.size<800)?("hide"):("")}}>
             <div id='nav-group'>
                 <img onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
                 <h1 id='branding'className='box-shadow' onClick={()=>{
