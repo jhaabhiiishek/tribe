@@ -361,8 +361,8 @@
 }
 #nav-group{
 	/* background-color: aquamarine; */
-	padding-left: 8%;
-	width: 100%;
+	margin-left: 8%;
+	width: 92%;
 }
 .nav-element{
 	font-size: x-large;
@@ -389,8 +389,7 @@
 	font-size: 40px;
 	border: 1px solid rgb(0, 162, 255);
 	width: max-content;
-	padding-right: 3.5%;
-	padding-left: 3.5%;
+	padding: 2% 4.5%;
 	border-radius: 5px;
 	margin-bottom: 6%;
 }
@@ -411,14 +410,15 @@
 	color: black;
 	border: 1px solid grey;
 	border-radius: 8px;
-	padding: 2.5% 4%;
-	width: 40%;
+	padding: 3.5% 4%;
+	width: 45%;
 	margin-bottom: 3.5%;
 	margin-top: auto !important; 
 }
 .subgroup-heading{
 	font-size: x-large;
 	margin-bottom: 4%;
+	margin-top: 7.5%;
 	margin-bottom: 4%;
 }
 #profile-main-div {
@@ -432,9 +432,9 @@
 	background-color: rgb(215, 246, 250);
 	border: 1px solid grey;
 	border-radius: 8px;
-	padding: 2.5% 4%;
+	padding: 3.5% 4%;
 	display: block;
-	width: 40%;
+	width: 48%;
 	margin-bottom: 2%;
 }
 .icon-imgs{
@@ -455,9 +455,9 @@
 	color: black;
 	border: 1px solid grey;
 	border-radius: 8px;
-	padding: 2.5% 4%;
+	padding: 3.5% 4%;
 	display: block;
-	width: 40%;
+	width: 48%;
 	margin-top: 5%;
 	margin-bottom: 5%;
 }
@@ -523,25 +523,26 @@
 }
 #action-center{
 	overflow-y: auto ;
-	width: 53%;
+	width: 65%;
 }
 #profile-settings{
-	width: 40%;
-	margin-left: 10%;
+	width: 20%;
+	margin-left: 6%;
 	display: flex;
+	margin-top: 3%;
 	flex-direction: column;
 	align-items: center;
 }
 .profile-changes-btn{
-	background-color: rgb(120, 169, 233);
+	background-color: rgb(120 169 233 / 50%);
 	text-decoration: none;
 	color: black;
 	text-align: center;
 	border: 1px solid grey;
 	border-radius: 8px;
-	padding: 2.5% 4%;
+	padding: 3.5% 4%;
 	display: block;
-	width: 30%;
+	width: 55%;
 	margin-top: 5%;
 }
 #logout-btn:hover{
@@ -554,7 +555,7 @@
 	text-align: center;
 	border: 1px solid grey;
 	border-radius: 8px;
-	padding: 2.5% 4%;
+	padding: 3.5% 4%;
 	display: block;
 	width: 30%;
 	margin-top: 8%;
@@ -570,18 +571,21 @@
 #post{
 	margin-top: 1%;
 	border-radius: 8px;
-
-	border: 1.5px solid black;
-	background-color: rgb(161, 244, 213);
+	background-color: rgba(255,255,255,0.23);
+	border: 2.5px solid black;
 }
 #post-user_id{
 	padding: 2%;
 	font-weight: 500;
 	display: flex;
 	flex-direction: row;
+	border-bottom-style: solid;
+    border: 1px solid black;
+    border-bottom: 1px solid black;
 	justify-content: space-between;
+	box-shadow: 0px 0px 3px 3px white inset;
 	border-radius: 8px 8px 0px 0px;
-	background-color: rgb(112, 190, 161);
+	background-color: rgba(112, 190, 161,0.4);
 }
 #post-text{
 	padding: 2%;
@@ -641,7 +645,7 @@
 }
 #comment-prompt{
 	width: 70%;
-	background-color: rgb(112, 190, 161);
+	background-color: #dae1de;
 	border: 1px solid black;
 	border-radius: 5px;
 	padding: 2%;
@@ -655,7 +659,8 @@
 
 #comment-post{
 	width: 20%;
-    background-color: rgb(50, 236, 128);
+    background-color: rgba(50, 236, 128,0.4);
+	box-shadow: 0px 0px 1px 1px white inset;
     border: 1px solid black;
     border-radius: 5px;
     margin-left: auto;
@@ -867,4 +872,28 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+}
+
+
+@media screen and (min-width:800px) and (max-width: 1400px) {
+	#branding{
+		font-size: 30px;
+		padding: 2% 1.5%;
+	}
+	.vals{
+		width: 65%;
+	}
+	.view-all{
+		width: 65%;
+	}
+	.compose{
+		padding: 3.5% 4%;
+		width: 65%;
+	}
+	.subgroup-heading{
+		margin-top: 9.5%;
+	}
+	#profile-settings{
+		width: 25%;
+	}
 }

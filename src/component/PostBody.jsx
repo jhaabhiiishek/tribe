@@ -76,7 +76,7 @@ function PostBody(e) {
             if(check)break
         }
         if(check){
-            var colString = 'rgb(229, 99, 99)'
+            var colString = 'rgb(247 86 86)'
             setBgCol(colString)
         }else{
             setBgCol('#bdb9b9')
@@ -133,7 +133,7 @@ function PostBody(e) {
 
     const likePost = async (e)=>{
         console.log(e.target.parentNode.style.backgroundColor)
-        if(e.target.parentNode.style.backgroundColor=='#e56363'||e.target.parentNode.style.backgroundColor=='rgb(229, 99, 99)'){
+        if(e.target.parentNode.style.backgroundColor=='#e56363'||e.target.parentNode.style.backgroundColor=='rgb(247 86 86)'){
             e.target.parentNode.style.backgroundColor='#bdb9b9'
         }else{
             console.log("bdb9b9")
@@ -146,6 +146,8 @@ function PostBody(e) {
         }, {
             withCredentials: true,
         }).then(response => {
+            console.log(response.data.likes)
+            console.log(response.data.likes)
             setLikes(response.data.likes)
         });
     }
