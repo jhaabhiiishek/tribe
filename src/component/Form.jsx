@@ -687,7 +687,7 @@ function Form(e) {
 		return (
 			<form id='abruptPostForms'>
 				<div className='forms' style={{marginTop:'2.5%'}}>
-					<button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button>
+					<button id='formCloseBtn' onClick={(e)=>closePostSubmit(e)} >X</button>
 					<label htmlFor=""><b>Invite members</b></label>
 					<input type='text' value={newMember} onChange={(e) => setNewMember(e.target.value)} placeholder='invite username' name='invite username'></input>
 					<button onClick={(e)=>addMember(e)} >add</button>
