@@ -708,6 +708,9 @@
 	margin-bottom: 1%;
 	color: grey;
 }
+#mobile-main-nav{
+	display: none;
+}
 
 @media screen and (max-width: 1260px) {
 	.forms{
@@ -967,12 +970,33 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		animation: bg-slide 60s linear infinite;
-		margin-top: 6%;
-		font-size: 40px;
+		font-size: 28px;
 		border: 1px solid rgb(0, 162, 255);
 		width: max-content;
 		padding: 2% 4.5%;
 		border-radius: 5px;
-		margin-bottom: 6%;
+		margin-bottom: 3%;
+		margin-top: 4%;
+	
+	}
+	#mobile-main-nav{
+		display: flex;
+		flex-direction: row;
+		width: 88%;
+		padding-left: 5%;
+		justify-content: space-between;
+		align-items: center;
+	}
+	#main-body-nav{
+		display: block!important;
+	}
+	#search-bar {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		justify-content: space-between;
+	}	
+	#menu-img{
+		margin-left: 5%;
 	}
 }
