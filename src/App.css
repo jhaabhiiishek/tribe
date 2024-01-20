@@ -958,6 +958,7 @@
 @media screen and (max-width:799px){
 	.forms{
 		width: 90% !important;
+		border: 1px solid black;
 	}
 	#nav{
 		position: absolute;
