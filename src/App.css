@@ -376,6 +376,7 @@
 #branding:hover{
 	color: #ebe7e7;
 	/* color: #00c2ff; */
+	background-clip: unset;
 	-webkit-background-clip: unset;
 	-webkit-text-fill-color: unset;
 	border: 3px solid rgb(0, 162, 255);
@@ -383,6 +384,7 @@
 #branding{
 	background: url('../public/animation_darkweb.jpeg') repeat-y;
 	background-size: cover;
+	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	animation: bg-slide 60s linear infinite;
@@ -464,6 +466,7 @@
 }
 #profile-btn:hover{
 	color: #00c2ff;
+	background-clip: unset;
 	-webkit-background-clip: unset;
 	-webkit-text-fill-color: unset;
 }
@@ -472,6 +475,7 @@
 	margin-left: 5%;
     font-size: large;
     background-size: cover;
+	background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: bg-slide 60s linear infinite;
