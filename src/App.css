@@ -718,7 +718,7 @@
 }
 .forms{
 	position: relative;
-	background-color: aqua;
+	background-color: rgba(0,255,255,0.1);
 	display: flex;
 	width: 46%;
 	margin: auto;
@@ -956,6 +956,9 @@
 	}
 }
 @media screen and (max-width:799px){
+	.forms{
+		width: 90% !important;
+	}
 	#nav{
 		position: absolute;
 		background-color: rgb(219 219 219);
