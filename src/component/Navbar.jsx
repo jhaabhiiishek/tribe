@@ -28,14 +28,14 @@ function Navbar() {
             setScreenWidth(window.innerWidth)
         }
         window.addEventListener("resize", handleResize);
+        if(screenWidth<800){
+            setClass("hide")
+        }
         return () => {
             window.removeEventListener("resize", handleResize);
         };
     },[])
 
-    if(screenWidth<800){
-        setClass("hide")
-    }
 
     const handleChangeClick = (e)=>{
 		document.body.classList.add('scrollable-container');
