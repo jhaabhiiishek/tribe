@@ -146,10 +146,9 @@ function PostBody(e) {
         }, {
             withCredentials: true,
         }).then(response => {
-            console.log(response)
-            console.log(response.data.likes)
-            console.log(response.data.likes)
-            setLikes(response.data.likes)
+            if(response.data.likes!==undefined){
+                setLikes(response.data.likes)
+            }
         });
     }
 
