@@ -254,8 +254,8 @@ function MainBody(e) {
 					<img  className='box-shadow' onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/icons8-notifications-78.png'} id='notif-img'/>
 				</div>
 				<div id='profile-btn' onClick={()=>{
-					handleSelfClick()
 					setLoadingAnimation(1)
+					handleSelfClick()
 					setSelectedPost([])
 				}} className='box-shadow'>{profileName}</div>
 			</div>
