@@ -92,10 +92,24 @@ function MainBody(e) {
 	useEffect(()=>{
 			const studentCookie= getCookie();
 			if(studentCookie!==undefined){
-			  setProfileName(studentCookie.user_id)
-			  setNullCookie(false)
+				setProfileName(studentCookie.user_id)
+				setNullCookie(false)
+				api.post('/fetch_links',{
+					user_id:studentCookie.user_id,
+					key:studentCookie.user_id
+				}, {
+					withCredentials: true,
+				}).then(response => {
+					if(response.data.success===1){
+						if(response.data.msg=="Student doesn't exist"){
+							setFormType("editProfile")
+						}
+					}else{
+						toast.error("An error occured",{position:"bottom-center"})
+					}
+				})
+				fetchPosts(student.user_id)
 			}
-			fetchPosts(student.user_id)
 			const handleResize=()=>{
 				setScreenWidth(window.innerWidth)
 			}

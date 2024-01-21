@@ -718,7 +718,7 @@
 }
 .forms{
 	position: relative;
-	background-color: rgba(0,255,255,0.1);
+	background-color: rgba(0,255,255,0.72);
 	display: flex;
 	width: 46%;
 	margin: auto;
@@ -785,10 +785,10 @@
 	margin-bottom: 2%;
 }
 .forms>button:hover{
-	background-color: rgb(252, 193, 121);
+	background-color: rgb(121, 252, 219);
 }
 .forms>div>button:hover{
-	background-color: rgb(255, 196, 125);
+	background-color: rgb(121, 252, 219);
 }
 .forms>a{
 	margin: 0;
@@ -824,7 +824,7 @@
 #abruptForms{
 	/* display: none; */
 	position: fixed;
-    background-color: rgb(108 81 7 / 64%);
+    background-color: #222;
     width: 100%;
     top: 0;
     left: 0;
@@ -834,7 +834,7 @@
 #abruptPostForms{
 	/* display: none; */
 	position: fixed;
-    background-color: rgb(108 81 7 / 64%);
+    background-color: #222;
     width: 100%;
     top: 0;
 	z-index: 9999;
