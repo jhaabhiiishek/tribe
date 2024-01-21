@@ -84,15 +84,15 @@ function PostBody(e) {
             setBgCol(colString)
         }
     }
-    const setConnectedUsersfn = ()=>{
-        if(!connects.includes(data.user_id,0)){
-            var colString = 'rgb(120, 169, 233)'
-            setConBgCol(colString)
-        }else{
-            var colString = 'rgb(225,225,225)'
-            setConBgCol(colString)
-        }
-    }
+    // const setConnectedUsersfn = ()=>{
+    //     if(!connects.includes(data.user_id,0)){
+    //         var colString = 'rgb(120, 169, 233)'
+    //         setConBgCol(colString)
+    //     }else{
+    //         var colString = 'rgb(225,225,225)'
+    //         setConBgCol(colString)
+    //     }
+    // }
     const setSentLinks = ()=>{
         if(!sentRequests.includes(data.user_id,0)){
             var colString = 'rgb(120, 169, 233)'
