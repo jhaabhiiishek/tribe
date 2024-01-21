@@ -74,3 +74,11 @@ export const setSentRequests =(request)=>{
 		})
 	}
 }
+export const setLoadingAnimation =(request)=>{
+	return (dispatch,getState)=>{
+		dispatch({
+			type:'SET_LOADING',
+			payload:request
+		})
+	}
+}

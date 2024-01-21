@@ -71,6 +71,7 @@ function Navbar() {
     const handleFriendsViewAll=()=>{
         setSelectedPost([])
         userProfileClick([])
+        setLoadingAnimation(1)
         setUserPostsVisibility(0)
         const studentCookie= getCookie();
         if(studentCookie!==undefined){
@@ -84,14 +85,17 @@ function Navbar() {
                 console.log(response.data.data)
                 emptyArray.push(response.data.data)
                 userProfileClick(emptyArray)
+                setLoadingAnimation(0)
             })
         }
     }
     const handleTribeViewAll=()=>{
         userProfileClick([])
         setSelectedPost([])
+        setLoadingAnimation(1)
         setUserPostsVisibility(0)
         userProfileClick(tribesList)
+        setLoadingAnimation(0)
     }
 
     const fetchTribes=()=>{
@@ -109,6 +113,7 @@ function Navbar() {
 
     const handleFriendClick = (e)=>{
         userProfileClick([])
+        setLoadingAnimation(1)
         setSelectedPost([])
         console.log(e)
         setUserPostsVisibility(0)
@@ -123,12 +128,14 @@ function Navbar() {
                 var emptyArray = []
                 emptyArray.push(response.data.data)
                 userProfileClick(emptyArray)
+                setLoadingAnimation(0)
             })
         }
     }
     const handleTribeClick = async (e)=>{
         setSelectedPost([])
         userProfileClick([])
+        setLoadingAnimation(1)
         setUserPostsVisibility(0)
         const studentCookie= getCookie();
         if(studentCookie!==undefined){
@@ -149,7 +156,7 @@ function Navbar() {
                 }).then((res) => {
                     emptyArray.push(res.data.data)
                 })
-
+                setLoadingAnimation(0)
                 userProfileClick(emptyArray)
             })
         }
@@ -185,6 +192,7 @@ function Navbar() {
                 <img onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
                 <h1 id='branding'className='box-shadow' onClick={()=>{
                     userProfileClick([])
+                    setLoadingAnimation(1)
                     setSelectedPost([])
                     setUserPostsVisibility(0)
                 }} >Tribe.com</h1>

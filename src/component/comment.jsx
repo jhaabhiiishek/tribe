@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import { useSelector } from 'react-redux';
+import { setLoadingAnimation } from '../state/action-creators';
 
 const api = axios.create({
     baseURL: 'https://tribe-backend-sl5g.onrender.com/',
@@ -74,6 +75,7 @@ function Comment(e) {
     const handleFriendClick = (e)=>{
         userProfileClick([])
         setUserPostsVisibility(0)
+        setLoadingAnimation(1)
         const studentCookie= getCookie();
         if(studentCookie!==undefined){
             api.post('/fetch_links',{
@@ -85,6 +87,7 @@ function Comment(e) {
                 var emptyArray = []
                 emptyArray.push(response.data.data)
                 userProfileClick(emptyArray)
+                setLoadingAnimation(0)
             })
         }
     }

@@ -7,6 +7,7 @@ import connectedUserReducer from "./connectedUserReducer";
 import selectedPostReducer from "./selectedPostReducer";
 import likedCommentsReducer from "./likedCommentsReducer";
 import sentRequestReducer from "./sentRequestReducer";
+import loadingReducer from "./loadingReducer";
 
 const reducers = combineReducers({
 	actionArea:amountReducer,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
 	connectedUser:connectedUserReducer,
 	selectedPost:selectedPostReducer,
 	likedComments:likedCommentsReducer,
-	sentRequests:sentRequestReducer
+	sentRequests:sentRequestReducer,
+	isComponentLoading:loadingReducer
 })
 
 export default reducers;

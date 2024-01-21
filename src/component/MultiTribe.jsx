@@ -20,6 +20,7 @@ function MultiTribe(e) {
 
 	const handleTribeClick = async (e)=>{
         userProfileClick([])
+        setLoadingAnimation(1)
         setUserPostsVisibility(0)
         const studentCookie= getCookie();
         if(studentCookie!==undefined){
@@ -40,7 +41,7 @@ function MultiTribe(e) {
                 }).then((res) => {
                     emptyArray.push(res.data.data)
                 })
-
+                setLoadingAnimation(0)
                 userProfileClick(emptyArray)
             })
         }

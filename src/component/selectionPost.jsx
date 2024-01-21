@@ -106,6 +106,7 @@ function SelectionPost(e) {
     
     const handleFriendClick = (e)=>{
         userProfileClick([])
+        setLoadingAnimation(1)
         setUserPostsVisibility(0)
         const studentCookie= getCookie();
         if(studentCookie!==undefined){
@@ -118,6 +119,7 @@ function SelectionPost(e) {
                 var emptyArray = []
                 emptyArray.push(response.data.data)
                 userProfileClick(emptyArray)
+                setLoadingAnimation(0)
             })
         }
     }

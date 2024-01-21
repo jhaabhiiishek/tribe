@@ -29,6 +29,7 @@ function MultiProfile(e) {
     const handleFriendClick = (e)=>{
 		console.log(e)
         userProfileClick([])
+		setLoadingAnimation(1)
         setUserPostsVisibility(0)
         const studentCookie= getCookie();
         if(studentCookie!==undefined){
@@ -41,6 +42,7 @@ function MultiProfile(e) {
                 var emptyArray = []
                 emptyArray.push(response.data.data)
                 userProfileClick(emptyArray)
+				setLoadingAnimation(0)
             })
         }
     }

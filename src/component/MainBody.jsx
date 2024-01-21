@@ -1,5 +1,6 @@
 import { useEffect, useState,useRef } from 'react';
 import '../App.css';
+import '../circle.scss'
 import axios from 'axios';
 import getCookie from './getCookie';
 import {ToastContainer, toast} from 'react-toastify';
@@ -17,6 +18,7 @@ import MultiTribe from './MultiTribe';
 import Form from './Form';
 import Cookies from 'js-cookie';
 import SelectionPost from './selectionPost';
+import { setLoadingAnimation } from '../state/action-creators';
 
 const api = axios.create({
     baseURL: 'https://tribe-backend-sl5g.onrender.com/',
@@ -36,6 +38,7 @@ function MainBody(e) {
 
     const dispatch = useDispatch()
 	const actionState = useSelector(state => state.actionArea)
+	const isComponentLoading = useSelector(state => state.isComponentLoading)
 	const selfPost = useSelector(state => state.selfPost)
 	const {userProfileClick,otherClicks,setSelectedPost,setUserPostsVisibility} = bindActionCreators(actionCreators, dispatch)
 	const selectedPost = useSelector(state=>state.selectedPost)
@@ -128,6 +131,7 @@ function MainBody(e) {
 		setSelectedPost([])
 		userProfileClick([])
 		setUserPostsVisibility(0)
+		setLoadingAnimation(1)
 		api.post('/search',{
 			user_id:student.user_id,
 			key:searchTerm,
@@ -141,6 +145,7 @@ function MainBody(e) {
 				console.log(response.data.data)
 				emptyArray.push(response.data.data)
 				userProfileClick(emptyArray)
+				setLoadingAnimation(0)
 			}else{
 				couldntFetch(response)
 			}
@@ -204,6 +209,7 @@ function MainBody(e) {
 	const handleSelfClick = (e)=>{
 		if(selfPost==0){
 			userProfileClick([])
+			setLoadingAnimation(1)
 			const studentCookie= getCookie();
 			if(studentCookie!==undefined){
 
@@ -217,6 +223,7 @@ function MainBody(e) {
 					emptyArray.push(response.data.data)
 					setUserPostsVisibility(1)
 					userProfileClick(emptyArray)
+					setLoadingAnimation(0)
 				})
 			}
 		}
@@ -229,6 +236,7 @@ function MainBody(e) {
 				<h1 id='branding-mobile'className='box-shadow' onClick={()=>{
 					userProfileClick([])
 					setSelectedPost([])
+					setLoadingAnimation(1)
 					setUserPostsVisibility(0)
 				}}>Tribe.com</h1>
 				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/settings.png'} id='settings-img' alt='settings-icon'/>
@@ -253,50 +261,60 @@ function MainBody(e) {
 			</div>
 			<div id='play-area'>
 				<div id='action-center'>
-					<div id='ac-head'>
-						{(selectedPost.length>0)?(
-							<div onClick={()=>backKey()} style={{display:"inline",marginRight:"2.5%"}}>
-								<img alt='(interests)' onClick={()=>backKey()}  src={process.env.PUBLIC_URL+"/back-square-svgrepo-com.svg"}/>
-							</div>
-						):(
-							<></>
-						)}
-						<h1 style={{ fontSize:'x-large'}}>{actionState.length==0?('posts'):('profile')}</h1>
-					</div>
-					{(selectedPost.length>0)?(
-						<SelectionPost/>
+				{isComponentLoading?(
+						<div id='spin-container'>
+							<svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+								<circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+							</svg>
+						</div>
 					):(
-						(selfPost==0)?((actionState.length==0)?(
-							(posts.length>0)?(posts):(<div className='search-result box-shadow'>Make connections to see posts</div>)
-							):((actionState[0].tribe_id==null||actionState[0].tribe_id==undefined)?(
-								(actionState[0][0]&&(actionState[0][0].user_id!==undefined&&actionState[0][0].user_id!==null))?(
-							<>
-								<MultiProfile/>
-							</>):(
-								<>
-									<Profile/>
-									<PostParent user_id={actionState[0].user_id}/>
-								</>
+						<>
+							<div id='ac-head'>
+								{(selectedPost.length>0)?(
+									<div onClick={()=>backKey()} style={{display:"inline",marginRight:"2.5%"}}>
+										<img alt='(interests)' onClick={()=>backKey()}  src={process.env.PUBLIC_URL+"/back-square-svgrepo-com.svg"}/>
+									</div>
+								):(
+									<></>
+								)}
+								<h1 style={{ fontSize:'x-large'}}>{actionState.length==0?('posts'):('profile')}</h1>
+							</div>
+							{(selectedPost.length>0)?(
+								<SelectionPost/>
+							):(
+								(selfPost==0)?((actionState.length==0)?(
+									(posts.length>0)?(posts):(<div className='search-result box-shadow'>Make connections to see posts</div>)
+									):((actionState[0].tribe_id==null||actionState[0].tribe_id==undefined)?(
+										(actionState[0][0]&&(actionState[0][0].user_id!==undefined&&actionState[0][0].user_id!==null))?(
+									<>
+										<MultiProfile/>
+									</>):(
+										<>
+											<Profile/>
+											<PostParent user_id={actionState[0].user_id}/>
+										</>
+									)
+								):((actionState[1]&&(actionState[1].tribe_id!==undefined&&actionState[1].tribe_id!==null))?(
+									<>
+									<MultiTribe/>
+									{console.log(actionState[1].tribe_id)}
+									</>
+								):(
+									<>
+										<Profile/>
+										<TribePosts/>
+										{console.log(actionState)}
+									</>
+								)
+								
+								))):(
+									<>
+										<Profile/>
+										<PostParent user_id={student.user_id}/>
+									</>
 							)
-						):((actionState[1]&&(actionState[1].tribe_id!==undefined&&actionState[1].tribe_id!==null))?(
-							<>
-							<MultiTribe/>
-							{console.log(actionState[1].tribe_id)}
-							</>
-						):(
-							<>
-								<Profile/>
-								<TribePosts/>
-								{console.log(actionState)}
-							</>
-						)
-						
-						))):(
-							<>
-								<Profile/>
-								<PostParent user_id={student.user_id}/>
-							</>
-					)
+							)}
+						</>
 					)}
 					
 				</div>
