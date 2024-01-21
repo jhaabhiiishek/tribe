@@ -41,7 +41,7 @@ function PostBody(e) {
         }else{
             setPostDate(day+' '+date)
         }
-        setConnectedUsersfn()
+        // setConnectedUsersfn()
         setColor()
         setSentLinks()
     }, []);
