@@ -85,9 +85,7 @@ function PostBody(e) {
         }
     }
     const setConnectedUsersfn = ()=>{
-        console.log("innside color set ")
         if(!connects.includes(data.user_id,0)){
-            console.log("innside color set 1")
             var colString = 'rgb(120, 169, 233)'
             setConBgCol(colString)
         }else{
@@ -97,11 +95,8 @@ function PostBody(e) {
         }
     }
     const setSentLinks = ()=>{
-        if(!sentRequests.includes(data.user_id,0)){
-            var colString = 'rgb(120, 169, 233)'
-            setConBgCol(colString)
-        }else{
-            var colString = 'rgb(225,225,225)'
+        if(sentRequests.includes(data.user_id,0)){
+            var colString = "rgb(189, 185, 185)"
             setConBgCol(colString)
         }
     }
