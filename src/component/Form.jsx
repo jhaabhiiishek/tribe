@@ -357,6 +357,9 @@ function Form(e) {
 				withCredentials: true,
 			}).then(response => {
 				diffToast(response)
+				if(response.data.success==1){
+					window.location.reload
+				}
 			});
 	}
 
@@ -451,9 +454,9 @@ function Form(e) {
 		return (
 			<form>
 				<div className='forms'>
-				  <label htmlFor="loginusername"><b>Username</b></label>
+				  <label htmlFor="loginusername">Username</label>
 				  <input type='text' value={loginusername} onChange={(e) => setLoginUsername(e.target.value)} placeholder='username/email' name='loginusername' required></input>
-				  <label htmlFor="loginpassword"><b>Password</b></label>
+				  <label htmlFor="loginpassword">Password</label>
 				  <input type="password" value={loginpassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder="Enter Password" name="loginpassword" required></input>
 				  <button onClick={(e)=>loginSubmit(e)} type='submit'>Login</button>
 				</div>
@@ -466,11 +469,11 @@ function Form(e) {
 				<form id='abruptForms'>
 					<div className='forms'>
 						<button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button>
-						<label htmlFor=""><b>Enter OTP</b></label>
+						<label htmlFor="">Enter OTP</label>
 						<input type='text' value={otp} onChange={(e) => setOtp(e.target.value)} placeholder='otp' name='otp' required></input>
-						<label htmlFor=""><b>Enter new Password</b></label>
+						<label htmlFor="">Enter new Password</label>
 						<input type='password' value={newPass} onChange={(e) => setNewPass(e.target.value)} placeholder='new password' name='new password' required></input>
-						<label htmlFor=""><b>Confirm Password</b></label>
+						<label htmlFor="">Confirm Password</label>
 						<input type='password' value={confPass} onChange={(e) => setConfPass(e.target.value)} placeholder='confirm password' name='confirm password' required></input>
 						<button onClick={(e)=>changePasswordSubmit(e)} >Submit</button>
 					</div>
@@ -480,7 +483,7 @@ function Form(e) {
 				<form id='abruptForms'>
 					<div className='forms'>
 						<button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button>
-						<label htmlFor=""><b>Enter your Email</b></label>
+						<label htmlFor="">Enter your Email</label>
 						<input type='text' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='email' name='email' required></input>
 						<button onClick={(e)=>sendMail(e)} >Submit</button>
 					</div>
@@ -495,39 +498,39 @@ function Form(e) {
 				<div className='forms' style={{marginTop:'2.5%'}}>
 					<button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button>
 					<div style={{display:"inline"}}>
-						<label htmlFor=""><b>Name</b></label>
+						<label htmlFor="">Name</label>
 						<input type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='name' name='name' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>About</b></label>
+						<label htmlFor="">About</label>
 						<input type='text' value={about} onChange={(e) => setAbout(e.target.value)} placeholder='about' name='about' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>D.o.B</b></label>
+						<label htmlFor="">D.o.B</label>
 						<input type='date' value={(dob)} onChange={(e) => setDob(e.target.value)} placeholder='date of birth' name='dob' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>City</b></label>
+						<label htmlFor="">City</label>
 						<input type='text' value={home_city} onChange={(e) => setHomeCity(e.target.value)} placeholder='city' name='city' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>College</b></label>
+						<label htmlFor="">College</label>
 						<input type='text' value={college} onChange={(e) => setCollege(e.target.value)} placeholder='college name' name='college' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Pass out</b></label>
+						<label htmlFor="">Pass out</label>
 						<input type="number" min="1900" max="2099" step="1" value={passOutYear} onChange={(e) => setPassOutYear(e.target.value)} placeholder='pass out year' name='pass out year' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Course</b></label>
+						<label htmlFor="">Course</label>
 						<input type='text' value={course} onChange={(e) => setCourse(e.target.value)} placeholder='course' name='course' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Job Title</b></label>
+						<label htmlFor="">Job Title</label>
 						<input type='text' value={job} onChange={(e) => setJob(e.target.value)} placeholder='job' name='job' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Interests</b></label>
+						<label htmlFor="">Interests</label>
 						<input type='text' value={newInterest} onChange={(e) => setNewInterest(e.target.value)} placeholder='add a tag' name='tag' required></input>
 						<button onClick={(e)=>addTag(e)} >add</button>
 					</div>
@@ -554,39 +557,39 @@ function Form(e) {
 				<div className='forms' style={{marginTop:'2.5%'}}>
 					{/* <button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button> */}
 					<div style={{display:"inline"}}>
-						<label htmlFor=""><b>Name</b></label>
+						<label htmlFor="">Name</label>
 						<input type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='name' name='name' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>About</b></label>
+						<label htmlFor="">About</label>
 						<input type='text' value={about} onChange={(e) => setAbout(e.target.value)} placeholder='about' name='about' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>D.o.B</b></label>
+						<label htmlFor="">D.o.B</label>
 						<input type='date' value={(dob)} onChange={(e) => setDob(e.target.value)} placeholder='date of birth' name='dob' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>City</b></label>
+						<label htmlFor="">City</label>
 						<input type='text' value={home_city} onChange={(e) => setHomeCity(e.target.value)} placeholder='city' name='city' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>College</b></label>
+						<label htmlFor="">College</label>
 						<input type='text' value={college} onChange={(e) => setCollege(e.target.value)} placeholder='college name' name='college' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Pass out</b></label>
+						<label htmlFor="">Pass out</label>
 						<input type="number" min="1900" max="2099" step="1" value={passOutYear} onChange={(e) => setPassOutYear(e.target.value)} placeholder='pass out year' name='pass out year' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Course</b></label>
+						<label htmlFor="">Course</label>
 						<input type='text' value={course} onChange={(e) => setCourse(e.target.value)} placeholder='course' name='course' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Job Title</b></label>
+						<label htmlFor="">Job Title</label>
 						<input type='text' value={job} onChange={(e) => setJob(e.target.value)} placeholder='job' name='job' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Interests</b></label>
+						<label htmlFor="">Interests</label>
 						<input type='text' value={newInterest} onChange={(e) => setNewInterest(e.target.value)} placeholder='add a tag' name='tag' required></input>
 						<button onClick={(e)=>addTag(e)} >add</button>
 					</div>
@@ -612,7 +615,7 @@ function Form(e) {
 			<form id='abruptPostForms'>
 				<div className='forms'>
 					<button id='formCloseBtn' onClick={(e)=>closePostSubmit(e)} >X</button>
-					<label ><b>{studentCookie.user_id}</b></label>
+					<label >{studentCookie.user_id}</label>
 					<textarea onKeyDown={()=>checkMaxWarning()} maxLength='1000' minLength='1' type='text' value={postText} onChange={(e) => setPostText(e.target.value)} placeholder='Compose your post!' style={{width:'80%',height:'250px',resize:'none'}} name='postText' required></textarea>
 					<button onClick={(e)=>createPost(e)} type='submit'>Create</button>
 				</div>
@@ -625,13 +628,13 @@ function Form(e) {
 			<form id='abruptPostForms'>
 				<div className='forms' style={{marginTop:'2.5%'}}>
 					<button id='formCloseBtn' onClick={(e)=>closePostSubmit(e)} >X</button>
-				  	<label htmlFor="tribeName"><b>Tribe name</b></label>
+				  	<label htmlFor="tribeName">Tribe name</label>
 				 	<input type='text' value={tribeName} onChange={(e) => setTribeName(e.target.value)} placeholder='enter tribe name' name='tribeName' required></input>
-				  	<label htmlFor="tribeType"><b>Type</b></label>
+				  	<label htmlFor="tribeType">Type</label>
 				 	<input type='text' value={tribeType} onChange={(e) => setTribeType(e.target.value)} placeholder='max 3 words (50 char)' name='tribeType' required></input>
-				  	<label htmlFor="tribeLocation"><b>Location</b></label>
+				  	<label htmlFor="tribeLocation">Location</label>
 				 	<input type='text' value={tribeLocation} onChange={(e) => setTribeLocation(e.target.value)} placeholder='city name' name='tribeType' required></input>
-					<label htmlFor=""><b>Interests</b></label>
+					<label htmlFor="">Interests</label>
 					<input type='text' value={newTribeTag} onChange={(e) => setNewTribeTag(e.target.value)} placeholder='add a tag' name='tag'></input>
 					<button onClick={(e)=>addTribeTag(e)} >add</button>
 					<div id='profile-main-div' className='search-result box-shadow'>
@@ -644,7 +647,7 @@ function Form(e) {
 							)
 						}))}
 					</div>
-					<label htmlFor=""><b>Invite members</b></label>
+					<label htmlFor="">Invite members</label>
 					<input type='text' value={newMember} onChange={(e) => setNewMember(e.target.value)} placeholder='invite username' name='invite username'></input>
 					<button onClick={(e)=>addMember(e)} >invite</button>
 					<div id='profile-main-div' className='search-result box-shadow'>
@@ -669,7 +672,7 @@ function Form(e) {
 			<form id='abruptPostForms'>
 				<div className='forms' style={{marginTop:'2.5%'}}>
 					<button id='formCloseBtn' onClick={(e)=>closePostSubmit(e)} >X</button>
-					<label ><b>{studentCookie.user_id}</b></label>
+					<label >{studentCookie.user_id}</label>
 					<textarea onKeyDown={()=>checkMaxWarning()} maxLength='1000' minLength='1' type='text' value={postText} onChange={(e) => setPostText(e.target.value)} placeholder='Compose your post!' style={{width:'80%',height:'250px',resize:'none'}} name='postText' required></textarea>
 					<button onClick={(e)=>createTribePost(e)} type='submit'>Tribe Compose</button>
 				</div>
@@ -720,7 +723,7 @@ function Form(e) {
 			<form id='abruptForms'>
 				<div className='forms' style={{marginTop:'2.5%'}}>
 					<button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button>
-					<label htmlFor=""><b>Your Notifications</b></label>
+					<label htmlFor="">Your Notifications</label>
 					{notifications!==null&&notifications.map((notification) => {
 						return(
 							<div className='notification'>
@@ -767,7 +770,7 @@ function Form(e) {
 			<form id='abruptPostForms'>
 				<div className='forms' style={{marginTop:'2.5%'}}>
 					<button id='formCloseBtn' onClick={(e)=>closePostSubmit(e)} >X</button>
-					<label htmlFor=""><b>Invite members</b></label>
+					<label htmlFor="">Invite members</label>
 					<input type='text' value={newMember} onChange={(e) => setNewMember(e.target.value)} placeholder='invite username' name='invite username'></input>
 					<button onClick={(e)=>addMember(e)} >add</button>
 					<div id='profile-main-div' className='search-result box-shadow'>

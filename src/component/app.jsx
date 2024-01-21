@@ -353,7 +353,7 @@ function App() {
               emailVerified?(
                 signup?(
                   <div className='forms'>
-                    <label htmlFor="email"><b>Email-id</b></label>
+                    <label htmlFor="email">Email-id</label>
                     <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Enter a username' name='username'></input>
                     <input type='email' value={email} onChange={(e) => setEmailVerified(e.target.value)} placeholder='Enter email' name='email'></input>
                     <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' name='password'></input>
@@ -376,7 +376,7 @@ function App() {
                 emailOtpVerify?(
                   <form>
                     <div className='forms'>
-                      <label htmlFor="email"><b>E-mail</b></label>
+                      <label htmlFor="email">E-mail</label>
                       <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                       <input type='text' placeholder='Enter OTP' name='otp' required value={otp} onChange={(e) => setOtp(e.target.value)}></input>
                       <button onClick={(e)=>otpSubmit(e)} type='submit'>Verify Otp</button>
@@ -386,7 +386,7 @@ function App() {
                 ):(
                   <form>
                     <div className='forms'>
-                      <label htmlFor="email"><b>E-mail</b></label>
+                      <label htmlFor="email">E-mail</label>
                       <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                       <button onClick={emailSubmit} type='submit'>Verify Email</button>
                       <a onClick={loginfromemail}>Login instead</a>
