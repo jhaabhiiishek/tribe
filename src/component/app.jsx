@@ -359,7 +359,7 @@ function App() {
                     <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' name='password'></input>
                     <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' name='confirmpassword'></input>
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
-                    <a onClick={()=>setSignup(false)}>Login</a>
+                    <a onClick={()=>setSignup(false)}>Login instead</a>
                     <ToastContainer/>
                   </div>
                 ):(
@@ -389,7 +389,7 @@ function App() {
                       <label htmlFor="email"><b>E-mail</b></label>
                       <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                       <button onClick={emailSubmit} type='submit'>Verify Email</button>
-                      <a onClick={loginfromemail}>Login</a>
+                      <a onClick={loginfromemail}>Login instead</a>
                     </div>
                     <ToastContainer/>
                   </form>
