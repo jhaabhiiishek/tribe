@@ -974,6 +974,9 @@
 #abruptForms,#abruptPostForms{
 	overflow-y: scroll;
 }
+.forms{
+	border:1px solid black
+}
 @media screen and (max-width:799px){
 	.forms{
 		width: 90% !important;
