@@ -102,7 +102,7 @@ function MainBody(e) {
 				}).then(response => {
 					if(response.data.success===1){
 						if(response.data.msg=="Student doesn't exist"){
-							setFormType("editProfile")
+							setFormType("enterStudentDetails")
 						}
 					}else{
 						toast.error("An error occured",{position:"bottom-center"})

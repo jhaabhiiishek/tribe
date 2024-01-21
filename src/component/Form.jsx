@@ -339,6 +339,26 @@ function Form(e) {
 				diffToast(response)
 			});
 	}
+	const enterStudentProfileDetails = async (e)=>{
+		e.preventDefault();
+		const studentCookie = getCookie()
+			await api.post('/studentDetails',{
+				user_id:studentCookie.user_id,
+				name:name,
+				about:about,
+				dob:dob,
+				home_city:home_city,
+				college:college,
+				pass_out_year:passOutYear,
+				course:course,
+				job:job,
+				interests:Array.from(addInterests)
+			}, {
+				withCredentials: true,
+			}).then(response => {
+				diffToast(response)
+			});
+	}
 
 	const sendMail = async(e)=>{
 		e.preventDefault();
@@ -523,6 +543,65 @@ function Form(e) {
 						}))}
 					</div>
 					<button onClick={(e)=>changeProfileDetails(e)} >Submit</button>
+				</div>
+				<ToastContainer/>
+			</form>
+		)
+	}else if(e.type==='enterStudentDetails'){
+		
+		return(
+			<form id='abruptForms'>
+				<div className='forms' style={{marginTop:'2.5%'}}>
+					{/* <button id='formCloseBtn' onClick={(e)=>closePasswordSubmit(e)} >X</button> */}
+					<div style={{display:"inline"}}>
+						<label htmlFor=""><b>Name</b></label>
+						<input type='text' value={name} onChange={(e) => setName(e.target.value)} placeholder='name' name='name' required></input>
+					</div>
+					<div>
+						<label htmlFor=""><b>About</b></label>
+						<input type='text' value={about} onChange={(e) => setAbout(e.target.value)} placeholder='about' name='about' required></input>
+					</div>
+					<div>
+						<label htmlFor=""><b>D.o.B</b></label>
+						<input type='date' value={(dob)} onChange={(e) => setDob(e.target.value)} placeholder='date of birth' name='dob' required></input>
+					</div>
+					<div>
+						<label htmlFor=""><b>City</b></label>
+						<input type='text' value={home_city} onChange={(e) => setHomeCity(e.target.value)} placeholder='city' name='city' required></input>
+					</div>
+					<div>
+						<label htmlFor=""><b>College</b></label>
+						<input type='text' value={college} onChange={(e) => setCollege(e.target.value)} placeholder='college name' name='college' required></input>
+					</div>
+					<div>
+						<label htmlFor=""><b>Pass out</b></label>
+						<input type="number" min="1900" max="2099" step="1" value={passOutYear} onChange={(e) => setPassOutYear(e.target.value)} placeholder='pass out year' name='pass out year' required></input>
+					</div>
+					<div>
+						<label htmlFor=""><b>Course</b></label>
+						<input type='text' value={course} onChange={(e) => setCourse(e.target.value)} placeholder='course' name='course' required></input>
+					</div>
+					<div>
+						<label htmlFor=""><b>Job Title</b></label>
+						<input type='text' value={job} onChange={(e) => setJob(e.target.value)} placeholder='job' name='job' required></input>
+					</div>
+					<div>
+						<label htmlFor=""><b>Tags</b></label>
+						<input type='text' value={newInterest} onChange={(e) => setNewInterest(e.target.value)} placeholder='add a tag' name='tag' required></input>
+						<button onClick={(e)=>addTag(e)} >add</button>
+					</div>
+					<div id='profile-main-div' className='search-result box-shadow'>
+						{(addInterests.size>0)&&([...addInterests].map((interest)=>{
+							return(
+								<div className='profile-tags box-shadow' style={{display:'inline-block',backgroundColor:'rgb(0, 0, 0)',color: 'white',position:'relative'}}>
+									<button className='removeInterest'  onClick={(e)=>{e.preventDefault();handleRemoveInterest(interest)}}>X</button>
+									{/* <img className='icon-imgs' alt='(interests)' src={process.env.PUBLIC_URL+"/hashtag.png"}/> */}
+									#{interest}
+								</div>
+							)
+						}))}
+					</div>
+					<button onClick={(e)=>enterStudentProfileDetails(e)} >Submit</button>
 				</div>
 				<ToastContainer/>
 			</form>
