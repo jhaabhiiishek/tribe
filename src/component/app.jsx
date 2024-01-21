@@ -49,7 +49,7 @@ function App() {
     const dispatch = useDispatch()
 	  const nullCookieState = useSelector(state => state.nullCookie)
     const likedPosts = useSelector(state=> state.likedPosts)
-    const {setNullCookie,setLikedPosts,setSentRequests} = bindActionCreators(actionCreators, dispatch)
+    const {setNullCookie,setLikedPosts,setConnectedUsers,setSentRequests} = bindActionCreators(actionCreators, dispatch)
 
   useEffect(()=>{
     const studentCookie= getCookie();
@@ -294,13 +294,14 @@ function App() {
 
   const setConnectedUsersfn =async()=>{
     const student = getCookie()
-    await api.post('/fetch_upvotes_of_user',{
-      user_id:student.user_id
+    await api.post('/fetch_links',{
+      user_id:student.user_id,
+      key:student.user_id
     }, {
-        withCredentials: true,
+      withCredentials: true,
     }).then(response => {
-      console.log(response.data.data)
-      setLikedPosts(response.data.data)
+      console.log(response.data.data.links)
+      setConnectedUsers(response.data.data.links)
     });
   }
   const setSentRequestsfn =async()=>{
