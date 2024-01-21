@@ -527,7 +527,7 @@ function Form(e) {
 						<input type='text' value={job} onChange={(e) => setJob(e.target.value)} placeholder='job' name='job' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Tags</b></label>
+						<label htmlFor=""><b>Interests</b></label>
 						<input type='text' value={newInterest} onChange={(e) => setNewInterest(e.target.value)} placeholder='add a tag' name='tag' required></input>
 						<button onClick={(e)=>addTag(e)} >add</button>
 					</div>
@@ -586,7 +586,7 @@ function Form(e) {
 						<input type='text' value={job} onChange={(e) => setJob(e.target.value)} placeholder='job' name='job' required></input>
 					</div>
 					<div>
-						<label htmlFor=""><b>Tags</b></label>
+						<label htmlFor=""><b>Interests</b></label>
 						<input type='text' value={newInterest} onChange={(e) => setNewInterest(e.target.value)} placeholder='add a tag' name='tag' required></input>
 						<button onClick={(e)=>addTag(e)} >add</button>
 					</div>
@@ -631,7 +631,7 @@ function Form(e) {
 				 	<input type='text' value={tribeType} onChange={(e) => setTribeType(e.target.value)} placeholder='max 3 words (50 char)' name='tribeType' required></input>
 				  	<label htmlFor="tribeLocation"><b>Location</b></label>
 				 	<input type='text' value={tribeLocation} onChange={(e) => setTribeLocation(e.target.value)} placeholder='city name' name='tribeType' required></input>
-					<label htmlFor=""><b>Tags</b></label>
+					<label htmlFor=""><b>Interests</b></label>
 					<input type='text' value={newTribeTag} onChange={(e) => setNewTribeTag(e.target.value)} placeholder='add a tag' name='tag'></input>
 					<button onClick={(e)=>addTribeTag(e)} >add</button>
 					<div id='profile-main-div' className='search-result box-shadow'>
