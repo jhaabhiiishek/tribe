@@ -971,7 +971,9 @@
 		width: 40%;
 	}
 }
-
+#abruptForms,#abruptPostForms{
+	overflow-y: scroll;
+}
 .forms{
 	overflow-y: scroll;
 }
