@@ -85,10 +85,13 @@ function PostBody(e) {
         }
     }
     const setConnectedUsersfn = ()=>{
+        console.log("innside color set ")
         if(!connects.includes(data.user_id,0)){
+            console.log("innside color set 1")
             var colString = 'rgb(120, 169, 233)'
             setConBgCol(colString)
         }else{
+            console.log("innside color set 2")
             var colString = 'rgb(225,225,225)'
             setConBgCol(colString)
         }
