@@ -43,6 +43,7 @@ function PostBody(e) {
         }
         setConnectedUsersfn()
         setColor()
+        setSentLinks()
     }, []);
     const postComment = (e,user_id,user_post_id)=>{
         e.preventDefault()
@@ -234,7 +235,7 @@ function PostBody(e) {
                 {(data.user_id!==student.user_id)?(
                     <div id='link-div' onClick={()=>connectClick()} style={{backgroundColor:conBgCol,border:"0.5px solid black"}}>
                         <img src={process.env.PUBLIC_URL+"/link-minimalistic-svgrepo-com.svg"} style={{display:'inline'}}></img>
-                        <h4 id='post-upvotes' style={{display:"inline",fontWeight:"300",paddingLeft:'3.5%',paddingRight:'3.5%'}}> {!sentRequests.includes(data.user_id,0)?(connects.includes(data.user_id,0)?('connected'):('connect')):('sent')}</h4>
+                        <h4 id='post-upvotes' style={{display:"inline",fontWeight:"300",paddingLeft:'3.5%',paddingRight:'3.5%'}}> {!sentRequests.includes(data.user_id,0)?("sent"):(connects.includes(data.user_id,0)?('connected'):('connect'))}</h4>
                     </div>
                 ):(<></>)}
             </div>
