@@ -972,6 +972,9 @@
 	}
 }
 
+.forms{
+	overflow-y: scroll;
+}
 @media screen and (max-width:799px){
 	.forms{
 		width: 90% !important;
