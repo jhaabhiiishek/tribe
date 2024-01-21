@@ -354,7 +354,7 @@ function App() {
                   <div className='forms'>
                     <label htmlFor="email"><b>Email-id</b></label>
                     <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Enter a username' name='username'></input>
-                    <input type='email' value={email} onChange={(e) => setEmailLogin(e.target.value)} placeholder='Enter email' name='email'></input>
+                    <input type='email' value={email} onChange={(e) => setEmailVerified(e.target.value)} placeholder='Enter email' name='email'></input>
                     <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' name='password'></input>
                     <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' name='confirmpassword'></input>
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
