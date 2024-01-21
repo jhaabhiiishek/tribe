@@ -891,6 +891,9 @@
 .hide{
 	display: none !important;
 }
+#spin-container{
+	margin-top: 10%;
+}
 .notification{
 	display: flex;
 	flex-direction: row;
