@@ -209,7 +209,6 @@ function MainBody(e) {
 	const handleSelfClick = (e)=>{
 		if(selfPost==0){
 			userProfileClick([])
-			setLoadingAnimation(1)
 			const studentCookie= getCookie();
 			if(studentCookie!==undefined){
 
@@ -256,6 +255,7 @@ function MainBody(e) {
 				</div>
 				<div id='profile-btn' onClick={()=>{
 					handleSelfClick()
+					setLoadingAnimation(1)
 					setSelectedPost([])
 				}} className='box-shadow'>{profileName}</div>
 			</div>

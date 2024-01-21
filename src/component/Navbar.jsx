@@ -192,7 +192,6 @@ function Navbar() {
                 <img onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
                 <h1 id='branding'className='box-shadow' onClick={()=>{
                     userProfileClick([])
-                    setLoadingAnimation(1)
                     setSelectedPost([])
                     setUserPostsVisibility(0)
                 }} >Tribe.com</h1>
