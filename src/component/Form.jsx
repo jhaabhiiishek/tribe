@@ -358,7 +358,9 @@ function Form(e) {
 			}).then(response => {
 				diffToast(response)
 				if(response.data.success==1){
-					window.location.reload
+					setTimeout(()=>{
+						window.location.reload()
+					},2500)
 				}
 			});
 	}
