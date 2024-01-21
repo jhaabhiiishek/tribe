@@ -20,7 +20,7 @@ function Profile(e) {
     const sentRequests = useSelector(state=>state.sentRequests)
 	
     const dispatch = useDispatch()
-    const {userProfileClick,setUserPostsVisibility,setSentRequests,setConnectedUsers} = bindActionCreators(actionCreators, dispatch)
+    const {userProfileClick,setUserPostsVisibility,setSentRequests,setLoadingAnimation,setConnectedUsers} = bindActionCreators(actionCreators, dispatch)
 
 	const [commonMems,setCommonMems]=useState([])
     const [formType, setFormType] = useState('')	

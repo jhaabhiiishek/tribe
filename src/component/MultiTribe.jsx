@@ -15,7 +15,7 @@ const api = axios.create({
 function MultiTribe(e) {
 	const actionState = useSelector(state => state.actionArea)
 	const dispatch = useDispatch()
-    const {userProfileClick,setUserPostsVisibility} = bindActionCreators(actionCreators, dispatch)
+    const {userProfileClick,setUserPostsVisibility,setLoadingAnimation} = bindActionCreators(actionCreators, dispatch)
 
 
 	const handleTribeClick = async (e)=>{

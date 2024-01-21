@@ -16,7 +16,7 @@ const api = axios.create({
 });
 function SelectionPost(e) {
     const dispatch = useDispatch()
-	const {userProfileClick,setUserPostsVisibility,setSentRequests,setSelectedPost} = bindActionCreators(actionCreators, dispatch)
+	const {userProfileClick,setUserPostsVisibility,setSentRequests,setLoadingAnimation,setSelectedPost} = bindActionCreators(actionCreators, dispatch)
 	const selectedPost = useSelector(state=>state.selectedPost)
     const connects = useSelector(state=> state.connectedUser)
 	const likedPosts = useSelector(state=> state.likedPosts)

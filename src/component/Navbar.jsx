@@ -19,7 +19,7 @@ function Navbar() {
     const [classToDisplay,setClass] = useState('')
 
     const dispatch = useDispatch()
-    const {userProfileClick,setConnectedUsers,setSelectedPost,setUserPostsVisibility} = bindActionCreators(actionCreators, dispatch)
+    const {userProfileClick,setConnectedUsers,setLoadingAnimation,setSelectedPost,setUserPostsVisibility} = bindActionCreators(actionCreators, dispatch)
 
     useEffect(()=>{
         fetchFriends()

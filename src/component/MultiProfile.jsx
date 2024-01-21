@@ -16,7 +16,7 @@ function MultiProfile(e) {
 	const actionState = useSelector(state => state.actionArea)
 	const studentCookie = getCookie();
 	const dispatch = useDispatch()
-    const {userProfileClick,setUserPostsVisibility} = bindActionCreators(actionCreators, dispatch)
+    const {userProfileClick,setUserPostsVisibility,setLoadingAnimation} = bindActionCreators(actionCreators, dispatch)
 
 	const openEmailPrompt=(e)=>{
 		window.location ='mailto:'+e.target.innerHTML
