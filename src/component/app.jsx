@@ -65,14 +65,6 @@ function App() {
       setSentRequestsfn()
       setConnectedUsersfn()
       return () => clearTimeout(timer);
-    }else{
-      function start(){
-        gapi.auth2.init({
-          clientId:"128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com",
-          scope:""
-        })
-      }
-      gapi.load('client:auth2',start)
     }
   }, []) 
 
