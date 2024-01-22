@@ -62,6 +62,7 @@ function Profile(e) {
 		},{
 			withCredentials: true
 		}).then((response) => {
+			console.log(response)
 			if(response.data.success===1){
 				toast.success(response.data.msg,{position:"bottom-center"})
 			}else{
