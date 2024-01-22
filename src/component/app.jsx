@@ -11,7 +11,9 @@ import Form from './Form';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AWS from 'aws-sdk';
-import {v4} from "uuid"
+import {v4} from "uuid";
+import GLogin from './Glogin';
+import {gapi} from "gapi-script"
 
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -46,6 +48,7 @@ function App() {
     const [progresspercent, setProgresspercent] = useState(0);
 
 
+
     const dispatch = useDispatch()
 	  const nullCookieState = useSelector(state => state.nullCookie)
     const likedPosts = useSelector(state=> state.likedPosts)
@@ -63,6 +66,14 @@ function App() {
       setSentRequestsfn()
       setConnectedUsersfn()
       return () => clearTimeout(timer);
+    }else{
+      function start(){
+        gapi.auth2.init({
+          clientId:"128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com",
+          scope:""
+        })
+      }
+      gapi.load('client:auth2',start)
     }
   }, []) 
 
@@ -360,6 +371,7 @@ function App() {
                     <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' name='confirmpassword'></input>
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
                     <a onClick={()=>setSignup(false)}>Login instead</a>
+                    <GLogin/>
                     <ToastContainer/>
                   </div>
                 ):(
@@ -369,6 +381,7 @@ function App() {
                     <div style={{display:'flex',flexDirection:'row',justifyContent:"center"}}>
                       <a onClick={()=>setEmailVerified(false)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",marginTop: "2.5%",borderRadius:"14px",marginRight: "4%",padding: "1.5% 3%"}}>Sign up</a>
                       <a onClick={(e)=>handleChangeClick(e)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",marginTop: "2.5%",borderRadius:"14px",marginRight: "4%",padding: "1.5% 3%"}}>Change Password</a>
+                      <GLogin/>
                     </div>
                   </div>
                 )
@@ -390,6 +403,7 @@ function App() {
                       <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                       <button onClick={emailSubmit} type='submit'>Verify Email</button>
                       <a onClick={loginfromemail}>Login instead</a>
+                      <GLogin/>
                     </div>
                     <ToastContainer/>
                   </form>

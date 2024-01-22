@@ -883,7 +883,19 @@
 	width: 28%;
 	/* justify-content: space-around; */
 }
-
+#signInButton{
+	height: min-content;
+    border: 1px solid black;
+    background-color: rgb(255 255 255);
+    margin-top: 2.5%;
+    border-radius: 14px;
+    margin-right: 4%;
+    padding: 0.5% 2%;
+}
+#signInButton>button{
+	box-shadow: none !important;
+	border: 0px !important;
+}
 .scrollable-container{
 	overflow-y: hidden; /* Disables vertical scroll */
 	overflow-x: hidden; /* Enables horizontal scroll */
