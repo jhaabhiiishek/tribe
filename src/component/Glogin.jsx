@@ -2,14 +2,20 @@ import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import Cookies from 'js-cookie';
 import getCookie  from './getCookie'
-
+import axios from 'axios';
 const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
 const secret = process.env.SECRET
 console.log(client_id)
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../state';
+import { useSelector } from 'react-redux';
+
 const api = axios.create({
     baseURL: 'https://tribe-backend-sl5g.onrender.com/',
 });
 function GLogin(){
+	const dispatch = useDispatch()
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
 		const authCode = res.code;
