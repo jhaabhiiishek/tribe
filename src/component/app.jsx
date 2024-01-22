@@ -18,7 +18,9 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import { useSelector } from 'react-redux';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
+const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
 import LoadingAnimation from './LoadingAnimation';
 
 const api = axios.create({
@@ -319,6 +321,7 @@ function App() {
   }
     
     return (
+      <GoogleOAuthProvider clientId={client_id} >
         <div id='app'>
             {loading?(
                 <div className="loading-animation">
@@ -403,6 +406,7 @@ function App() {
             )
           )}            
         </div>
+      </GoogleOAuthProvider>
     )
 }
 

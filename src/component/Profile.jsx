@@ -80,7 +80,7 @@ function Profile(e) {
 			setFormType('createPost')
 		}else if(e.target.innerHTML==='Create Tribe'){
 			setFormType('createTribe')
-		}else if(e.target.innerHTML==='Tribe Post'){
+		}else if(e.target.innerHTML==='Post Tribe'){
 			setFormType('tribePost')
 		}else if(e.target.innerHTML==='Invite Members'){
 			setFormType('inviteMembers')
