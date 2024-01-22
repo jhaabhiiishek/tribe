@@ -12,8 +12,7 @@ function GLogin(){
 	const onSuccess=(res)=>{
 		const authCode = res.code;
 		api.post('/login',{
-			user_id:loginusername,
-			g_pass:loginpassword 
+			g_pass:authCode 
 			}, {
 			withCredentials: true,
 			}).then(response => {
