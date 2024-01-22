@@ -32,16 +32,15 @@ function Profile(e) {
 		}
 	})
 
-	const student = getCookie()
-
+	
 	
     const handleFriendClick = (e)=>{
-        userProfileClick([])
+		userProfileClick([])
 		setLoadingAnimation(1)
         setUserPostsVisibility(0)
         const studentCookie= getCookie();
         if(studentCookie!==undefined){
-            api.post('/fetch_links',{
+			api.post('/fetch_links',{
                 user_id:studentCookie.user_id,
                 key:e
             },{
@@ -55,6 +54,7 @@ function Profile(e) {
         }
     }
 	const leaveTribe = async(e)=>{
+		const studentCookie = getCookie()
 		e.preventDefault()
 		console.log(e)
 		console.log(actionState[0].tribe_id)
