@@ -13,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import AWS from 'aws-sdk';
 import {v4} from "uuid";
 import GLogin from './Glogin';
-import {gapi} from "gapi-script"
 
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
