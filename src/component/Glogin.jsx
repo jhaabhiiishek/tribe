@@ -1,7 +1,7 @@
 import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import Cookies from 'js-cookie';
-import { getCookie } from './getCookie'
+import getCookie  from './getCookie'
 
 const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
 const secret = process.env.SECRET
