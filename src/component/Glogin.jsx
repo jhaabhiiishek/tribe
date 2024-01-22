@@ -9,7 +9,6 @@ import { actionCreators } from '../state';
 
 const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
 const secret = process.env.SECRET
-console.log(client_id)
 
 const api = axios.create({
     baseURL: 'https://tribe-backend-sl5g.onrender.com/',
