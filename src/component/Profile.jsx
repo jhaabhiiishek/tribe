@@ -31,7 +31,7 @@ function Profile(e) {
 			setCommonMems(selfLessArray)
 		}
 	})
-
+	const student= getCookie();
 	
 	
     const handleFriendClick = (e)=>{
