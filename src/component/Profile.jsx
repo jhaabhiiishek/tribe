@@ -56,6 +56,7 @@ function Profile(e) {
     }
 	const leaveTribe = async(e)=>{
 		e.preventDefault()
+		console.log(e)
 		await api.post('/leave_tribe',{
 			user_id:studentCookie.user_id,
 			tribe_id:actionState[0].tribe_id
