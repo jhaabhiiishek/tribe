@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 
 const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
-const secret = process.env.SECRET
+const secret = "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"
 
 const api = axios.create({
     baseURL: 'https://tribe-backend-sl5g.onrender.com/',
@@ -18,6 +18,24 @@ function GLogin(){
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
 		const authCode = res.clientId;
+		fetch('<https://oauth2.googleapis.com/token>', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: new URLSearchParams({
+				authCode,
+				client_id,
+				secret
+			}),
+		})
+		.then(response => console.log(response.json()))
+		.then(tokens => {
+			console.log(tokens)
+			res.json(tokens);
+		})
+		console.log("no error yet")
+		return
 		console.log(res)
 		api.post('/login',{
 				g_pass:authCode 
