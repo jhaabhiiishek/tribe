@@ -18,6 +18,7 @@ function GLogin(){
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
 		const authCode = res.code;
+		console.log(res)
 		api.post('/login',{
 			g_pass:authCode 
 			}, {
