@@ -18,7 +18,7 @@ function GLogin(){
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
 		const authCode = res.clientId;
-		fetch('<https://oauth2.googleapis.com/token>', {
+		fetch('https://oauth2.googleapis.com/token', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
