@@ -17,10 +17,10 @@ function GLogin(){
 	const dispatch = useDispatch()
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
-		const authCode = res.code;
+		const authCode = res.clientId;
 		console.log(res)
 		api.post('/login',{
-			g_pass:authCode 
+				g_pass:authCode 
 			}, {
 			withCredentials: true,
 			}).then(response => {
