@@ -17,24 +17,9 @@ function GLogin(){
 	const dispatch = useDispatch()
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
-		const authCode = res.clientId;
-		fetch('https://oauth2.googleapis.com/token', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
-			},
-			body: new URLSearchParams({
-				authCode,
-				client_id,
-				secret
-			}),
-		})
-		.then(response => console.log(response.json()))
-		.then(tokens => {
-			console.log(tokens)
-			res.json(tokens);
-		})
-		console.log("no error yet")
+		const authCode = res;
+		//write code here for accessing token
+		console.log(authCode)
 		return
 		console.log(res)
 		api.post('/login',{
