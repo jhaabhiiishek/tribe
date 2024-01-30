@@ -365,7 +365,7 @@ function App() {
                     <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' name='confirmpassword'></input>
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
                     <a onClick={()=>setSignup(false)}>Login instead</a>
-                    <GLogin/>
+                    {/* <GLogin/> */}
                     <ToastContainer/>
                   </div>
                 ):(
@@ -375,7 +375,7 @@ function App() {
                     <div style={{display:'flex',flexDirection:'row',justifyContent:"center"}}>
                       <a onClick={()=>setEmailVerified(false)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",marginTop: "2.5%",borderRadius:"14px",marginRight: "4%",padding: "1.5% 3%"}}>Sign up</a>
                       <a onClick={(e)=>handleChangeClick(e)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",marginTop: "2.5%",borderRadius:"14px",marginRight: "4%",padding: "1.5% 3%"}}>Change Password</a>
-                      <GLogin/>
+                      {/* <GLogin/> */}
                     </div>
                   </div>
                 )
@@ -397,7 +397,7 @@ function App() {
                       <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                       <button onClick={emailSubmit} type='submit'>Verify Email</button>
                       <a onClick={loginfromemail}>Login instead</a>
-                      <GLogin/>
+                      {/* <GLogin/> */}
                     </div>
                     <ToastContainer/>
                   </form>
