@@ -971,6 +971,11 @@
 	}
 }
 
+@media screen and (min-width:500px){
+	#login-div-options{
+		flex-direction: column;
+	}
+}
 @media screen and (max-width:500px){
 	.forms>div>input, .forms>input {
 		width: 70%;
