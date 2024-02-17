@@ -17,15 +17,13 @@ function GLogin(){
 	const onSuccess=(res)=>{
 		const authCode = res;
 		//write code here for accessing token
-		console.log(authCode)
-		return
-		console.log(res)
 		api.post('/login',{
 				g_pass:authCode 
 			}, {
 			withCredentials: true,
 			}).then(response => {
 			if(response.data.success===1){
+				console.log(response)
 				const valueObj = {
 					"user_id":response.data.user_id
 				}
