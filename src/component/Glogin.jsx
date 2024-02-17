@@ -31,7 +31,6 @@ function GLogin(){
 				Cookies.set("student",value,{ expires: 7 });
 				const cookie = getCookie()
 				console.log(cookie)
-				
 				if(cookie!==undefined){
 					setNullCookie(0)
 				}
