@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin,GoogleOAuthProvider } from '@react-oauth/google';
 import Cookies from 'js-cookie';
 import getCookie  from './getCookie'
 import axios from 'axios';
@@ -7,13 +7,11 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 
-const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
-const secret = "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"
-
 const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
+	baseURL: 'https://tribe-backend-sl5g.onrender.com/',
 });
 function GLogin(){
+	const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
 	const dispatch = useDispatch()
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
