@@ -767,15 +767,21 @@
 	
 	margin-top: 2%;
 }
-.forms>button, .forms>div>button {
-    border-radius: 8px;
-    font-size: larger;
-    padding: 1%;
-    width: 14%;
-    border: 1px solid #0068ef;
-    background-color: white;
+.forms>button{
+	width: 14%;
+	padding:1%;
+	font-size: larger;
+	margin: auto;
+	margin-top: 2%;
+	border-radius: 6px;
 }
 .forms>div>button{
+	width: 14%;
+	padding:1%;
+	font-size: larger;
+	margin: auto;
+	margin-top: 2%;
+	border-radius: 6px;
 	margin-bottom: 2%;
 }
 .forms>button:hover{
@@ -966,7 +972,7 @@
 }
 
 #login-div-options{
-	align-items: center;
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
