@@ -60,7 +60,7 @@ function App() {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000); // set the time for the animation to display
-    console.log(nullCookieState)
+    // console.log(nullCookieState)
     if(studentCookie!==undefined){
       setNullCookie(0)
       setLikedPostsfn()
@@ -291,7 +291,7 @@ function App() {
     }, {
         withCredentials: true,
     }).then(response => {
-      console.log(response.data.data)
+      // console.log(response.data.data)
       setLikedPosts(response.data.data)
     });
   }
@@ -304,7 +304,7 @@ function App() {
     }, {
       withCredentials: true,
     }).then(response => {
-      console.log(response.data.data.links)
+      // console.log(response.data.data.links)
       setConnectedUsers(response.data.data.links)
     });
   }
@@ -315,7 +315,7 @@ function App() {
     }, {
         withCredentials: true,
     }).then(response => {
-      console.log(response.data.data)
+      // console.log(response.data.data)
       setSentRequests(response.data.data)
     });
   }
