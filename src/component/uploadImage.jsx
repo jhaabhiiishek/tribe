@@ -20,15 +20,15 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
-const dispatch = useDispatch();
 
 function UploadImage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadError, setUploadError] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
+  const dispatch = useDispatch();
   const {setFileUploaded} = bindActionCreators(actionCreators, dispatch)
-
+  
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
   };
