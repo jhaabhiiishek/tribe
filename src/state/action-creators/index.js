@@ -74,6 +74,14 @@ export const setSentRequests =(request)=>{
 		})
 	}
 }
+export const setFileUploaded =(request)=>{
+	return (dispatch,getState)=>{
+		dispatch({
+			type:'FILE_UPLOADED',
+			payload:request
+		})
+	}
+}
 export const setLoadingAnimation =(request)=>{
 	return (dispatch,getState)=>{
 		dispatch({

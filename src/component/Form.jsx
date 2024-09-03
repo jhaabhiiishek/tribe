@@ -141,7 +141,8 @@ function Form(e) {
 		e.preventDefault()
 		await api.post('/createpost',{
 			user_id:studentCookie.user_id,
-			text:postText
+			text:postText,
+			// media_link:
 		}, {
 			withCredentials: true,
 		}).then(response => {
@@ -620,8 +621,8 @@ function Form(e) {
 					<button id='formCloseBtn' onClick={(e)=>closePostSubmit(e)} >X</button>
 					<label >{studentCookie.user_id}</label>
 					<textarea onKeyDown={()=>checkMaxWarning()} maxLength='1000' minLength='1' type='text' value={postText} onChange={(e) => setPostText(e.target.value)} placeholder='Compose your post!' style={{width:'80%',height:'250px',resize:'none'}} name='postText' required></textarea>
-					<button onClick={(e)=>createPost(e)} type='submit'>Create</button>
 					<UploadImage/>
+					<button onClick={(e)=>createPost(e)} type='submit'>Create</button>
 				</div>
 				<ToastContainer/>
 			</form>
