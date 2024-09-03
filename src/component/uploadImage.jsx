@@ -53,6 +53,7 @@ function UploadImage() {
       });
     } catch (error) {
       toast.error('An error occurred during image upload.');
+      console.log(error.message);
       setUploadError(error.message);
     }
   };
