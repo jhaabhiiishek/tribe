@@ -811,15 +811,9 @@
 	padding: 2.5% 4%;
 	border: 1px solid black;
 }
-.box-shadow{
+.box-shadow:hover{
 	box-shadow: 2px 2px 03px 1px grey;
 }
-
-.box-shadow:hover{
-	box-shadow: 7px 6px 10px 3px rgb(124, 122, 122);
-}
-
-
 
 #abruptForms{
 	/* display: none; */

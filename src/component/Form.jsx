@@ -75,8 +75,6 @@ function Form(e) {
 					setCourse(response.data.data.course)
 					setJob(response.data.data.job)
 					setAddInterests(new Set(response.data.data.interests))
-				}else{
-					
 				}
 			})
 			api.post('/fetch_notifications',{
