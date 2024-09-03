@@ -166,10 +166,9 @@ function Form(e) {
 		}, {
 			withCredentials: true,
 		}).then(response => {
-			console.log(response)
 			diffToast(response)
+			setTimeout(()=>{window.location.reload()},2500)
 		});
-		setTimeout(()=>{window.location.reload()},2500)
 	}
 	const createTribe = async(e)=>{
 		e.preventDefault()
