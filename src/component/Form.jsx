@@ -162,7 +162,8 @@ function Form(e) {
 		await api.post('/createtribepost',{
 			user_id:studentCookie.user_id,
 			text:postText,
-			tribe_id:actionState[0].tribe_id
+			tribe_id:actionState[0].tribe_id,
+			media_link:fileUploadedState
 		}, {
 			withCredentials: true,
 		}).then(response => {
@@ -680,6 +681,7 @@ function Form(e) {
 					<button id='formCloseBtn' onClick={(e)=>closePostSubmit(e)} >X</button>
 					<label >{studentCookie.user_id}</label>
 					<textarea onKeyDown={()=>checkMaxWarning()} maxLength='1000' minLength='1' type='text' value={postText} onChange={(e) => setPostText(e.target.value)} placeholder='Compose your post!' style={{width:'80%',height:'250px',resize:'none'}} name='postText' required></textarea>
+					<UploadImage/>
 					<button onClick={(e)=>createTribePost(e)} type='submit'>Tribe Compose</button>
 				</div>
 				<ToastContainer/>
