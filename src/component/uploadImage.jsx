@@ -70,7 +70,7 @@ function UploadImage() {
 
   return (
     <div>
-      <input type="file" id="imageInput" accept="image/*" onChange={handleImageChange} />
+      <input type="file" id="imageInput" style={{marginRight:'2%'}} accept="image/*" onChange={handleImageChange} />
       <button onClick={(event)=>handleImageUpload(event)} disabled={!selectedImage}>Upload</button>
       {uploadProgress > 0 && (
         <div>
