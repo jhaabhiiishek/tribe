@@ -33,8 +33,8 @@ function UploadImage() {
       return;
     }
 
-    const storageRef = ref(storage, `${selectedImage.name}`); // Adjust the path as needed
-
+    const storageRef = ref(storage); // Adjust the path as needed
+    console.log(storageRef.bucket);
     try {
       const uploadTask =await uploadBytes(storageRef, selectedImage);
 
