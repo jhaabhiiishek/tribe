@@ -148,8 +148,8 @@ function Form(e) {
 			withCredentials: true,
 		}).then(response => {
 			diffToast(response)
+			setTimeout(()=>{window.location.reload()},2500)
 		});
-		// setTimeout(()=>{window.location.reload()},2500)
 	}
 	const createTribePost= async (e)=>{
 		e.preventDefault()
