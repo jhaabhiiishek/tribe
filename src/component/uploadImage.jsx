@@ -36,16 +36,16 @@ function UploadImage() {
     const storageRef = ref(storage, `images/${selectedImage.name}`); // Adjust the path as needed
 
     try {
-      const uploadTask = uploadBytes(storageRef, selectedImage);
+      const uploadTask =await uploadBytes(storageRef, selectedImage);
 
       uploadTask.on('state_changed', (snapshot) => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setUploadProgress(progress);
-      }, (error) => {
-        setUploadError(error.message);
-      }, () => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setUploadProgress(progress);
+        }, (error) => {
+          setUploadError(error.message);
+        }, () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImageUrl(downloadURL);
           toast.success('Image uploaded successfully!');
