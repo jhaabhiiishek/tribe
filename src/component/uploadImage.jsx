@@ -18,7 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-function uploadImage() {
+function UploadImage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadError, setUploadError] = useState(null);
@@ -74,4 +74,4 @@ function uploadImage() {
   );
 }
 
-export default uploadImage;
+export default UploadImage;
