@@ -1,6 +1,6 @@
 import '../App.css';
 import React, { useState, useEffect } from 'react';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { initializeApp } from 'firebase/app';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,21 +35,30 @@ function UploadImage() {
 
     const storageRef = ref(storage, `images/${selectedImage.name}`);// Adjust the path as needed
     try {
-      const uploadTask =await uploadBytes(storageRef, selectedImage);
+      const uploadTask =await uploadBytesResumable(storageRef, selectedImage);
 
-      uploadTask.on('state_changed', (snapshot) => {
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          const progress =(snapshot.bytesTransferred / snapshot.totalBytes) * 100
           setUploadProgress(progress);
-        }, (error) => {
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused');
+              break;
+            case 'running':
+              console.log('Upload is running');
+              break;
+          }
+        },
+        (error) => {
           setUploadError(error.message);
-        }, () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImageUrl(downloadURL);
-          toast.success('Image uploaded successfully!');
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImageUrl(downloadURL);
+            toast.success('Image uploaded successfully!');
+          });
         });
-      });
     } catch (error) {
       toast.error('An error occurred during image upload.');
       console.log(error.message);
