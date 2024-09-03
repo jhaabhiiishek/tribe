@@ -37,7 +37,7 @@ function UploadImage() {
     try {
       const uploadTask =await uploadBytesResumable(storageRef, selectedImage);
 
-      uploadTask.on('state_changed',
+      await uploadTask.on('state_changed',
         (snapshot) => {
           const progress =(snapshot.bytesTransferred / snapshot.totalBytes) * 100
           setUploadProgress(progress);
