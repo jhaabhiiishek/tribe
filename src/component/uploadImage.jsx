@@ -4,7 +4,9 @@ import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } fr
 import { initializeApp } from 'firebase/app';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../state';
 const firebaseConfig = {
     apiKey: "AIzaSyDghvHV7wJfe9BB9-ocK6IDulZIGRlYBh4",
     authDomain: "tribe-main-proj.firebaseapp.com",
@@ -23,6 +25,7 @@ function UploadImage() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadError, setUploadError] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
+  const dispatch = useDispatch();
   const {setFileUploaded} = bindActionCreators(actionCreators, dispatch)
 
   const handleImageChange = (event) => {
