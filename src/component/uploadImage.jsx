@@ -78,7 +78,8 @@ function UploadImage() {
           <span>{uploadProgress}%</span>
         </div>
       )}
-      {imageUrl && <img src={imageUrl} width={225} height={225} style={{borderRadius:'3px',border:'1px solid black'}}alt="Uploaded Image" />}
+      {/* {imageUrl && <img src={imageUrl} width={225} height={225} style={{borderRadius:'3px',border:'1px solid black'}}alt="Uploaded Image" />} */}
+      {imageUrl && <h3>Uploaded successfully</h3>}
       {uploadError && <p>{uploadError}</p>}
       <ToastContainer />
     </div>
