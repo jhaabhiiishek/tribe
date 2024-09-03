@@ -140,7 +140,7 @@ function Form(e) {
 
 	const createPost= async (e)=>{
 		e.preventDefault()
-
+		console.log(fileUploadedState)
 		await api.post('/createpost',{
 			user_id:studentCookie.user_id,
 			text:postText,
@@ -150,7 +150,7 @@ function Form(e) {
 		}).then(response => {
 			diffToast(response)
 		});
-		setTimeout(()=>{window.location.reload()},2500)
+		// setTimeout(()=>{window.location.reload()},2500)
 	}
 	const createTribePost= async (e)=>{
 		e.preventDefault()

@@ -20,21 +20,21 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
+const dispatch = useDispatch();
 
 function UploadImage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadError, setUploadError] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
-  const dispatch = useDispatch();
   const {setFileUploaded} = bindActionCreators(actionCreators, dispatch)
 
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
   };
 
-  const handleImageUpload = async () => {
-    event.preventDefault();
+  const handleImageUpload = async (e) => {
+    e.preventDefault();
     if (!selectedImage) {
       return;
     }
@@ -71,7 +71,7 @@ function UploadImage() {
   return (
     <div>
       <input type="file" accept="image/*" onChange={handleImageChange} />
-      <button onClick={handleImageUpload(event)} disabled={!selectedImage}>Upload Image</button>
+      <button onClick={(event)=>handleImageUpload(event)} disabled={!selectedImage}>Upload Image</button>
       {uploadProgress > 0 && (
         <div>
           <progress value={uploadProgress} max="100" />
