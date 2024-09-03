@@ -8,6 +8,7 @@ import selectedPostReducer from "./selectedPostReducer";
 import likedCommentsReducer from "./likedCommentsReducer";
 import sentRequestReducer from "./sentRequestReducer";
 import loadingReducer from "./loadingReducer";
+import fileUploadedReducer from "./fileUploadedReducer";
 
 const reducers = combineReducers({
 	actionArea:amountReducer,
@@ -18,7 +19,8 @@ const reducers = combineReducers({
 	selectedPost:selectedPostReducer,
 	likedComments:likedCommentsReducer,
 	sentRequests:sentRequestReducer,
-	isComponentLoading:loadingReducer
+	isComponentLoading:loadingReducer,
+	fileUploaded:fileUploadedReducer
 })
 
 export default reducers;

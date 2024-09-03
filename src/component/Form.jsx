@@ -26,6 +26,7 @@ function Form(e) {
 	const [confPass, setConfPass] = useState("");
 	const dispatch = useDispatch()
 	const nullCookieState = useSelector(state => state.nullCookie)	
+	const fileUploadedState = useSelector(state => state.fileUploaded)	
     const actionState = useSelector(state => state.actionArea)
   	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const [pwdChange, setPwdChange] = useState(false)
@@ -139,10 +140,11 @@ function Form(e) {
 
 	const createPost= async (e)=>{
 		e.preventDefault()
+
 		await api.post('/createpost',{
 			user_id:studentCookie.user_id,
 			text:postText,
-			// media_link:
+			media_link:fileUploadedState
 		}, {
 			withCredentials: true,
 		}).then(response => {

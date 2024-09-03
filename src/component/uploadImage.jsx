@@ -23,6 +23,7 @@ function UploadImage() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadError, setUploadError] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
+  const {setFileUploaded} = bindActionCreators(actionCreators, dispatch)
 
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
@@ -55,6 +56,7 @@ function UploadImage() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setImageUrl(downloadURL);
+            setFileUploaded(downloadURL)
             toast.success('Image uploaded successfully!');
           });
       });

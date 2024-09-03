@@ -74,11 +74,11 @@ export const setSentRequests =(request)=>{
 		})
 	}
 }
-export const setFileUploaded =(request)=>{
+export const setFileUploaded =(file)=>{
 	return (dispatch,getState)=>{
 		dispatch({
 			type:'FILE_UPLOADED',
-			payload:request
+			payload:file
 		})
 	}
 }
