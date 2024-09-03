@@ -812,7 +812,10 @@
 	border: 1px solid black;
 }
 .box-shadow:hover{
-	box-shadow: 2px 2px 03px 1px grey;
+	box-shadow: 0.8px 0.8px 1.5px 1px grey;
+}
+.box-shadow:hover{
+	box-shadow: 0.5px 0.5px 1px 0.5px grey;
 }
 
 #abruptForms{
