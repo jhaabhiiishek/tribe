@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
+import { event } from 'jquery';
 const firebaseConfig = {
     apiKey: "AIzaSyDghvHV7wJfe9BB9-ocK6IDulZIGRlYBh4",
     authDomain: "tribe-main-proj.firebaseapp.com",
@@ -33,6 +34,7 @@ function UploadImage() {
   };
 
   const handleImageUpload = async () => {
+    event.preventDefault();
     if (!selectedImage) {
       return;
     }
@@ -69,7 +71,7 @@ function UploadImage() {
   return (
     <div>
       <input type="file" accept="image/*" onChange={handleImageChange} />
-      <button onClick={handleImageUpload} disabled={!selectedImage}>Upload Image</button>
+      <button onClick={handleImageUpload(event)} disabled={!selectedImage}>Upload Image</button>
       {uploadProgress > 0 && (
         <div>
           <progress value={uploadProgress} max="100" />
