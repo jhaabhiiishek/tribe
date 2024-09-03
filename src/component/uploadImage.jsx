@@ -36,7 +36,7 @@ function UploadImage() {
     const storageRef = ref(storage, `images/${selectedImage.name}`);// Adjust the path as needed
     const uploadTask =await uploadBytesResumable(storageRef, selectedImage);
 
-      await uploadTask.on('state_changed',
+      uploadTask.on('state_changed',
         (snapshot) => {
           const progress =(snapshot.bytesTransferred / snapshot.totalBytes) * 100
           setUploadProgress(progress);
@@ -57,7 +57,7 @@ function UploadImage() {
             setImageUrl(downloadURL);
             toast.success('Image uploaded successfully!');
           });
-        });
+      });
     
   };
 
