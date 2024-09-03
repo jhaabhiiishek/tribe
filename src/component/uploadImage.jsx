@@ -72,7 +72,7 @@ function UploadImage() {
     <div>
       <div>
         <input type="file" accept="image/*" onChange={handleImageChange} />
-        <span style={{fontSize:'x-small',color:'orange'}}>Suggested image ratio 1:1</span>
+        <span style={{fontSize:'small',color:'black'}}>Suggested image ratio 1:1</span>
       </div>
       <button onClick={(event)=>handleImageUpload(event)} disabled={!selectedImage}>Upload</button>
       {uploadProgress > 0 && (
