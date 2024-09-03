@@ -71,14 +71,14 @@ function UploadImage() {
   return (
     <div>
       <input type="file" accept="image/*" onChange={handleImageChange} />
-      <button onClick={(event)=>handleImageUpload(event)} disabled={!selectedImage}>Upload Image</button>
+      <button onClick={(event)=>handleImageUpload(event)} disabled={!selectedImage}>Upload</button>
       {uploadProgress > 0 && (
         <div>
           <progress value={uploadProgress} max="100" />
           <span>{uploadProgress}%</span>
         </div>
       )}
-      {imageUrl && <img src={imageUrl} alt="Uploaded Image" />}
+      {imageUrl && <img src={imageUrl} width={225} height={225}  alt="Uploaded Image" />}
       {uploadError && <p>{uploadError}</p>}
       <ToastContainer />
     </div>
