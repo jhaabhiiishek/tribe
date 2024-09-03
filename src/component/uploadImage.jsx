@@ -34,8 +34,7 @@ function UploadImage() {
     }
 
     const storageRef = ref(storage, `images/${selectedImage.name}`);// Adjust the path as needed
-    try {
-      const uploadTask =await uploadBytesResumable(storageRef, selectedImage);
+    const uploadTask =await uploadBytesResumable(storageRef, selectedImage);
 
       await uploadTask.on('state_changed',
         (snapshot) => {
@@ -59,11 +58,7 @@ function UploadImage() {
             toast.success('Image uploaded successfully!');
           });
         });
-    } catch (error) {
-      toast.error('An error occurred during image upload.');
-      console.log(error.message);
-      setUploadError(error.message);
-    }
+    
   };
 
   return (
