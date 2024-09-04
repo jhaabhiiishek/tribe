@@ -409,7 +409,8 @@
 }
 .compose{
 	margin-left:8%;
-	background-color: rgb(3, 252, 107);
+	background-color: rgb(3 252 107 /10%);
+	backdrop-filter: blur(02px);
 	color: black;
 	border: 1px solid grey;
 	border-radius: 8px;
@@ -432,7 +433,8 @@
 	padding: 1%;
 }
 .vals{
-	background-color: rgb(215, 246, 250);
+	background: rgb(215 246 250/10%);
+	backdrop-filter: blur(2px);
 	border: 1px solid grey;
 	border-radius: 8px;
 	padding: 2.5% 4%;
@@ -453,7 +455,8 @@
     border-radius: 8px;
 }
 .view-all{
-	background-color: rgb(120, 233, 193);
+	background: rgb(120 233 193/10%);
+	backdrop-filter: blur(2px);
 	text-decoration: none;
 	color: black;
 	border: 1px solid grey;
@@ -526,12 +529,14 @@
 	border: 1px solid cyan;
 	margin-left: 6%;
 	color: white;
-	background-color: rgb(34, 34, 34);
+	background-color: rgb(34 34 34/10%);
+	backdrop-filter: blur(2px);
 	border-radius: 8px;
 }
 #search-submit:hover{
 	border: 1px solid rgb(0, 153, 255);
-	background-color: black;
+	background-color: rgb(34 34 34/10%);
+	backdrop-filter: blur(2px);
 	cursor: pointer;
 }
 #play-area{
@@ -551,7 +556,8 @@
 	align-items: center;
 }
 .profile-changes-btn{
-	background-color: rgb(120 169 233 / 50%);
+	background: rgb(120 169 233 / 20%);
+	backdrop-filter: blur(2px);
 	text-decoration: none;
 	color: black;
 	text-align: center;
@@ -564,13 +570,14 @@
 }
 .profile-changes-btn:hover{
 	animation: 0.8s ease-in;
-	background-color: rgb(120 169 233);
+	background-color: rgb(120 169 233/30%);
 }
 #logout-btn:hover{
 	cursor: pointer;
 }
 #logout-btn{
-	background-color: rgb(247, 80, 69);
+	background: rgb(247 80 69/10%);
+	backdrop-filter: blur(2px);
 	text-decoration: none;
 	color: black;
 	text-align: center;
@@ -591,7 +598,8 @@
 #post{
 	margin-top: 1%;
 	border-radius: 8px;
-	background-color: rgba(255,255,255,0.23);
+	background: rgba(255 255 255/23%);
+	backdrop-filter: blur(2px);
 	border: 2.5px solid black;
 }
 #post-user_id{
@@ -604,7 +612,8 @@
 	justify-content: space-between;
 	box-shadow: 0px 0px 3px 3px white inset;
 	border-radius: 8px 8px 0px 0px;
-	background-color: rgba(112, 190, 161,0.4);
+	background: rgba(112, 190, 161,0.4);
+	backdrop-filter: blur(4px);
 }
 #post-user_id:hover{
 	animation: 0.8s ease-in;
@@ -683,7 +692,8 @@
 
 #comment-post{
 	width: 20%;
-    background-color: rgba(50, 236, 128,0.4);
+    background: rgba(50, 236, 128,0.4);
+	backdrop-filter: blur(2px);
 	box-shadow: 0px 0px 1px 1px white inset;
     border: 1px solid black;
     border-radius: 5px;
@@ -699,7 +709,8 @@
 
 .no-decoration{
 	border: none;
-	background-color:rgb(161, 244, 213);
+	background:rgb(161 244 213 10%);
+	backdrop-filter: blur(2px);
 	width: 100%;
 	text-align: left;
 	padding-left: 2.5%;
@@ -719,6 +730,7 @@
 .forms{
 	position: relative;
 	background-color: rgba(0,255,255,0.72);
+	backdrop-filter: blur(2px);
 	display: flex;
 	width: 46%;
 	margin: auto;
@@ -821,7 +833,8 @@
 #abruptForms{
 	/* display: none; */
 	position: fixed;
-    background-color: #222;
+    background: rgb(50 50 50/20%);
+	backdrop-filter: blur(2px);
     width: 100%;
     top: 0;
     left: 0;
@@ -831,7 +844,8 @@
 #abruptPostForms{
 	/* display: none; */
 	position: fixed;
-    background-color: #222;
+    background: rgb(50 50 50/20%);
+	backdrop-filter: blur(2px);
     width: 100%;
     top: 0;
 	z-index: 9999;
