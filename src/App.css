@@ -812,7 +812,8 @@
 	padding: 1% 1% 0.5%;
 	border: 1px solid black;
 	border-radius: 2.8px;
-	background-color: rgb(215, 246, 250);
+	background-color: rgb(215 246 250/45%);
+	backdrop-filter: blur(0.5px);
 	padding: 2.5% 4%;
 	border: 1px solid black;
 }
