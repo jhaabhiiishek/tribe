@@ -232,7 +232,7 @@ function MainBody(e) {
         <div id='main-body'>
 			<div id="mobile-main-nav">
 				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/menu.png'} id='menu-img' alt='menu-icon'/>
-				<h1 id='branding-mobile'className='box-shadow' onClick={()=>{
+				<h1 id='branding-mobile' onClick={()=>{
 					userProfileClick([])
 					setSelectedPost([])
 					setLoadingAnimation(1)
@@ -257,7 +257,7 @@ function MainBody(e) {
 					setLoadingAnimation(1)
 					handleSelfClick()
 					setSelectedPost([])
-				}} className='box-shadow'>{profileName}</div>
+				}} >{profileName}</div>
 			</div>
 			<div id='play-area'>
 				<div id='action-center'>
