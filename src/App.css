@@ -433,8 +433,8 @@
 	padding: 1%;
 }
 .vals{
-	background: rgb(215 246 250/10%);
-	backdrop-filter: blur(2px);
+	background: rgb(215 246 250 /20%);
+	backdrop-filter: blur(1px);
 	border: 1px solid grey;
 	border-radius: 8px;
 	padding: 2.5% 4%;
@@ -455,8 +455,8 @@
     border-radius: 8px;
 }
 .view-all{
-	background: rgb(120 233 193/10%);
-	backdrop-filter: blur(2px);
+	background: rgb(120 233 193/65%);
+	backdrop-filter: blur(0.2px);
 	text-decoration: none;
 	color: black;
 	border: 1px solid grey;
@@ -556,8 +556,8 @@
 	align-items: center;
 }
 .profile-changes-btn{
-	background: rgb(120 169 233 / 20%);
-	backdrop-filter: blur(2px);
+	background: rgb(120 169 233 / 10%);
+	backdrop-filter: blur(0.5px);
 	text-decoration: none;
 	color: black;
 	text-align: center;
@@ -576,8 +576,8 @@
 	cursor: pointer;
 }
 #logout-btn{
-	background: rgb(247 80 69/10%);
-	backdrop-filter: blur(2px);
+	background: rgb(247 80 69/65%);
+	backdrop-filter: blur(0.2px);
 	text-decoration: none;
 	color: black;
 	text-align: center;
@@ -729,8 +729,7 @@
 }
 .forms{
 	position: relative;
-	background-color: rgba(0,255,255,0.72);
-	backdrop-filter: blur(2px);
+	background-color: rgba(0,255,255);
 	display: flex;
 	width: 46%;
 	margin: auto;
