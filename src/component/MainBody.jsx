@@ -62,6 +62,9 @@ function MainBody(e) {
 			withCredentials: true
 		}).then(response => {
 			if(response.data.success===1){
+				console.log(response)
+				console.log(response.data)
+				console.log(response.data.data[0])
 				const newPosts = response.data.data[0].map((post,index)=>(
 					<PostBody keyValue={index} data={response.data.data[0][index]}/>
 				))
