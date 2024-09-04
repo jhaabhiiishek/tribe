@@ -570,7 +570,7 @@
 }
 .profile-changes-btn:hover{
 	animation: 0.8s ease-in;
-	background-color: rgb(120 169 233/30%);
+	background-color: rgb(120 169 233/20%);
 }
 #logout-btn:hover{
 	cursor: pointer;
