@@ -531,8 +531,6 @@
 }
 #search-submit:hover{
 	border: 1px solid rgb(0, 153, 255);
-	background-color: rgb(34 34 34/10%);
-	backdrop-filter: blur(2px);
 	cursor: pointer;
 }
 #play-area{
