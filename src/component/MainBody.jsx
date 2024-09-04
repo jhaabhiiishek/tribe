@@ -237,7 +237,7 @@ function MainBody(e) {
 					setSelectedPost([])
 					setLoadingAnimation(1)
 					setUserPostsVisibility(0)
-				}}>Tribe.com</h1>
+				}}>TribeIn</h1>
 				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/settings.png'} id='settings-img' alt='settings-icon'/>
 			</div>
 			<div id='main-body-nav'>
@@ -277,7 +277,7 @@ function MainBody(e) {
 								):(
 									<></>
 								)}
-								<h1 style={{ fontSize:'x-large'}}>{actionState.length==0?('posts'):('profile')}</h1>
+								<h1 style={{ fontSize:'x-large'}}>{actionState.length==0?('Posts'):('Profile')}</h1>
 							</div>
 							{(selectedPost.length>0)?(
 								<SelectionPost/>
