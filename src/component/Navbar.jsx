@@ -194,7 +194,7 @@ function Navbar() {
                     userProfileClick([])
                     setSelectedPost([])
                     setUserPostsVisibility(0)
-                }} >Tribe.com</h1>
+                }} >TribeIn</h1>
                 <h1 className='subgroup-heading'> Friends </h1>
                 <div className='vals-container'>
                     {(friendsList!==undefined)?(friendsList.slice(0,3).map((item)=>(
