@@ -106,7 +106,6 @@ function Navbar() {
         setLoadingAnimation(1)
         setUserPostsVisibility(0)
         userProfileClick(tribesList)
-        userProfileClick(friendsList)
         setLoadingAnimation(0)
     }
 
