@@ -127,12 +127,12 @@ function MainBody(e) {
 	const onSearch = (searchTerm) => {
 		setSelectedPost([])
 		userProfileClick([])
-		setUserPostsVisibility(0)
 		setLoadingAnimation(1)
+		setUserPostsVisibility(0)
 		api.post('/search',{
 			user_id:student.user_id,
 			key:searchTerm,
-			noOfValues:5
+			noOfValues:20
 		},{
 			withCredentials: true
 		}).then(response => {
