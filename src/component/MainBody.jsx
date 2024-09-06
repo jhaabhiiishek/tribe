@@ -248,7 +248,7 @@ function MainBody(e) {
 					</div>
 				</form>
 				<div id='notifications'>
-					<img  className='box-shadow' onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/icons8-notifications-78.png'} id='notif-img'/>
+					<img  className='box-shadow' onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/likes.png'} id='notif-img'/>
 				</div>
 				<div id='profile-btn' onClick={()=>{
 					setLoadingAnimation(1)
@@ -274,7 +274,7 @@ function MainBody(e) {
 								):(
 									<></>
 								)}
-								<h1 style={{ fontSize:'x-large'}}>{actionState.length==0?('Posts'):('Profile')}</h1>
+								<h1 className='subgroup-heading' style={{ fontSize:'x-large'}}>{actionState.length==0?('Posts'):('Profile')}</h1>
 							</div>
 							{(selectedPost.length>0)?(
 								<SelectionPost/>

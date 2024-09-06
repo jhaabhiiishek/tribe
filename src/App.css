@@ -390,9 +390,10 @@
 	margin-top: 6%;
 	font-size: 40px;
 	width: max-content;
-	padding: 2% 4.5% 2% 0%;
+	padding: 2% 4.5%;
 	border-radius: 5px;
 	margin-bottom: 6%;
+	border:1px solid black
 }
 @keyframes bg-slide {
 	0% {
@@ -419,7 +420,10 @@
 }
 .subgroup-heading{
 	font-size: x-large;
-	margin-bottom: 4%;
+	font-weight: 100;
+}
+.left-subgroup-heading{
+	font-size: x-large;
 	margin-top: 7.5%;
 	margin-bottom: 4%;
 }
@@ -472,37 +476,32 @@
 	-webkit-text-fill-color: unset;
 } */
 #profile-btn{
-	background: url('../public/animation_pattern.jpeg') repeat-y;
-	margin-left: 5%;
+	margin-left: 7%;
     font-size: large;
-    background-size: cover;
-	background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: bg-slide 60s linear infinite;
     align-self: flex-end;
     font-weight: bold;
     /* margin-bottom: 1%; */
     font-size: x-large;
-    padding: 1.2% 0% 1.2% 1.5%;
+    padding: 1.2% 1.5%;
     border-radius: 6px;
-
+	border: 1px solid black;
 }
 #notif-img{
 	width: 60%;
-	border: 2px solid #00a2ff;
+	border: 1.5px solid black;
 	background-color: white;
-    border-radius: 10px;
+    border-radius: 8px;
+	padding: 8%;
 }
 #settings-img{
 	width: 60%;
-	border: 2px solid #00a2ff;
+	border: 1px solid #00a2ff;
 	background-color: white;
     border-radius: 10px;
 }
 #menu-img{
 	width: 60%;
-	border: 2px solid #00a2ff;
+	border: 1px solid #00a2ff;
 	background-color: white;
     border-radius: 10px;
 }
@@ -723,7 +722,6 @@
 }
 .forms{
 	position: relative;
-	background-color: rgba(0,255,255);
 	display: flex;
 	width: 46%;
 	margin: auto;
@@ -734,6 +732,10 @@
 	margin-top: 8%;
 	padding-top: 1%;
 	padding-bottom: 2%;
+	/* background-color: #08AEEA;background-image:linear-gradient(0deg,#08AEEA 0%,#2AF598 100%); */
+	background-color: #bee0e7;
+	backdrop-filter: blur(10px);
+	/* background-image: linear-gradient(19deg,#21D4FD 0%,#B721FF 100%); */
 }
 
 .forms>label{
@@ -750,7 +752,7 @@
 	margin: auto;
 	line-height: 1.36;
 	border-radius: 1% 1% 1% 1%;
-	border: 2px solid black;
+	border: 1px solid black;
 	margin-top: 1%;
 }
 .forms>input{
@@ -759,7 +761,7 @@
 	font-size: larger;
 	margin: auto;
 	border-radius: 5px;
-	border: 2px solid black;
+	border: 1px solid black;
 	margin-top: 1%;
 }
 .forms>div>input{
@@ -768,7 +770,7 @@
 	font-size: larger;
 	margin: auto;
 	border-radius: 5px;
-	border: 2px solid black;
+	border: 1px solid black;
 	
 	margin-top: 2%;
 }
@@ -1041,7 +1043,7 @@
 		padding: 1.5% 3%;
 		background-color: white;
 		width: 40px;
-		border: 2px solid black;
+		border: 1px solid black;
 	}
 	#branding-mobile{
 		background: url('../public/animation_darkweb.jpeg') repeat-y;

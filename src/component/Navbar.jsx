@@ -193,8 +193,8 @@ function Navbar() {
                     userProfileClick([])
                     setSelectedPost([])
                     setUserPostsVisibility(0)
-                }} >TribeIn</h1>
-                <h1 className='subgroup-heading'> Friends </h1>
+                }} >Tribein</h1>
+                <h1 className='subgroup-heading left-subgroup-heading'> Friends </h1>
                 <div className='vals-container'>
                     {(friendsList!==undefined)?(friendsList.slice(0,3).map((item)=>(
 						<div className='vals box-shadow' onClick={()=>{handleFriendClick(item)}}>{item}</div>
@@ -203,7 +203,7 @@ function Navbar() {
                     )}
                 </div>
                 <a className='view-all box-shadow' onClick={(e)=>{handleFriendsViewAll(e)}}>view all</a>
-                <h1 className='subgroup-heading'> Tribes</h1>
+                <h1 className='subgroup-heading left-subgroup-heading'> Tribes</h1>
                 <div className='vals-container'>
                     {(tribesList&&tribesList.length>0)?(tribesList.slice(0,3).map((item)=>( 
 						<div className='vals box-shadow' onClick={()=>{handleTribeClick(item)}}>{item.name}</div>
