@@ -4,10 +4,8 @@ import axios from 'axios';
 import {ToastContainer, toast} from 'react-toastify';
 import getCookie from './getCookie';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
 
+import api from './api';
 
 function PostParent(e) {
 	const [posts, setPosts] =useState([])

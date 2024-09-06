@@ -14,12 +14,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import UploadImage from './uploadImage'
 
 
-
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
-
+import api from './api';
 function Form(e) {
+	const student = getCookie()
 	const [loginusername, setLoginUsername] = useState("");
     const [loginpassword, setLoginPassword] = useState("");
 	const [email, setEmail] = useState("");
@@ -28,7 +25,7 @@ function Form(e) {
 	const nullCookieState = useSelector(state => state.nullCookie)	
 	const fileUploadedState = useSelector(state => state.fileUploaded)	
     const actionState = useSelector(state => state.actionArea)
-  	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
+	const {setNullCookie,setUserPostsVisibility,setSelectedPost,setLoadingAnimation,setSentRequests,setConnectedUsers} = bindActionCreators(actionCreators, dispatch)
 	const [pwdChange, setPwdChange] = useState(false)
 	const [otp, setOtp] = useState("")
 	const [newPass, setNewPass] = useState("")
@@ -78,11 +75,12 @@ function Form(e) {
 				}
 			})
 			api.post('/fetch_notifications',{
-				user_id:studentCookie.user_id
+				user_id:studentCookie.user_id,
 			}, {
 				withCredentials: true,
 			}).then(response => {
 				if(response.data.success===1){
+					console.log(response)
 					setNotifications(response.data.data)
 				}else{
 					diffToast(response)
@@ -725,6 +723,36 @@ function Form(e) {
 				diffToast(response)
 			});
 		}
+		const displaySelectedPost = async (e,data)=>{
+			console.log(data)
+			var postArray = []
+			setSelectedPost([])
+			await api.post('/fetch_post_by_id',{
+				user_id:student.user_id,
+				post_owner:student.user_id,
+				user_post_id:data,
+			}, {
+				withCredentials: true,
+			}).then(async(response) => {
+				postArray.push(response.data)
+			})
+			await api.post('/fetchpostcomment',{
+				user_id:student.user_id,
+				post_by_user_id:student.user_id,
+				user_post_id:data,
+				entries_required:50
+			}, {
+				withCredentials: true,
+			}).then(async(response) => {
+				console.log(response)
+				var comments = response.data.data
+				for(var v=0;v<comments.length;v++){
+					postArray.push(comments[v])
+				}
+				setSelectedPost(postArray)
+				closePasswordSubmit(e)
+			})
+		}
 		return (
 			<form id='abruptForms'>
 				<div className='forms' style={{marginTop:'2.5%'}}>
@@ -733,8 +761,8 @@ function Form(e) {
 					{notifications!==null&&notifications.map((notification) => {
 						return(
 							<div className='notification'>
-								<div className='notification-text'>
-									{notification}
+								<div onClick={(e)=>displaySelectedPost(e,notification.action_on_post_id)} className='notification-text'>
+									{notification.action_performed_by} {notification.type} {(notification.type=='liked')?(''):('on')} your post
 								</div>
 							</div>
 						)

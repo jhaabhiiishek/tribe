@@ -11,9 +11,7 @@ import { useSelector } from 'react-redux';
 
 import Comment from './comment';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
+import api from './api';
 function SelectionPost(e) {
     const dispatch = useDispatch()
 	const {userProfileClick,setUserPostsVisibility,setSentRequests,setLoadingAnimation,setSelectedPost} = bindActionCreators(actionCreators, dispatch)

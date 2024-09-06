@@ -20,10 +20,7 @@ import Cookies from 'js-cookie';
 import SelectionPost from './selectionPost';
 import { setLoadingAnimation } from '../state/action-creators';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
-
+import api from './api';
 
 function MainBody(e) {
 	const [nullCookie, setNullCookie] = useState(true);
@@ -62,9 +59,6 @@ function MainBody(e) {
 			withCredentials: true
 		}).then(response => {
 			if(response.data.success===1){
-				console.log(response)
-				console.log(response.data)
-				console.log(response.data.data[0])
 				const newPosts = response.data.data[0].map((post,index)=>(
 					<PostBody keyValue={index} data={response.data.data[0][index]}/>
 				))

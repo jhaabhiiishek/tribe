@@ -8,9 +8,8 @@ import { useRef } from 'react';
 import $ from 'jquery' 
 
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
+
+import api from './api';
 function Compose() {
     const student = getCookie()
 	const [text,setText] = useState('')

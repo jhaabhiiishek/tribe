@@ -8,10 +8,8 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import { useSelector } from 'react-redux';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
 
+import api from './api';
 
 function TribePosts() {
 	const actionState = useSelector(state => state.actionArea)

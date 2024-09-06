@@ -11,9 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Form from './Form';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
+import api from './api';
 function Profile(e) {
     const actionState = useSelector(state => state.actionArea)
 	const connects = useSelector(state=> state.connectedUser)

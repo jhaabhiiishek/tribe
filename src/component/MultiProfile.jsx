@@ -8,9 +8,7 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import axios from 'axios';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
+import api from './api';
 function MultiProfile(e) {
 
 	const actionState = useSelector(state => state.actionArea)

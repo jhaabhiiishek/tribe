@@ -8,6 +8,7 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode'
 
 
+import api from './api';
 
 function App() {
 
@@ -37,9 +38,7 @@ function App() {
     } catch (error) {
     }
   };
-  const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-  });
+  
   var nullCookie = true;
   var res_otp ;
   var res_email_sub;

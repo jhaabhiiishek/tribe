@@ -11,9 +11,7 @@ import { actionCreators } from '../state';
 import { useSelector } from 'react-redux';
 import { setLoadingAnimation } from '../state/action-creators';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
+import api from './api';
 function Comment(e) {
     const value = e.value
     const student = getCookie()

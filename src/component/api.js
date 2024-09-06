@@ -1,9 +1,6 @@
 import axios from 'axios';
-function api(){
-	const api = axios.create({
-		baseURL: 'https://tribe.azurewebsites.net',
-	});
-	return api;
-}
-
+const api = axios.create({
+	// baseURL: 'http://localhost:8080/'
+	baseURL: 'https://tribe-backend-sl5g.onrender.com/',
+});
 export default api

@@ -7,10 +7,7 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import Form from './Form';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
-
+import api from './api';
 function Navbar() {
     const [friendsList, setFriends] = useState([])
     const [formType, setFormType] = useState('')
@@ -68,6 +65,20 @@ function Navbar() {
         }
     }
 
+    const fetchTribes=()=>{
+        const studentCookie= getCookie();
+        if(studentCookie!==undefined){
+            api.post('/fetch_tribes',{
+                user_id:studentCookie.user_id
+            },{
+                withCredentials: true
+            }).then(response => {
+                    setTribeList(response.data.data)
+            })
+        }
+    }
+
+
     const handleFriendsViewAll=()=>{
         setSelectedPost([])
         userProfileClick([])
@@ -95,21 +106,10 @@ function Navbar() {
         setLoadingAnimation(1)
         setUserPostsVisibility(0)
         userProfileClick(tribesList)
+        userProfileClick(friendsList)
         setLoadingAnimation(0)
     }
 
-    const fetchTribes=()=>{
-        const studentCookie= getCookie();
-        if(studentCookie!==undefined){
-            api.post('/fetch_tribes',{
-                user_id:studentCookie.user_id
-            },{
-                withCredentials: true
-            }).then(response => {
-                    setTribeList(response.data.data)
-            })
-        }
-    }
 
     const handleFriendClick = (e)=>{
         userProfileClick([])

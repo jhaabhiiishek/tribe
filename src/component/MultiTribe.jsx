@@ -8,9 +8,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 
-const api = axios.create({
-    baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
+import api from './api';
 
 function MultiTribe(e) {
 	const actionState = useSelector(state => state.actionArea)

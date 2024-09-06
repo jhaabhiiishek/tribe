@@ -20,12 +20,11 @@ import { actionCreators } from '../state';
 import { useSelector } from 'react-redux';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import LoadingAnimation from './LoadingAnimation';
+import api from './api';
 
 
 const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
-const api = axios.create({
-  baseURL: 'https://tribe-backend-sl5g.onrender.com/',
-});
+
 function App() {
 
     const [loading, setLoading] = useState(true);
