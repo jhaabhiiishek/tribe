@@ -522,10 +522,10 @@
 }
 #search-submit{
 	padding: 2.5% 4%;
-	border: 1px solid cyan;
+	border: 1px solid black;
 	margin-left: 6%;
-	color: white;
-	background-color: rgb(34 34 34/100%);
+	color: #222;
+	background-color: white;
 	border-radius: 8px;
 }
 #search-submit:hover{
