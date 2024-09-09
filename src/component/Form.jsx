@@ -452,7 +452,6 @@ function Form(e) {
 				  <input type="password" value={loginpassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder="Enter Password" name="loginpassword" required></input>
 				  <button onClick={(e)=>loginSubmit(e)} type='submit'>Login</button>
 				</div>
-				<ToastContainer/>
 			</form>
 		)
 	}else if(e.type==='passChange'){
@@ -469,7 +468,6 @@ function Form(e) {
 						<input type='password' value={confPass} onChange={(e) => setConfPass(e.target.value)} placeholder='confirm password' name='confirm password' required></input>
 						<button onClick={(e)=>changePasswordSubmit(e)} >Submit</button>
 					</div>
-					<ToastContainer/>
 				</form>
 			):(
 				<form id='abruptForms'>
@@ -479,7 +477,6 @@ function Form(e) {
 						<input type='text' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='email' name='email' required></input>
 						<button onClick={(e)=>sendMail(e)} >Submit</button>
 					</div>
-					<ToastContainer/>
 				</form>
 			)
 		)
@@ -539,7 +536,6 @@ function Form(e) {
 					</div>
 					<button onClick={(e)=>changeProfileDetails(e)} >Submit</button>
 				</div>
-				<ToastContainer/>
 			</form>
 		)
 	}else if(e.type==='enterStudentDetails'){
@@ -598,7 +594,6 @@ function Form(e) {
 					</div>
 					<button onClick={(e)=>enterStudentProfileDetails(e)} >Submit</button>
 				</div>
-				<ToastContainer/>
 			</form>
 		)
 	}else if(e.type==='createPost'){
@@ -613,7 +608,6 @@ function Form(e) {
 					<UploadImage/>
 					<button onClick={(e)=>createPost(e)} type='submit'>Create</button>
 				</div>
-				<ToastContainer/>
 			</form>
 		)
 	}else if(e.type==='createTribe'){
@@ -782,7 +776,6 @@ function Form(e) {
 					})}
 					{/* {linkRequests===null && tribeInvites===null &&<div className='search-result box-shadow'>No notifications</div>} */}
 				</div>
-				<ToastContainer/>
 			</form>
 		)
 	}else if(e.type==="inviteMembers"){
