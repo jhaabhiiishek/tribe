@@ -609,7 +609,7 @@ function Form(e) {
 					<button id='formCloseBtn' onClick={(e)=>closePostSubmit(e)} >X</button>
 					<label >{studentCookie.user_id}</label>
 					<textarea onKeyDown={()=>checkMaxWarning()} maxLength='1000' minLength='1' type='text' value={postText} onChange={(e) => setPostText(e.target.value)} placeholder='Compose your post!' style={{width:'80%',height:'250px',resize:'none'}} name='postText' required></textarea>
-					<span style={{fontSize:'x-small',color:'black',marginTop:'2%'}}>Ideal Aspect ratio for upload is 1:1</span>
+					<span style={{fontSize:'x-small',color:'black',marginTop:'2%'}}>Ideal Aspect ratio for upload is 3:4</span>
 					<UploadImage/>
 					<button onClick={(e)=>createPost(e)} type='submit'>Create</button>
 				</div>
