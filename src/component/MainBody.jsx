@@ -285,11 +285,15 @@ function MainBody(e) {
 										(actionState[0][0]&&(actionState[0][0].user_id!==undefined&&actionState[0][0].user_id!==null))?(
 									<>
 										<MultiProfile/>
-									</>):(
-										<>
-											<Profile/>
-											<PostParent user_id={actionState[0].user_id}/>
-										</>
+									</>):((actionState.length>0 && actionState[0].user_id!=null && actionState[0].user_id!=undefined)?(
+											<>
+												<Profile/>
+												<PostParent user_id={actionState[0].user_id}/>
+											</>
+										):(
+											<div className='search-result box-shadow'>No results match your search</div>
+										)
+										
 									)
 								):((actionState[1]&&(actionState[1].tribe_id!==undefined&&actionState[1].tribe_id!==null))?(
 									<>
@@ -300,7 +304,6 @@ function MainBody(e) {
 									<>
 										<Profile/>
 										<TribePosts/>
-										{console.log(actionState)}
 									</>
 								)
 								
