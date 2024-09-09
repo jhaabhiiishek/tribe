@@ -80,7 +80,6 @@ function Form(e) {
 				withCredentials: true,
 			}).then(response => {
 				if(response.data.success===1){
-					console.log(response)
 					setNotifications(response.data.data)
 				}else{
 					diffToast(response)
@@ -189,7 +188,6 @@ function Form(e) {
 					let tribe_id=response.data.data.tribe_id
 					let check_val = 0;
 					for(var i=0;i<inviteMembers.size;i++){
-						console.log(memarray[i])
 						await api.post('/tribe_invite',{
 							user_id:studentCookie.user_id,
 							tribe_id:tribe_id,
@@ -242,7 +240,6 @@ function Form(e) {
 			let tribe_id=actionState[0].tribe_id
 			let check_val = 0;
 			for(var i=0;i<inviteMembers.size;i++){
-				console.log(memarray[i])
 				await api.post('/tribe_invite',{
 					user_id:studentCookie.user_id,
 					tribe_id:tribe_id,
@@ -307,8 +304,6 @@ function Form(e) {
 				const value = JSON.stringify(valueObj)
 				Cookies.set("student",value,{ expires: 7 });
 				const cookie = getCookie()
-				console.log(cookie)
-				console.log(nullCookieState)
 				
 				if(cookie!==undefined){
 					setNullCookie(0)
@@ -367,7 +362,6 @@ function Form(e) {
 	const sendMail = async(e)=>{
 		e.preventDefault();
 		const student = getCookie()
-		console.log(student)
 			const waiting= toast.loading("Please wait...")
 			await api.post('/email_otp_change_pwd',{
 				email_id:email
@@ -399,7 +393,6 @@ function Form(e) {
 		if(newInterest!==''){
 			addInterests.add(newInterest)
 			setAddInterests(addInterests)
-			console.log(addInterests)
 			setNewInterest('')
 		}
 	}
@@ -408,7 +401,6 @@ function Form(e) {
 		if(newTribeTag!==''){
 			tribeTags.add(newTribeTag)
 			setTribeTags(tribeTags)
-			console.log(tribeTags)
 			setNewTribeTag('')
 		}
 	}
@@ -417,7 +409,6 @@ function Form(e) {
 		if(newMember!==''){
 			inviteMembers.add(newMember)
 			setInviteMembers(inviteMembers)
-			console.log(inviteMembers)
 			setNewMember('')
 		}
 	}
@@ -693,7 +684,6 @@ function Form(e) {
 				withCredentials: true,
 			}).then(response => {
 				diffToast(response.data.msg)
-				console.log(response)
 			});
 			// setTimeout(()=>{window.location.reload()},2500)
 		}
@@ -710,7 +700,6 @@ function Form(e) {
 		}
 		const responsetriberequest = async(e,invite,responseToinvite)=>{
 			e.preventDefault()
-			console.log(studentCookie.user_id,responseToinvite,invite._id)
 			await api.post('/response_tribe_invites',{
 				user_id:studentCookie.user_id,
 				response_to_invite:responseToinvite,
@@ -718,13 +707,11 @@ function Form(e) {
 			}, {
 				withCredentials: true,
 			}).then(response => {
-				console.log(response)
 				linkRequests.filter(n=>n!= invite)
 				diffToast(response)
 			});
 		}
 		const displaySelectedPost = async (e,data)=>{
-			console.log(data)
 			var postArray = []
 			setSelectedPost([])
 			await api.post('/fetch_post_by_id',{
@@ -744,7 +731,6 @@ function Form(e) {
 			}, {
 				withCredentials: true,
 			}).then(async(response) => {
-				console.log(response)
 				var comments = response.data.data
 				for(var v=0;v<comments.length;v++){
 					postArray.push(comments[v])

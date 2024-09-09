@@ -268,7 +268,6 @@ function App() {
 			document.getElementById('abruptForms').style.display='block'
 		}
 		if(e.target.innerHTML==='Change Password'){
-      console.log("daba tojh hi")
 			setFormType('passChange')
 		}else if(e.target.innerHTML==='Edit Profile'){
 			setFormType('editProfile')

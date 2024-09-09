@@ -91,11 +91,9 @@ function Comment(e) {
     }
 
     const likePost = async (e)=>{
-        console.log(e.target.parentNode.style.backgroundColor)
         if(e.target.parentNode.style.backgroundColor=='#e56363'||e.target.parentNode.style.backgroundColor=='rgb(229, 99, 99)'){
             e.target.parentNode.style.backgroundColor='#bdb9b9'
         }else{
-            console.log("bdb9b9")
             e.target.parentNode.style.backgroundColor='#e56363'
         }
         await api.post('/upvote',{
