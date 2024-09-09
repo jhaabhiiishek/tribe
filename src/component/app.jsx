@@ -355,7 +355,7 @@ function App() {
             (
               emailVerified?(
                 signup?(
-                  <div className='forms'>
+                  <div className='forms' style={{alignItems:'center'}}>
                     <h1 id='branding'className='box-shadow'>Tribein</h1>
                     <label htmlFor="email">Email-id</label>
                     <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Enter a username' name='username'></input>
