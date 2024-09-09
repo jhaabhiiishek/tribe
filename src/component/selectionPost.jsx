@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import { useSelector } from 'react-redux';
-
+import ImageComponent from './ImageComponent';
 import Comment from './comment';
 
 import api from './api';
@@ -226,7 +226,7 @@ function SelectionPost(e) {
 					):(<></>)}
 				</div>
 				<h3 id='post-text' onClick={()=>displaySelectedPost(selectedPost[0])}>{selectedPost[0].text}</h3>
-                {data.media_link?<img id='post-user-image' src={data.media_link}></img>:<></>}
+                {data.media_link?<ImageComponent  src={data.media_link}/>:<></>}
 				<div id='like-div'  onClick={(e)=>likePost(e)} style={{backgroundColor:bgCol}}>
 					{/*<a id="like-anchor" > */}
 						<img id="like-image" src={process.env.PUBLIC_URL+"/notifications.png"}>

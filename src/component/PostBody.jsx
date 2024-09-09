@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useSelector,useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
+import ImageComponent from '../component/ImageComponent'
 
 import api from './api';
 function PostBody(e) {
@@ -236,7 +237,8 @@ function PostBody(e) {
                 ):(<></>)}
             </div>
             <h3 id='post-text' onClick={()=>displaySelectedPost(data)}>{data.text}</h3>
-            {data.media_link?<img id='post-user-image' src={data.media_link}></img>:<></>}
+            {data.media_link?<ImageComponent src={data.media_link}/>:<></>}
+
             <div id='like-div'  onClick={(e)=>likePost(e)} style={{backgroundColor:bgCol}}>
                 {/*<a id="like-anchor" > */}
                     <img id="like-image" src={process.env.PUBLIC_URL+"/notifications.png"}>

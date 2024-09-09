@@ -565,7 +565,7 @@
 	animation: 0.8s ease-in;
 	background-color: rgb(120 169 233/20%);
 }
-#post-user-image{
+.image{
 	display: block;
     height: auto;
     margin-bottom: 2%;
@@ -573,6 +573,8 @@
     margin-right: auto;
     width: 96%;
 }
+
+
 #logout-btn:hover{
 	cursor: pointer;
 }
