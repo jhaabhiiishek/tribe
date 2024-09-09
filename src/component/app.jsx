@@ -371,11 +371,11 @@ function App() {
                     {formType===''?(''):(<Form type={formType}/>)}
                     <Form type="login"/>
                     <div id='login-div-options'>
-                      <div style={{display: "flex",flexDirection: "column",justifyContent: "space-around"}}>
-                        <a onClick={()=>setEmailVerified(false)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",borderRadius:"6px",marginRight: "4%",padding: "7.5% 3%",textAlign:"center"}}>Sign up</a>
-                        <a onClick={(e)=>handleChangeClick(e)} style={{border:" 1px solid black",backgroundColor: "rgba(0,255,255,0.1)",borderRadius:"6px",marginRight: "4%",padding: "7.5% 3%",marginTop:"10%",marginBottom:"10%",textAlign:"center"}}>Change Password</a>
+                      <div id='login-form-layout'>
+                        <a onClick={()=>setEmailVerified(false)} className='login-btns-control'>Sign up</a>
+                        <a onClick={(e)=>handleChangeClick(e)} className='login-btns-control'>Change Password</a>
+                        <GLogin/>
                       </div>
-                      <GLogin/>
                     </div>
                   </div>
                 )
