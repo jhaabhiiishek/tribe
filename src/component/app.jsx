@@ -322,9 +322,9 @@ function App() {
       <GoogleOAuthProvider clientId={client_id} >
         <div id='app'>
             {loading?(
-                <div className="loading-animation">
-                  <LoadingAnimation/>
-                </div>
+                  <div className="loading-animation">
+                    <LoadingAnimation/>
+                  </div>
             ):(
               nullCookieState==0?(
                 // <div className='blur' id='compose'>
@@ -356,6 +356,7 @@ function App() {
               emailVerified?(
                 signup?(
                   <div className='forms'>
+                    <h1 id='branding'className='box-shadow'>Tribein</h1>
                     <label htmlFor="email">Email-id</label>
                     <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder='Enter a username' name='username'></input>
                     <input type='email' value={email} onChange={(e) => setEmailVerified(e.target.value)} placeholder='Enter email' name='email'></input>
@@ -381,26 +382,27 @@ function App() {
                 )
               ):(
                 emailOtpVerify?(
-                  <form>
-                    <div className='forms'>
-                      <label htmlFor="email">E-mail</label>
-                      <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                      <input type='text' placeholder='Enter OTP' name='otp' required value={otp} onChange={(e) => setOtp(e.target.value)}></input>
-                      <button onClick={(e)=>otpSubmit(e)} type='submit'>Verify Otp</button>
-                    </div>
-                    <ToastContainer/>
-                  </form>
+                    <form>
+
+                      <div className='forms'>
+                        <label htmlFor="email">E-mail</label>
+                        <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                        <input type='text' placeholder='Enter OTP' name='otp' required value={otp} onChange={(e) => setOtp(e.target.value)}></input>
+                        <button onClick={(e)=>otpSubmit(e)} type='submit'>Verify Otp</button>
+                      </div>
+                      <ToastContainer/>
+                    </form>
                 ):(
-                  <form>
-                    <div className='forms'>
-                      <label htmlFor="email">E-mail</label>
-                      <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                      <button onClick={emailSubmit} type='submit'>Verify Email</button>
-                      <a onClick={loginfromemail}>Login instead</a>
-                      <GLogin/>
-                    </div>
-                    <ToastContainer/>
-                  </form>
+                    <form>
+                      <div className='forms'>
+                        <label htmlFor="email">E-mail</label>
+                        <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                        <button onClick={emailSubmit} type='submit'>Verify Email</button>
+                        <a onClick={loginfromemail}>Login instead</a>
+                        <GLogin/>
+                      </div>
+                      <ToastContainer/>
+                    </form>
                 )
               )
             )

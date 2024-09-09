@@ -803,12 +803,14 @@
 	margin-top: 2%;
 }
 .forms>button{
-	width: 14%;
-	padding:1%;
+	text-wrap: nowrap;
+	padding:1% 3%;
 	font-size: larger;
 	margin: auto;
 	margin-top: 2%;
 	border-radius: 6px;
+	
+	border: 1px solid black;
 }
 .forms>div>button{
 	width: 14%;
@@ -818,12 +820,15 @@
 	margin-top: 2%;
 	border-radius: 6px;
 	margin-bottom: 2%;
+	border: 1px solid black;
 }
 .forms>button:hover{
-	background-color: rgb(121, 252, 219);
+	background-color:#47bed9;
+	border: 1px solid #47bed9;
 }
 .forms>div>button:hover{
-	background-color: rgb(121, 252, 219);
+	background-color: #47bed9;
+	border: 1px solid #47bed9;
 }
 .forms>a{
 	margin: 0;
@@ -1035,7 +1040,7 @@
 		font-size: x-large;
 		padding: 3% 1.5%;
 		margin-top: 5%;
-		width: 40%;
+		text-wrap: nowrap;
 	}
 }
 #abruptForms,#abruptPostForms{
