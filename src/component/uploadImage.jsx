@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import { event } from 'jquery';
+import getCookie from './getCookie';
 const firebaseConfig = {
     apiKey: "AIzaSyDghvHV7wJfe9BB9-ocK6IDulZIGRlYBh4",
     authDomain: "tribe-main-proj.firebaseapp.com",
@@ -33,13 +34,27 @@ function UploadImage() {
     setSelectedImage(event.target.files[0]);
   };
 
+  function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+
+
   const handleImageUpload = async (e) => {
     e.preventDefault();
     if (!selectedImage) {
       return;
     }
-
-    const storageRef = ref(storage, `images/${selectedImage.name}`);// Adjust the path as needed
+    
+    const studentCookie = getCookie()
+    const storageRef = ref(storage, `images/${studentCookie.user_id+selectedImage.name+makeid(5)}`);// Adjust the path as needed
     const uploadTask = uploadBytesResumable(storageRef, selectedImage);
 
       uploadTask.on('state_changed',
