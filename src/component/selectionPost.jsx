@@ -226,7 +226,7 @@ function SelectionPost(e) {
 					):(<></>)}
 				</div>
 				<h3 id='post-text' onClick={()=>displaySelectedPost(selectedPost[0])}>{selectedPost[0].text}</h3>
-                {data.media_link?<ImageComponent  src={data.media_link}/>:<></>}
+                {selectedPost[0].media_link?<ImageComponent  src={selectedPost[0].media_link}/>:<></>}
 				<div id='like-div'  onClick={(e)=>likePost(e)} style={{backgroundColor:bgCol}}>
 					{/*<a id="like-anchor" > */}
 						<img id="like-image" src={process.env.PUBLIC_URL+"/notifications.png"}>
