@@ -665,7 +665,6 @@ function Form(e) {
 					<UploadImage/>
 					<button onClick={(e)=>createTribePost(e)} type='submit'>Tribe Compose</button>
 				</div>
-				<ToastContainer/>
 			</form>
 		)
 	}else if(e.type==='notifications'){

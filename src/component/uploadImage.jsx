@@ -10,15 +10,14 @@ import { actionCreators } from '../state';
 import { event } from 'jquery';
 import getCookie from './getCookie';
 const firebaseConfig = {
-    apiKey: "AIzaSyDghvHV7wJfe9BB9-ocK6IDulZIGRlYBh4",
-    authDomain: "tribe-main-proj.firebaseapp.com",
-    projectId: "tribe-main-proj",
-    storageBucket: "tribe-main-proj.appspot.com",
-    messagingSenderId: "533647502304",
-    appId: "1:533647502304:web:9ca45b8b4fc5fca83e9985",
-    measurementId: "G-Z2LLK5DLL1"
-  };
-
+  apiKey: process.env.FIREBASE_API,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.SENDER_ID,
+  appId:process.env.APP_ID ,
+  measurementId: process.env.MEASUREMENT_ID
+};
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
