@@ -34,6 +34,11 @@ function GLogin(){
 					setNullCookie(0)
 				}
 			}
+			else{
+				toast.error(response.data.msg,{
+					position:"bottom-center"
+				});
+			}
 		})
 	}
 	const onFailure=(res)=>{
