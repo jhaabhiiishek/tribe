@@ -364,7 +364,6 @@ function App() {
                     <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' name='confirmpassword'></input>
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
                     <a onClick={()=>setSignup(false)}>Login instead</a>
-                    <GLogin/>
                     <ToastContainer/>
                   </div>
                 ):(
@@ -399,7 +398,6 @@ function App() {
                         <input type='text' placeholder='Enter email' name='email' required value={email} onChange={(e) => setEmail(e.target.value)}></input>
                         <button onClick={emailSubmit} type='submit'>Verify Email</button>
                         <a onClick={loginfromemail}>Login instead</a>
-                        <GLogin/>
                       </div>
                       <ToastContainer/>
                     </form>
