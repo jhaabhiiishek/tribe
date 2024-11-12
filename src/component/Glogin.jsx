@@ -3,7 +3,7 @@ import { GoogleLogin,GoogleOAuthProvider } from '@react-oauth/google';
 import Cookies from 'js-cookie';
 import getCookie  from './getCookie'
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { toast,ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
@@ -16,6 +16,9 @@ function GLogin(){
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
 		const authCode = res;
+		toast.loading("Logging in...",{
+			position:"bottom-center"
+		});
 		//write code here for accessing token
 		api.post('/login',{
 				g_pass:authCode 
@@ -34,6 +37,9 @@ function GLogin(){
 				if(cookie!==undefined){
 					setNullCookie(0)
 				}
+				toast.success(response.data.msg,{
+					position:"bottom-center"
+				});
 			}
 			else{
 				toast.error(response.data.msg,{
@@ -46,12 +52,15 @@ function GLogin(){
 		console.log("Login Failed ",res)
 	}
 	return(
-		<GoogleLogin
-			onSuccess={onSuccess}
-			onError={onFailure}
-			useOneTap
-			flow="auth-code"
-		/>
+		<>
+			<GoogleLogin
+				onSuccess={onSuccess}
+				onError={onFailure}
+				useOneTap
+				flow="auth-code"
+			/>
+			<ToastContainer/>
+		</>
 	)
 }
 export default GLogin
