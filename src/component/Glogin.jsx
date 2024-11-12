@@ -16,7 +16,7 @@ function GLogin(){
 	const {setNullCookie} = bindActionCreators(actionCreators, dispatch)
 	const onSuccess=(res)=>{
 		const authCode = res;
-		toast.loading("Logging in...",{
+		toast.info("Logging in...",{
 			position:"bottom-center"
 		});
 		//write code here for accessing token
@@ -42,9 +42,11 @@ function GLogin(){
 				});
 			}
 			else{
-				toast.error(response.data.msg,{
-					position:"bottom-center"
-				});
+				if(response.data.success===0){
+					toast.error("No such account, Sign up!",{
+						position:"bottom-center"
+					});
+				}
 			}
 		})
 	}
