@@ -361,8 +361,8 @@
 }
 #nav-group{
 	/* background-color: aquamarine; */
-	margin-left: 8%;
-	width: 92%;
+	margin-left: 30%;
+	width: 70%;
 }
 .nav-element{
 	font-size: x-large;
@@ -407,14 +407,14 @@
 	}  
 }
 .compose{
-	margin-left:8%;
+	margin-left:30%;
 	background-color: rgb(3 252 107 /10%);
 	backdrop-filter: blur(02px);
 	color: black;
 	border: 1px solid grey;
 	border-radius: 8px;
 	padding: 2.5% 4%;
-	width: 45%;
+	width: 50%;
 	margin-bottom: 3.5%;
 	margin-top: auto !important; 
 }
@@ -441,7 +441,7 @@
 	border-radius: 8px;
 	padding: 2.5% 4%;
 	display: block;
-	width: 48%;
+	width: 73%;
 	margin-bottom: 2%;
 }
 .icon-imgs{
@@ -465,7 +465,7 @@
 	border-radius: 8px;
 	padding: 2.5% 4%;
 	display: block;
-	width: 48%;
+	width: 73%;
 	margin-top: 5%;
 	margin-bottom: 5%;
 }
@@ -538,11 +538,11 @@
 }
 #action-center{
 	overflow-y: auto ;
-	width: 65%;
+	width: 70%;
 }
 #profile-settings{
 	width: 20%;
-	margin-left: 6%;
+	margin-left: 1%;
 	display: flex;
 	margin-top: 3%;
 	flex-direction: column;
@@ -846,7 +846,7 @@
 .search-result{
 	padding: 1% 1% 0.5%;
 	border: 1px solid black;
-	border-radius: 2.8px;
+	border-radius: 8px;
 	background-color: rgb(215 246 250/45%);
 	backdrop-filter: blur(0.5px);
 	padding: 2.5% 4%;
