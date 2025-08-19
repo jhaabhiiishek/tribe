@@ -333,7 +333,7 @@
 /* 	background: url('../public/webb.png'); */
 	margin: 0;
 	display: flex;
-	background-color:black;
+	background-color:#2b2b2b;
 	flex-direction: row;
 }
 #nav{
