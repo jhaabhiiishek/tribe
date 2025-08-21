@@ -56,7 +56,7 @@ function MultiProfile(e) {
 						<div style={{color:'blue'}}>@{item.user_id}</div>
 						<div >{item.job}</div>
 						<div onClick={(e)=>openEmailPrompt(e)}>{item.email}</div>
-						<div style={{marginBottom:'4%',marginTop:'2%',paddingLeft:'0%'}}>
+						<div style={{marginBottom:'4%',marginTop:'2%',paddingLeft:'0%',textWrap:'nowrap'}}>
 							<div className='profile-tags box-shadow' style={{display:'inline'}}>
 								<img className='icon-imgs' alt='(course)' src={process.env.PUBLIC_URL+"/thesis.png"}></img>
 								{item.course}

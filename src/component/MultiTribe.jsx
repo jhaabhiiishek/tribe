@@ -59,7 +59,7 @@ function MultiTribe(e) {
                             </div>
                             {(item.tags)&&(item.tags.map((interest)=>{
                                 return(
-                                    <div className='profile-tags box-shadow' style={{display:'inline',backgroundColor:'rgb(0, 0, 0)',color: 'white'}}>
+                                    <div className='profile-tags box-shadow' style={{display:'inline',backgroundColor:'rgb(0, 0, 0)',color: 'white',textWrap:'nowrap'}}>
                                     {/* <img className='icon-imgs' alt='(interests)' src={process.env.PUBLIC_URL+"/hashtag.png"}/> */}
                                     #{interest}
                                     </div>

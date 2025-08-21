@@ -6,14 +6,15 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../state';
 import Form from './Form';
-
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { FaArrowRightLong } from "react-icons/fa6";
 import api from './api';
-function Navbar() {
+import { TfiMenuAlt } from "react-icons/tfi";
+function Navbar({navOpen,toggleNav}) {
     const [friendsList, setFriends] = useState([])
     const [formType, setFormType] = useState('')
     const [tribesList, setTribeList] = useState([])
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-    const [classToDisplay,setClass] = useState('')
 
     const dispatch = useDispatch()
     const {userProfileClick,setConnectedUsers,setLoadingAnimation,setSelectedPost,setUserPostsVisibility} = bindActionCreators(actionCreators, dispatch)
@@ -25,11 +26,7 @@ function Navbar() {
             setScreenWidth(window.innerWidth)
         }
         window.addEventListener("resize", handleResize);
-        if(screenWidth<800){
-            setClass("hide")
-        }else{
-            setClass("")
-        }
+        
         return () => {
             window.removeEventListener("resize", handleResize);
         };
@@ -41,9 +38,9 @@ function Navbar() {
 		if(document.getElementById('abruptPostForms')){
 			document.getElementById('abruptPostForms').style.display='block'
 		}
-		if(e.target.innerHTML==='Create Post'){
+		if(e.target.id==='create-post'){
 			setFormType('createPost')
-		}else if(e.target.innerHTML==='Create Tribe'){
+		}else if(e.target.id==='create-tribe'){
 			setFormType('createTribe')
 		}
 	}
@@ -186,14 +183,14 @@ function Navbar() {
 	}
     
     return (
-        <div id='nav' className={classToDisplay}>
+        <div id='nav' className={`${navOpen?'open-in-mobile':'hide-in-mobile'}`} >
             <div id='nav-group'>
-                <img onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/closenav.png'} id='close-img'/>
                 <h1 id='branding'className='box-shadow' onClick={()=>{
                     userProfileClick([])
                     setSelectedPost([])
                     setUserPostsVisibility(0)
                 }} >Tribein</h1>
+                <TfiMenuAlt id='main-menu-icon' onClick={toggleNav} style={{backgroundColor:'white',color:'black',borderRadius:'5px',marginRight:'1.5%',position:'absolute',right:'12%',top:'5%',padding:'4% !important'}}/>
                 <h1 className='subgroup-heading left-subgroup-heading'> Friends </h1>
                 <div className='vals-container'>
                     {(friendsList!==undefined)?(friendsList.slice(0,3).map((item)=>(
@@ -202,7 +199,7 @@ function Navbar() {
                         <div className='vals'>Add Friends Now!</div>
                     )}
                 </div>
-                <a className='view-all box-shadow' onClick={(e)=>{handleFriendsViewAll(e)}}>view all</a>
+                <a className='view-all box-shadow' onClick={(e)=>{handleFriendsViewAll(e)}}>view all <FaArrowRightLong style={{marginLeft:"auto"}}/></a>
                 <h1 className='subgroup-heading left-subgroup-heading'> Tribes</h1>
                 <div className='vals-container'>
                     {(tribesList&&tribesList.length>0)?(tribesList.slice(0,3).map((item)=>( 
@@ -211,12 +208,12 @@ function Navbar() {
                         <div className='vals '>Join Tribes Now!</div>
                     )}
                 </div>
-                <a className='view-all box-shadow' onClick={(e)=>{handleTribeViewAll(e)}} >view all</a>
+                <a className='view-all box-shadow' onClick={(e)=>{handleTribeViewAll(e)}} >view all <FaArrowRightLong style={{marginLeft:"auto"}}/></a>
             </div>
             <div>
-                <div onClick={(e)=>handleChangeClick(e)} className='compose box-shadow'>Create Post</div>
+                <div id='create-post' onClick={(e)=>handleChangeClick(e)} className='compose box-shadow'>Create Post <IoIosAddCircleOutline style={{marginLeft:"auto",width:"1.2em",height:"1.2em"}}/></div>
                 {formType===''?(''):(<Form type={formType}/>)}
-                <div onClick={(e)=>handleChangeClick(e)} className='compose box-shadow'>Create Tribe</div>
+                <div id='create-tribe' onClick={(e)=>handleChangeClick(e)} className='compose box-shadow'>Create Tribe <IoIosAddCircleOutline style={{marginLeft:"auto",width:"1.2em",height:"1.2em"}}/></div>
             </div>
         </div>
     )

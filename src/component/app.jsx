@@ -46,9 +46,7 @@ function App() {
     const [fileBaseName,setFileBaseName] =useState("")
     const [imgUrl, setImgUrl] = useState(null);
     const [progresspercent, setProgresspercent] = useState(0);
-
-
-
+    const [navOpen, setNavOpen] = useState(false);
     const dispatch = useDispatch()
 	  const nullCookieState = useSelector(state => state.nullCookie)
     const likedPosts = useSelector(state=> state.likedPosts)
@@ -306,6 +304,11 @@ function App() {
       setConnectedUsers(response.data.data.links)
     });
   }
+
+   const toggleNav = () => {
+    setNavOpen((prev) => !prev);
+  };
+
   const setSentRequestsfn =async()=>{
     const student = getCookie()
     await api.post('/fetchsentrequests',{
@@ -348,8 +351,8 @@ function App() {
                 //     <ToastContainer/>
                 // </div>
                 <div id='body-div'>
-                  <Navbar/>
-                  <MainBody/>
+                  <Navbar navOpen={navOpen} toggleNav={toggleNav} />
+                  <MainBody toggleNav={toggleNav} />
                 </div>
             ):
             (

@@ -19,10 +19,16 @@ import Form from './Form';
 import Cookies from 'js-cookie';
 import SelectionPost from './selectionPost';
 import { setLoadingAnimation } from '../state/action-creators';
+import { RiNotification3Line } from "react-icons/ri";
+import { BiEdit } from "react-icons/bi";
+import { MdPassword } from "react-icons/md";
+import { TfiMenuAlt } from "react-icons/tfi";
+import { CgMenuOreos } from "react-icons/cg";
+import { FaUser } from "react-icons/fa";
 
 import api from './api';
 
-function MainBody(e) {
+function MainBody({toggleNav}) {
 	const [nullCookie, setNullCookie] = useState(true);
 	const [profileName, setProfileName] = useState('');
 	const [posts, setPosts] =useState([])
@@ -32,6 +38,7 @@ function MainBody(e) {
 	const [formType, setFormType] = useState('')
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth)
     const [classToDisplay,setClass] = useState('')
+    const [disRightNav,setDisRightNav] = useState(false)
 
     const dispatch = useDispatch()
 	const actionState = useSelector(state => state.actionArea)
@@ -41,8 +48,7 @@ function MainBody(e) {
 	const selectedPost = useSelector(state=>state.selectedPost)
 
 
-    var heading = e.heading;
-    heading = "Posts"
+    var heading = "Posts"
     const student = getCookie()
     heading=student.user_id+" posts"
 
@@ -164,9 +170,9 @@ function MainBody(e) {
 		if(document.getElementById('abruptForms')){
 			document.getElementById('abruptForms').style.display='block'
 		}
-		if(e.target.innerHTML==='Change password'){
+		if(e.target.id==='edit-password'){
 			setFormType('passChange')
-		}else if(e.target.innerHTML==='Edit Profile'){
+		}else if(e.target.id==='edit-profile'){
 			setFormType('editProfile')
 		}else if(e.target.id==='notif-img'||e.target.id==='notifications'){
 			setFormType('notifications')
@@ -174,12 +180,13 @@ function MainBody(e) {
 	}
 
 	const mobileActionButtons=(e)=>{
-		if(e.target.id==="menu-img"){
+		if(e.target.id==="main-menu-icon"){
 			const navbar = document.getElementById("nav")
 			console.log(navbar.style.display)
-			if(navbar.classList.contains("hide")){
+			if(navbar.classList.contains("hide-in-mobile")){
 				console.log("here check 2")
 				document.body.classList.add('scrollable-container');
+				navbar.classList.remove("hide-in-mobile")
 				navbar.classList.remove("hide")
 			}else{
 				console.log("here check 3")
@@ -227,7 +234,7 @@ function MainBody(e) {
 
     return (
         <div id='main-body'>
-			<div id="mobile-main-nav">
+			{/* <div id="mobile-main-nav">
 				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/menu.png'} id='menu-img' alt='menu-icon'/>
 				<h1 id='branding-mobile' onClick={()=>{
 					userProfileClick([])
@@ -236,8 +243,9 @@ function MainBody(e) {
 					setUserPostsVisibility(0)
 				}}>TribeIn</h1>
 				<img  className='box-shadow' onClick={(e)=>mobileActionButtons(e)} src={process.env.PUBLIC_URL+'/settings.png'} id='settings-img' alt='settings-icon'/>
-			</div>
+			</div> */}
 			<div id='main-body-nav'>
+				<TfiMenuAlt id='main-menu-icon' onClick={toggleNav} style={{backgroundColor:'white',color:'black',borderRadius:'5px',marginRight:'1.5%'}}/>
 				<form id='search-bar'>
 					<input id='search-input' className='box-shadow' placeholder="Search for..." value={value} onChange={onChange} type="text"/>
 					<div id='search-submit' className='box-shadow' type="submit" onClick={()=>onSearch(value)} >Search</div>
@@ -246,15 +254,13 @@ function MainBody(e) {
 							<div className='search-result box-shadow'>{item.name+' ('+item.user_id+')'}</div>
 						))}
 					</div>
+					<CgMenuOreos id='pro-menu-icon' onClick={()=>{setDisRightNav(!disRightNav)}} style={{backgroundColor:'white',color:'orange',borderRadius:'5px',fontSize:'x-large',marginLeft:'1.5%'}}/>
 				</form>
-				<div id='notifications'>
-					<img  className='box-shadow' onClick={(e)=>handleChangeClick(e)} src={process.env.PUBLIC_URL+'/likes.png'} id='notif-img'/>
-				</div>
 				<div id='profile-btn' onClick={()=>{
 					setLoadingAnimation(1)
 					handleSelfClick()
 					setSelectedPost([])
-				}} >{profileName}</div>
+				}} ><FaUser color='black' style={{marginRight:'5%'}}/> <div class='hide-in-mobile'>{profileName}</div></div>
 			</div>
 			<div id='play-area'>
 				<div id='action-center'>
@@ -318,9 +324,11 @@ function MainBody(e) {
 					)}
 					
 				</div>
-				<div id='profile-settings' className={classToDisplay}>
-					<div onClick={(e)=>handleChangeClick(e)} className='profile-changes-btn box-shadow'>Change password</div>
-					<div onClick={(e)=>handleChangeClick(e)} className='profile-changes-btn box-shadow'>Edit Profile</div>
+				<div id='profile-settings' className={`profile-settings ${disRightNav ? 'open-in-mobile' : 'hide-in-mobile'}`}>
+					<CgMenuOreos id='pro-menu-icon' onClick={()=>{setDisRightNav(!disRightNav)}} style={{backgroundColor:'white',color:'orange',borderRadius:'5px',fontSize:'x-large',marginLeft:'auto',marginRight:'5%'}}/>
+					<div onClick={(e)=>handleChangeClick(e)} className='profile-changes-btn box-shadow'id='edit-password'><MdPassword style={{marginRight:"6%",width:"1.2em",height:"1.2em"}}/>Edit password</div>
+					<div onClick={(e)=>handleChangeClick(e)} className='profile-changes-btn box-shadow'id='edit-profile'><BiEdit style={{marginRight:"6%",width:"1.2em",height:"1.2em"}}/>Edit Profile</div>
+					<div className='profile-changes-btn box-shadow' onClick={(e)=>handleChangeClick(e)} id='notif-img'><RiNotification3Line style={{marginRight:"6%",width:"1.2em",height:"1.2em"}}/> Notifications</div>
 					<div onClick={logOut} id='logout-btn' className='box-shadow'>Logout</div>
 				</div>
 				{formType===''?(''):(<Form type={formType}/>)}
