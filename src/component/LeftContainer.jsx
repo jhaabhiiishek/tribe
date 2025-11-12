@@ -50,7 +50,6 @@ function LeftContainer(e) {
         <div id='leftContainer'>
             <h2 id = 'left-heading'>{heading}</h2>
 			{posts}
-            <ToastContainer/>
         </div>
     )
 }

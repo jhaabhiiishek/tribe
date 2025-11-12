@@ -156,7 +156,6 @@ function Comment(e) {
 							<img src={process.env.PUBLIC_URL+"/send-svgrepo-com.svg"}></img>
 						</button>
 					</form>
-					<ToastContainer/>
 				</div>
 			</div>
     )

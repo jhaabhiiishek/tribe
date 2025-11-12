@@ -71,7 +71,6 @@ function Compose() {
     
                         <button type='submit' onClick={(e)=>createPost(e)} id='submit-post'>Post</button>
                     </form>
-                    <ToastContainer/>
                 </div>
             ):(
                 <a id='create-anchor' onClick={(e)=>createToggle(e)}>

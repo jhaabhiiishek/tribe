@@ -21,7 +21,8 @@ import { useSelector } from 'react-redux';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import LoadingAnimation from './LoadingAnimation';
 import api from './api';
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Chat from './chat'
 
 const client_id = "128331685413-1rh7e21p5hfq813q7i0j5rs639e8ckpg.apps.googleusercontent.com"
 
@@ -348,12 +349,18 @@ function App() {
                 //           <img src={imgUrl} alt='uploaded file' height={200} />
                 //         }
                 //     </form>
-                //     <ToastContainer/>
                 // </div>
-                <div id='body-div'>
-                  <Navbar navOpen={navOpen} toggleNav={toggleNav} />
-                  <MainBody toggleNav={toggleNav} />
-                </div>
+                <Router>
+                  <Routes>
+                    <Route path="/" element={
+                      <div id='body-div'>
+                        <Navbar navOpen={navOpen} toggleNav={toggleNav} />
+                        <MainBody toggleNav={toggleNav} />
+                      </div>} />
+                    <Route path="/chat" element={<Chat />} />
+                  </Routes>
+                </Router>
+                
             ):
             (
               emailVerified?(
@@ -367,7 +374,6 @@ function App() {
                     <input type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder='Confirm password' name='confirmpassword'></input>
                     <button onClick={signup_sub} type='submit'>Sign Up</button>
                     <a onClick={()=>setSignup(false)}>Login instead</a>
-                    <ToastContainer/>
                   </div>
                 ):(
                   <div style={{display:'flex',flexDirection:'column'}}>
@@ -392,7 +398,6 @@ function App() {
                         <input type='text' placeholder='Enter OTP' name='otp' required value={otp} onChange={(e) => setOtp(e.target.value)}></input>
                         <button onClick={(e)=>otpSubmit(e)} type='submit'>Verify Otp</button>
                       </div>
-                      <ToastContainer/>
                     </form>
                 ):(
                     <form>
@@ -402,12 +407,12 @@ function App() {
                         <button onClick={emailSubmit} type='submit'>Verify Email</button>
                         <a onClick={loginfromemail}>Login instead</a>
                       </div>
-                      <ToastContainer/>
                     </form>
                 )
               )
             )
           )}            
+          <ToastContainer/>
         </div>
       </GoogleOAuthProvider>
     )

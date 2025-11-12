@@ -256,6 +256,9 @@ function MainBody({toggleNav}) {
 					</div>
 					<CgMenuOreos id='pro-menu-icon' onClick={()=>{setDisRightNav(!disRightNav)}} style={{backgroundColor:'white',color:'orange',borderRadius:'5px',fontSize:'x-large',marginLeft:'1.5%'}}/>
 				</form>
+				{/* <button onClick={() => window.open("/chat", "_self")}>
+					Open Chat
+				</button> */}
 				<div id='profile-btn' onClick={()=>{
 					setLoadingAnimation(1)
 					handleSelfClick()

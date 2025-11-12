@@ -652,7 +652,6 @@ function Form(e) {
 
 				 	<button onClick={(e)=>createTribe(e)} type='submit'>create</button>
 				</div>
-				<ToastContainer/>
 			</form>
 		)
 	}else if(e.type==='tribePost'){

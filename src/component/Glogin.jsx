@@ -61,7 +61,6 @@ function GLogin(){
 				useOneTap
 				flow="auth-code"
 			/>
-			<ToastContainer/>
 		</>
 	)
 }
