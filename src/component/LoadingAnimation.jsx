@@ -5,7 +5,7 @@ export default function LoadingAnimation() {
 			<span className="feature-item">Bringing the Images</span>
 			<span className="feature-item">Loading your posts</span>
 			<span className="feature-item">Creating your tribes</span>
-			<span className="feature-item">🚀 Grow, learn and collaborate with Tribe</span>
+			{/* <span className="feature-item">🚀 Grow, learn and collaborate with Tribe</span> */}
 		</div>
 	);
 }
