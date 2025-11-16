@@ -288,10 +288,10 @@ function Form(e) {
 		updatedInterest.delete(member)
 		setInviteMembers(updatedInterest)
 	}
-	const loginSubmit = (e)=>{
+	const loginSubmit = async (e)=>{
 		if(loginusername!=="" && loginpassword!==""){
 			e.preventDefault();
-			api.post('/login',{
+			await api.post('/login',{
 			user_id:loginusername,
 			password:loginpassword 
 			}, {
@@ -443,17 +443,141 @@ function Form(e) {
 	}
 
     if(e.type==='login'){
+		// return (
+		// 	<form>
+		// 		<div className='forms'>
+		// 		  <label htmlFor="loginusername">Username</label>
+		// 		  <input type='text' value={loginusername} onChange={(e) => setLoginUsername(e.target.value)} placeholder='username/email' name='loginusername' required></input>
+		// 		  <label htmlFor="loginpassword">Password</label>
+		// 		  <input type="password" value={loginpassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder="Enter Password" name="loginpassword" required></input>
+		// 		  <button onClick={(e)=>loginSubmit(e)} type='submit'>Login</button>
+		// 		</div>
+		// 	</form>
+		// )
+
+		// return (
+		// 	<div className="landing-container">
+		// 		<section className="hero-section">
+		// 		<div className="hero-content">
+		// 			<h1>Welcome to TribeConnect</h1>
+		// 			<p>
+		// 			A place where like-minded people gather, build tribes, and spark real conversations.
+		// 			Join a thriving community with shared interests and private chat rooms.
+		// 			</p>
+
+		// 			<ul className="feature-list">
+		// 			<li>✨ Create and join community tribes</li>
+		// 			<li>💬 Real-time chat with /chat</li>
+		// 			<li>🤝 Connect with awesome people</li>
+		// 			<li>🌍 Grow your knowledge & network</li>
+		// 			</ul>
+		// 		</div>
+
+		// 		{/* ---- LOGIN FORM (Your current JSX remains unchanged) ---- */}
+		// 		<div className="login-wrapper">
+		// 			<form>
+		// 			<div className='forms'>
+		// 				<label htmlFor="loginusername">Username</label>
+		// 				<input type='text' value={loginusername} onChange={(e) => setLoginUsername(e.target.value)} placeholder='username/email' name='loginusername' required />
+		// 				<label htmlFor="loginpassword">Password</label>
+		// 				<input type="password" value={loginpassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder="Enter Password" name="loginpassword" required />
+
+		// 				<button onClick={(e)=>loginSubmit(e)} type='submit'>Login</button>
+
+		// 				<button type="button" className="default-login-btn"
+		// 				onClick={()=>{
+		// 					setLoginUsername("demo@user.com");
+		// 					setLoginPassword("demo123");
+		// 				}}>
+		// 				Login with Demo Credentials
+		// 				</button>
+
+		// 				<a href="/register">Sign up</a>
+		// 				<a href="/forgot">Change Password</a>
+		// 				<a href="/auth/google">Sign in with Google</a>
+		// 			</div>
+		// 			</form>
+		// 		</div>
+		// 		</section>
+
+		// 		<section className="community-preview">
+		// 		<h2>Build Your Tribe</h2>
+		// 		<p>Discover chat groups, collaborate on ideas, and explore new possibilities.</p>
+		// 		<div className="tribe-showcase">
+		// 			<div className="tribe-card"><h3>🔥 Startup Founders</h3><p>Brainstorm, pitch, grow.</p></div>
+		// 			<div className="tribe-card"><h3>🎨 Creators & Artists</h3><p>Inspire and get inspired.</p></div>
+		// 			<div className="tribe-card"><h3>🧠 Tech & AI Innovators</h3><p>Learn and build together.</p></div>
+		// 		</div>
+		// 		</section>
+		// 	</div>
+		// );
+
 		return (
-			<form>
-				<div className='forms'>
-				  <label htmlFor="loginusername">Username</label>
-				  <input type='text' value={loginusername} onChange={(e) => setLoginUsername(e.target.value)} placeholder='username/email' name='loginusername' required></input>
-				  <label htmlFor="loginpassword">Password</label>
-				  <input type="password" value={loginpassword} onChange={(e) => setLoginPassword(e.target.value)} placeholder="Enter Password" name="loginpassword" required></input>
-				  <button onClick={(e)=>loginSubmit(e)} type='submit'>Login</button>
+		<div id="landing" className="landing">
+			
+			{/* HERO SECTION */}
+			<section className="hero">
+			{/* <div className="hero-left"> */}
+				<h1 className="hero-title">Welcome to Tribe</h1>
+
+				<div className="feature-rotator">
+					<span className="feature-item">✨ Create and join community tribes</span>
+					<span className="feature-item">💬 Real-time chat with Socket.io</span>
+					<span className="feature-item">🤝 Meet like-minded people</span>
+					<span className="feature-item">🚀 Grow, learn and collaborate</span>
 				</div>
-			</form>
-		)
+				<div className="auth-wrapper">
+					<form style={{width:'100%'}}>
+					<div className="auth-panel">
+						<label htmlFor="loginusername">Username</label>
+						<input type="text" value={loginusername}
+						onChange={(e)=>setLoginUsername(e.target.value)}
+						placeholder="username/email" name="loginusername" required />
+
+						<label htmlFor="loginpassword">Password</label>
+						<input type="password" value={loginpassword}
+						onChange={(e)=>setLoginPassword(e.target.value)}
+						placeholder="Enter Password" name="loginpassword" required />
+
+						<button onClick={(e)=>loginSubmit(e)} type="submit">Login</button>
+
+						<button type="button" className="demo-btn"
+						onClick={()=>{
+							setLoginUsername("abhi10092003@gmail.com");
+							setLoginPassword("@bhI1009");
+						}}>
+						▶ Login with Demo Credentials
+						</button>
+
+						{e.signupLoginContent}
+					</div>
+					</form>
+				</div>
+				<section className="community-preview">
+					<h2 style={{fontSize:"2.5rem",textShadow: "0 6px 10px rgba(0,0,0,0.25)"}}>Build Your Tribe</h2>
+					<p style={{fontSize:"1.8rem", marginBottom:"20px",marginTop:"15px"}}>Discover chat groups, collaborate on ideas, and explore new possibilities.</p>
+					<div className="tribe-showcase">
+						<div className="tribe-card"><h3>🔥 Startup Founders</h3><p>Brainstorm, pitch, grow.</p></div>
+						<div className="tribe-card"><h3>🎨 Creators & Artists</h3><p>Inspire and get inspired.</p></div>
+						<div className="tribe-card"><h3>🧠 Tech & AI Innovators</h3><p>Learn and build together.</p></div>
+					</div>
+				</section>
+			{/* </div> */}
+
+			{/* LOGIN PANEL - NEW CLASS auth-panel */}
+			
+			</section>
+
+			<footer className="footer">
+				<div className="footer-inner">
+					<p style={{fontSize:"1.25rem", color:"#e8faff"}}>© {new Date().getFullYear()} Tribe. All rights reserved.</p>
+				</div>
+			</footer>
+
+
+		</div>
+		);
+
 	}else if(e.type==='passChange'){
 		return(
 			(pwdChange===true)?(

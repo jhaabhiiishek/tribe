@@ -321,6 +321,18 @@ function App() {
       setSentRequests(response.data.data)
     });
   }
+
+  const signupLoginContent = ()=>{
+    return(
+      <div id='login-div-options'>
+        <div id='login-form-layout2'>
+          <a onClick={()=>setEmailVerified(false)} className='login-btns-control2'>Sign up</a>
+          <a onClick={(e)=>handleChangeClick(e)} className='login-btns-control2' style={{marginBottom:"10px"}}>Change Password</a>
+          <GLogin/>
+        </div>
+      </div>
+    )
+  }
     
     return (
       <GoogleOAuthProvider clientId={client_id} >
@@ -378,14 +390,8 @@ function App() {
                 ):(
                   <div style={{display:'flex',flexDirection:'column'}}>
                     {formType===''?(''):(<Form type={formType}/>)}
-                    <Form type="login"/>
-                    <div id='login-div-options'>
-                      <div id='login-form-layout'>
-                        <a onClick={()=>setEmailVerified(false)} className='login-btns-control'>Sign up</a>
-                        <a onClick={(e)=>handleChangeClick(e)} className='login-btns-control'>Change Password</a>
-                        <GLogin/>
-                      </div>
-                    </div>
+                    <Form type="login" signupLoginContent={signupLoginContent()}/>
+                    
                   </div>
                 )
               ):(
