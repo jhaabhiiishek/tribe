@@ -529,11 +529,6 @@ body, html, #root {
     text-align: center;
     border: 1px solid var(--border-color);
 }
-#body-div,#main-body, #mobile-main-nav, 
-#main-body-nav, #play-area {
-  overflow: hidden;
-  height: 100vh;
-}
 
 .incoming-call-toast h4 {
     margin-top: 0;
